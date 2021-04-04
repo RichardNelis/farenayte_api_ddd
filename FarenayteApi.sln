@@ -1,0 +1,105 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0 - Presentation", "1.0 - Presentation", "{768E7B89-F440-4CCD-8ADA-07E897FA8905}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.0 - Application", "2.0 - Application", "{42E3F43E-6DE0-40D4-A5FB-2AD7C6B1444C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.0 - Domain", "3.0 - Domain", "{6367A979-3419-4D43-B106-F712510C4A57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.0 - Infrastructure", "4.0 - Infrastructure", "{F2773765-9046-40D3-BF7A-3D4C775B1BE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{F0989524-5488-4740-B235-54FBDFE2F146}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{718AA8EC-42BC-40C1-A7F6-20E8DFB13818}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarenayteApi.Presentation", "FarenayteApi\FarenayteApi.Presentation\FarenayteApi.Presentation.csproj", "{EF78CFDF-46A6-4C2D-94A8-ED48A2137595}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarenayteApi.Application", "FarenayteApi\FarenayteApi.Application\FarenayteApi.Application.csproj", "{E3EC8124-C303-483E-B7E6-AB910125AB84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarenayteApi.Application.DTO", "FarenayteApi\FarenayteApi.Application.DTO\FarenayteApi.Application.DTO.csproj", "{0A22C577-CE91-42F0-9A55-67813B8E6369}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarenayteApi.Domain", "FarenayteApi\FarenayteApi.Domain\FarenayteApi.Domain.csproj", "{F27528DF-E21F-40FE-A3D2-3848D45328A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarenayteApi.Domain.Core", "FarenayteApi\FarenayteApi.Domain.Core\FarenayteApi.Domain.Core.csproj", "{0F09D2D8-991F-4323-993A-328995061B54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarenayteApi.Domain.Services", "FarenayteApi\FarenayteApi.Domain.Services\FarenayteApi.Domain.Services.csproj", "{69A5FDEB-5622-4C1F-8191-8A4CDFB4E030}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarenayteApi.Infrastructure.Data", "FarenayteApi\FarenayteApi.Infrastructure.Data\FarenayteApi.Infrastructure.Data.csproj", "{DAC7F146-878D-4042-971C-F7DC9B05FB2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarenayteApi.Infrastruture.CrossCutting.Adapter", "FarenayteApi\FarenayteApi.Infrastruture.CrossCutting.Adapter\FarenayteApi.Infrastruture.CrossCutting.Adapter.csproj", "{B76775B2-B522-4201-939D-03B681A2F421}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarenayteApi.Infrastruture.CrossCutting.IOC", "FarenayteApi\FarenayteApi.Infrastruture.CrossCutting.IOC\FarenayteApi.Infrastruture.CrossCutting.IOC.csproj", "{91C76D53-C549-4AD8-A207-E0B52A6F8151}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarenayteApi.Infrastruture.Repository", "FarenayteApi\FarenayteApi.Infrastruture.Repository\FarenayteApi.Infrastruture.Repository.csproj", "{8B8C2C08-25BA-4E1F-A723-0C4F582056AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF78CFDF-46A6-4C2D-94A8-ED48A2137595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF78CFDF-46A6-4C2D-94A8-ED48A2137595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF78CFDF-46A6-4C2D-94A8-ED48A2137595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF78CFDF-46A6-4C2D-94A8-ED48A2137595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3EC8124-C303-483E-B7E6-AB910125AB84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3EC8124-C303-483E-B7E6-AB910125AB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3EC8124-C303-483E-B7E6-AB910125AB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3EC8124-C303-483E-B7E6-AB910125AB84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A22C577-CE91-42F0-9A55-67813B8E6369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A22C577-CE91-42F0-9A55-67813B8E6369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A22C577-CE91-42F0-9A55-67813B8E6369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A22C577-CE91-42F0-9A55-67813B8E6369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F27528DF-E21F-40FE-A3D2-3848D45328A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F27528DF-E21F-40FE-A3D2-3848D45328A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F27528DF-E21F-40FE-A3D2-3848D45328A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F27528DF-E21F-40FE-A3D2-3848D45328A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F09D2D8-991F-4323-993A-328995061B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F09D2D8-991F-4323-993A-328995061B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F09D2D8-991F-4323-993A-328995061B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F09D2D8-991F-4323-993A-328995061B54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69A5FDEB-5622-4C1F-8191-8A4CDFB4E030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69A5FDEB-5622-4C1F-8191-8A4CDFB4E030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69A5FDEB-5622-4C1F-8191-8A4CDFB4E030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69A5FDEB-5622-4C1F-8191-8A4CDFB4E030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAC7F146-878D-4042-971C-F7DC9B05FB2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAC7F146-878D-4042-971C-F7DC9B05FB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAC7F146-878D-4042-971C-F7DC9B05FB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAC7F146-878D-4042-971C-F7DC9B05FB2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B76775B2-B522-4201-939D-03B681A2F421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B76775B2-B522-4201-939D-03B681A2F421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B76775B2-B522-4201-939D-03B681A2F421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B76775B2-B522-4201-939D-03B681A2F421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C76D53-C549-4AD8-A207-E0B52A6F8151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C76D53-C549-4AD8-A207-E0B52A6F8151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C76D53-C549-4AD8-A207-E0B52A6F8151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C76D53-C549-4AD8-A207-E0B52A6F8151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B8C2C08-25BA-4E1F-A723-0C4F582056AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8C2C08-25BA-4E1F-A723-0C4F582056AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8C2C08-25BA-4E1F-A723-0C4F582056AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8C2C08-25BA-4E1F-A723-0C4F582056AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F0989524-5488-4740-B235-54FBDFE2F146} = {F2773765-9046-40D3-BF7A-3D4C775B1BE8}
+		{718AA8EC-42BC-40C1-A7F6-20E8DFB13818} = {F2773765-9046-40D3-BF7A-3D4C775B1BE8}
+		{EF78CFDF-46A6-4C2D-94A8-ED48A2137595} = {768E7B89-F440-4CCD-8ADA-07E897FA8905}
+		{E3EC8124-C303-483E-B7E6-AB910125AB84} = {42E3F43E-6DE0-40D4-A5FB-2AD7C6B1444C}
+		{0A22C577-CE91-42F0-9A55-67813B8E6369} = {42E3F43E-6DE0-40D4-A5FB-2AD7C6B1444C}
+		{F27528DF-E21F-40FE-A3D2-3848D45328A3} = {6367A979-3419-4D43-B106-F712510C4A57}
+		{0F09D2D8-991F-4323-993A-328995061B54} = {6367A979-3419-4D43-B106-F712510C4A57}
+		{69A5FDEB-5622-4C1F-8191-8A4CDFB4E030} = {6367A979-3419-4D43-B106-F712510C4A57}
+		{DAC7F146-878D-4042-971C-F7DC9B05FB2F} = {718AA8EC-42BC-40C1-A7F6-20E8DFB13818}
+		{B76775B2-B522-4201-939D-03B681A2F421} = {F0989524-5488-4740-B235-54FBDFE2F146}
+		{91C76D53-C549-4AD8-A207-E0B52A6F8151} = {F0989524-5488-4740-B235-54FBDFE2F146}
+		{8B8C2C08-25BA-4E1F-A723-0C4F582056AB} = {718AA8EC-42BC-40C1-A7F6-20E8DFB13818}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AC98E31-5B22-41A5-BC9A-B3A8B1752100}
+	EndGlobalSection
+EndGlobal
