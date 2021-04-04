@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FarenayteApi.Domain.Core\FarenayteApi.Domain.Core.csproj" />
+    <ProjectReference Include="..\FarenayteApi.Infrastructure.Data\FarenayteApi.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+</Project>
