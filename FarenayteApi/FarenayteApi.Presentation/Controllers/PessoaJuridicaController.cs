@@ -7,7 +7,7 @@ using System;
 namespace FarenayteApi.Presentation.Controllers
 {
     [ApiController, Route("[controller]"), Authorize]
-    public class PessoaJuridicaController : ControllerBase
+    public class PessoaJuridicaController : BaseController
     {
         private readonly IApplicationServicePessoaJuridica _applicationService;
 
@@ -46,6 +46,8 @@ namespace FarenayteApi.Presentation.Controllers
             {
                 if (dto == null)
                     return NotFound();
+
+                dto.Id = AuthUser().Id;
 
                 _applicationService.Update(dto);
                 return Ok("Pessoa Juridica atualizado com sucesso!");

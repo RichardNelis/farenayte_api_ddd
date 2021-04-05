@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FarenayteApi.Presentation.Controllers
 {
     [ApiController, Route("[controller]"), Authorize]
-    public class PessoaFisicaController : ControllerBase
+    public class PessoaFisicaController : BaseController
     {
         private readonly IApplicationServicePessoaFisica _applicationService;
 

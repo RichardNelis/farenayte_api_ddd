@@ -18,11 +18,12 @@ namespace FarenayteApi.Presentation.Controllers
             _applicationService = ApplicationService;
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public async Task<ActionResult<ICollection<string>>> Get()
         {
+            //dto.Id = AuthUser().Id;
             return Ok(await _applicationService.GetAllAsync());
-        }*/
+        }
 
         [HttpPost]
         [AllowAnonymous]
