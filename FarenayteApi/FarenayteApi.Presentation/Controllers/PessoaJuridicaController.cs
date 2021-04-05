@@ -1,39 +1,27 @@
 ﻿using FarenayteApi.Application.DTO.DTO;
 using FarenayteApi.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 
 namespace FarenayteApi.Presentation.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+    [ApiController, Route("[controller]"), Authorize]
     public class PessoaJuridicaController : ControllerBase
     {
         private readonly IApplicationServicePessoaJuridica _applicationService;
-        private readonly IApplicationServicePessoaJuridicaFilter _applicationServiceFilter;
 
-        public PessoaJuridicaController(IApplicationServicePessoaJuridica ApplicationService, IApplicationServicePessoaJuridicaFilter ApplicationServiceFilter)
+        public PessoaJuridicaController(IApplicationServicePessoaJuridica ApplicationService)
         {
             _applicationService = ApplicationService;
-            _applicationServiceFilter = ApplicationServiceFilter;
         }
 
-        // GET api/values
-        [HttpGet]
-        public ActionResult<ICollection<string>> Get()
-        {            
-            return Ok(_applicationServiceFilter.GetFilter());
-        }
-
-        // GET api/values/5\
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
             return Ok(_applicationService.GetById(id));
         }
 
-        // POST api/values
         [HttpPost]
         public ActionResult Post([FromBody] PessoaJuridicaDTO dto)
         {
@@ -51,7 +39,6 @@ namespace FarenayteApi.Presentation.Controllers
             }
         }
 
-        // PUT api/values/5
         [HttpPut]
         public ActionResult Put([FromBody] PessoaJuridicaDTO dto)
         {
@@ -67,6 +54,6 @@ namespace FarenayteApi.Presentation.Controllers
             {
                 throw ex;
             }
-       }
+        }
     }
 }

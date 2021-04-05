@@ -18,13 +18,14 @@ namespace FarenayteApi.Presentation.Controllers
             _applicationService = ApplicationService;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public async Task<ActionResult<ICollection<string>>> Get()
         {
             return Ok(await _applicationService.GetAllAsync());
-        }
+        }*/
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Post([FromBody] UsuarioDTO dto)
         {
             try
@@ -47,7 +48,9 @@ namespace FarenayteApi.Presentation.Controllers
             try
             {
                 if (dto == null)
-                    return NotFound();
+                    return NotFound("Não encontrado!");
+
+                dto.Id = AuthUser().Id;
 
                 _applicationService.Update(dto);
                 return Ok("Cadastro atualizado com sucesso!");

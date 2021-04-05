@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\PessoaFisicaController.cs" />
-    <Compile Remove="Controllers\PessoaJuridicaController.cs" />
     <Compile Remove="Controllers\PublicacaoController.cs" />
   </ItemGroup>
 
