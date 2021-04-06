@@ -33,7 +33,7 @@ namespace FarenayteApi.Presentation.Controllers
             try
             {
                 Byte[] b = System.IO.File.ReadAllBytes(_pathRoot + name);   // You can use your own method over here.         
-                return Ok(File(b, "image/" + name.Split(".").Last()));
+                return File(b, "image/" + name.Split(".").Last());
             }
             catch (Exception)
             {
