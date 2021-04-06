@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation.Controllers
@@ -12,27 +11,26 @@ namespace FarenayteApi.Presentation.Controllers
     [ApiController, Route("[controller]"), Authorize]
     public class ImagemController : BaseController
     {
-        private string _pathRoot;
-        private string _imagemFold = "\\Imagens\\";
+        private string _pathRoot;        
         public static IWebHostEnvironment _environment;
 
         public ImagemController(IWebHostEnvironment environment)
         {
             _environment = environment;
 
-            if (!Directory.Exists(_environment.ContentRootPath + _imagemFold))
+            if (!Directory.Exists(_environment.ContentRootPath + "\\Imagens\\"))
             {
-                Directory.CreateDirectory(_environment.ContentRootPath + _imagemFold);
+                Directory.CreateDirectory(_environment.ContentRootPath + "\\Imagens\\");
             }
 
-            _pathRoot = _environment.ContentRootPath + _imagemFold;
+            _pathRoot = _environment.ContentRootPath + "\\Imagens\\";
         }
 
         [HttpGet("{name}")]
-        public IActionResult Get(String name)
+        public IActionResult Get(string name)
         {
             Byte[] b = System.IO.File.ReadAllBytes(_pathRoot + name);   // You can use your own method over here.         
-            return File(b, "image/" + name.Split(".").Last());
+            return File(b, "image/" + name.Split(".")[1]);
         }
 
         [HttpPost]
@@ -46,7 +44,7 @@ namespace FarenayteApi.Presentation.Controllers
                     {
                         using (FileStream filestream = System.IO.File.Create(_pathRoot + arquivos[i].FileName))
                         {
-                            String caminho = _imagemFold + arquivos[i].FileName;
+                            String caminho = "\\Imagens\\" + arquivos[i].FileName;
                             await arquivos[i].CopyToAsync(filestream);
                             filestream.Flush();
                         }
