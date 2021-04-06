@@ -31,8 +31,15 @@ namespace FarenayteApi.Presentation.Controllers
         [HttpGet("{name}")]
         public IActionResult Get(string name)
         {
-            Byte[] b = System.IO.File.ReadAllBytes(_pathRoot + name);   // You can use your own method over here.         
-            return Ok(File(b, "image/" + name.Split(".").Last()));
+            try
+            {
+                Byte[] b = System.IO.File.ReadAllBytes(_pathRoot + name);   // You can use your own method over here.         
+                return Ok(File(b, "image/" + name.Split(".").Last()));
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost]
