@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation.Controllers
@@ -26,7 +28,12 @@ namespace FarenayteApi.Presentation.Controllers
             pathRoot = _environment.ContentRootPath + "\\Imagens\\";
         }
 
-        [HttpGet("{name}")]
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return Directory.GetFiles(pathRoot).Select(Path.GetFileName);
+        }
+
         public IActionResult Get(String name)
         {
             Byte[] b = System.IO.File.ReadAllBytes(pathRoot + name);   // You can use your own method over here.         
