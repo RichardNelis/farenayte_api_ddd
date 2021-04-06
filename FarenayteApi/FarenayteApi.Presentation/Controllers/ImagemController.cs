@@ -12,20 +12,19 @@ namespace FarenayteApi.Presentation.Controllers
     [ApiController, Route("[controller]"), Authorize]
     public class ImagemController : BaseController
     {
-        private string _pathRoot;
-        private string _imagesFold = "\\Imagens\\";
+        private string _pathRoot;        
         public static IWebHostEnvironment _environment;
 
         public ImagemController(IWebHostEnvironment environment)
         {
             _environment = environment;
 
-            if (!Directory.Exists(_environment.ContentRootPath + _imagesFold))
+            if (!Directory.Exists(_environment.ContentRootPath + "\\Imagens\\"))
             {
-                Directory.CreateDirectory(_environment.ContentRootPath + _imagesFold);
+                Directory.CreateDirectory(_environment.ContentRootPath + "\\Imagens\\");
             }
 
-            _pathRoot = _environment.ContentRootPath + _imagesFold;
+            _pathRoot = _environment.ContentRootPath + "\\Imagens\\";
         }
 
         [HttpGet("{name}")]
@@ -53,7 +52,7 @@ namespace FarenayteApi.Presentation.Controllers
                     {
                         using (FileStream filestream = System.IO.File.Create(_pathRoot + arquivos[i].FileName))
                         {
-                            String caminho = _imagesFold + arquivos[i].FileName;
+                            String caminho = "\\Imagens\\" + arquivos[i].FileName;
                             await arquivos[i].CopyToAsync(filestream);
                             filestream.Flush();
                         }
