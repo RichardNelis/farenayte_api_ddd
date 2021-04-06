@@ -11,7 +11,7 @@ namespace FarenayteApi.Presentation.Controllers
     [ApiController, Route("[controller]"), Authorize]
     public class ImagemController : BaseController
     {
-        private readonly string _pathRoot;
+        private string _pathRoot;
         private readonly string _imagemFold = "\\Imagens\\";
         public static IWebHostEnvironment _environment;
 
