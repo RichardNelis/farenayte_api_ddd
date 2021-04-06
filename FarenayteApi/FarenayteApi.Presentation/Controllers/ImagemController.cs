@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation.Controllers
@@ -11,26 +12,27 @@ namespace FarenayteApi.Presentation.Controllers
     [ApiController, Route("[controller]"), Authorize]
     public class ImagemController : BaseController
     {
-        private string _pathRoot;        
+        private string _pathRoot;
+        private string _imagesFold = "\\Imagens\\";
         public static IWebHostEnvironment _environment;
 
         public ImagemController(IWebHostEnvironment environment)
         {
             _environment = environment;
 
-            if (!Directory.Exists(_environment.ContentRootPath + "\\Imagens\\"))
+            if (!Directory.Exists(_environment.ContentRootPath + _imagesFold))
             {
-                Directory.CreateDirectory(_environment.ContentRootPath + "\\Imagens\\");
+                Directory.CreateDirectory(_environment.ContentRootPath + _imagesFold);
             }
 
-            _pathRoot = _environment.ContentRootPath + "\\Imagens\\";
+            _pathRoot = _environment.ContentRootPath + _imagesFold;
         }
 
         [HttpGet("{name}")]
         public IActionResult Get(string name)
         {
             Byte[] b = System.IO.File.ReadAllBytes(_pathRoot + name);   // You can use your own method over here.         
-            return File(b, "image/" + name.Split(".")[1]);
+            return Ok(File(b, "image/" + name.Split(".").Last()));
         }
 
         [HttpPost]
@@ -44,7 +46,7 @@ namespace FarenayteApi.Presentation.Controllers
                     {
                         using (FileStream filestream = System.IO.File.Create(_pathRoot + arquivos[i].FileName))
                         {
-                            String caminho = "\\Imagens\\" + arquivos[i].FileName;
+                            String caminho = _imagesFold + arquivos[i].FileName;
                             await arquivos[i].CopyToAsync(filestream);
                             filestream.Flush();
                         }
