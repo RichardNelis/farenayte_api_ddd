@@ -28,14 +28,15 @@ namespace FarenayteApi.Presentation.Controllers
             _pathRoot = _environment.ContentRootPath + _imagemFold;
         }
 
+        [HttpGet("{name}")]
         public IActionResult Get(String name)
         {
             Byte[] b = System.IO.File.ReadAllBytes(_pathRoot + name);   // You can use your own method over here.         
-            return File(b, "image/" + name.Split(".").Last());
+            return Ok(File(b, "image/" + name.Split(".").Last()));
         }
 
         [HttpPost]
-        public async Task<bool> EnviaArquivo([FromForm] IFormFileCollection arquivos)
+        public async Task<ActionResult> EnviaArquivo([FromForm] IFormFileCollection arquivos)
         {
             if (arquivos.Count > 0)
             {
@@ -51,7 +52,7 @@ namespace FarenayteApi.Presentation.Controllers
                         }
                     }
 
-                    return true;
+                    return Ok();
                 }
                 catch (Exception)
                 {
@@ -60,12 +61,12 @@ namespace FarenayteApi.Presentation.Controllers
                         System.IO.File.Delete(_pathRoot + arquivos[i].FileName);
                     }
 
-                    return false;
+                    return BadRequest();
                 }
             }
             else
             {
-                return true;
+                return Ok();
             }
         }
     }
