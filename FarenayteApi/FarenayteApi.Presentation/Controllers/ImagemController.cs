@@ -29,9 +29,18 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<IActionResult> Get()
         {
-            return Directory.GetFiles(pathRoot).Select(Path.GetFileName);
+            List<FileContentResult> files = new List<FileContentResult>();
+            string[] images = Directory.GetFiles(pathRoot, "*");
+
+            for (int i = 0; i < images.Length; i++)
+            {
+                Byte[] b = System.IO.File.ReadAllBytes(pathRoot + images[i]);   // You can use your own method over here.         
+                files.Add(File(b, "image/" + images[i].Split(".")[1]));
+            }
+
+            return files;
         }
 
         public IActionResult Get(String name)
