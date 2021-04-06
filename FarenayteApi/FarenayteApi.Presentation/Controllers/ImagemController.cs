@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation.Controllers
@@ -12,7 +13,7 @@ namespace FarenayteApi.Presentation.Controllers
     public class ImagemController : BaseController
     {
         private string _pathRoot;
-        private readonly string _imagemFold = "\\Imagens\\";
+        private string _imagemFold = "\\Imagens\\";
         public static IWebHostEnvironment _environment;
 
         public ImagemController(IWebHostEnvironment environment)
@@ -30,7 +31,7 @@ namespace FarenayteApi.Presentation.Controllers
         public IActionResult Get(String name)
         {
             Byte[] b = System.IO.File.ReadAllBytes(_pathRoot + name);   // You can use your own method over here.         
-            return File(b, "image/" + name.Split(".")[1]);
+            return File(b, "image/" + name.Split(".").Last());
         }
 
         [HttpPost]
