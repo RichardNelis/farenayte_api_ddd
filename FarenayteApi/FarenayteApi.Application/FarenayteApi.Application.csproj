@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FarenayteApi.Application.DTO\FarenayteApi.Application.DTO.csproj" />
     <ProjectReference Include="..\FarenayteApi.Domain.Core\FarenayteApi.Domain.Core.csproj" />
     <ProjectReference Include="..\FarenayteApi.Infrastruture.CrossCutting.Adapter\FarenayteApi.Infrastruture.CrossCutting.Adapter.csproj" />

@@ -10,7 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace FarenayteApi.Presentation
@@ -51,6 +55,51 @@ namespace FarenayteApi.Presentation
                     ValidateAudience = false
                 };
             });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Farenayte API",
+                    Description = "Documentação do Projeto",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Richard Nelis",
+                        Email = "souza.richard33@hotmail.com",
+                    },
+                });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = @"JWT Authorization header usando o schema Bearer.
+                            <br>Entre com 'Bearer' [spaço] e a token que foi gerada na caixa de texto.
+                            <br>Exemplo: 'Bearer 12345abcdef'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "JWT",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header,
+                        }, new List<string>()
+                    }
+                });
+            });
         }
 
         public void ConfigureContainer(ContainerBuilder Builder)
@@ -77,6 +126,15 @@ namespace FarenayteApi.Presentation
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "api V1");
+            });
 
             app.UseEndpoints(endpoints =>
             {
