@@ -9,7 +9,7 @@ namespace FarenayteApi.Presentation.Service
 {
     public class Token
     {
-        public static async Task<string> GenerateToken(LoginDTO user)
+        public static async Task<string> GenerateToken(UsuarioResponseDTO user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("erthpguetibuyh5ut9reeytr9");

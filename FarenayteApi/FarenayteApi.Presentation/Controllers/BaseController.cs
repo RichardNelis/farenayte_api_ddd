@@ -14,9 +14,9 @@ public abstract class BaseController : ControllerBase
         _message = new MessageDTO();
     }
 
-    protected UsuarioDTO AuthUser()
+    protected UsuarioRequestDTO AuthUser()
     {
-        UsuarioDTO authUser = new UsuarioDTO();
+        UsuarioRequestDTO authUser = new UsuarioRequestDTO();
         authUser.Id = Int32.Parse(User.Claims.First().Value);
         return authUser;
     }

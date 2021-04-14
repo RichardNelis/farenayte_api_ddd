@@ -19,14 +19,14 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostAsync([FromBody] UsuarioDTO usuarioDTO)
+        public async Task<ActionResult> PostAsync([FromBody] UsuarioRequestDTO requestDTO)
         {
             try
             {
-                if (usuarioDTO == null)
+                if (requestDTO == null)
                     return NotFound();
 
-                LoginDTO login = await _applicationService.ValidarAcesso(usuarioDTO);
+                UsuarioResponseDTO login = await _applicationService.ValidarAcesso(requestDTO);
                 var token = await Token.GenerateToken(login);
 
                 return Ok(new { usuario = login, token });

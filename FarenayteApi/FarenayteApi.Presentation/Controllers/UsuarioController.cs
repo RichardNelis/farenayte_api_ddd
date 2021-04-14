@@ -27,7 +27,7 @@ namespace FarenayteApi.Presentation.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Post([FromBody] UsuarioDTO dto)
+        public ActionResult Post([FromBody] UsuarioRequestDTO dto)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] UsuarioDTO dto)
+        public ActionResult Put([FromBody] UsuarioRequestDTO dto)
         {
             try
             {

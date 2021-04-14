@@ -2,7 +2,7 @@
 
 namespace FarenayteApi.Application.DTO.DTO
 {
-    public class LoginDTO
+    public class UsuarioResponseDTO
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }

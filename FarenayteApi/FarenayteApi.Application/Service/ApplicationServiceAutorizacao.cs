@@ -21,16 +21,16 @@ namespace FarenayteApi.Application.Service
             _mapper = Mapper;
         }
 
-        public async Task<LoginDTO> ValidarAcesso(UsuarioDTO usuarioDTO)
+        public async Task<UsuarioResponseDTO> ValidarAcesso(UsuarioRequestDTO dto)
         {
-            var objUsuarios = await _serviceUsuario.GetByEmail(usuarioDTO.Email);
+            var objUsuarios = await _serviceUsuario.GetByEmail(dto.Email);
 
             if (objUsuarios.Count == 0)
             {
                 throw new Exception("Cadastro não encontrado!");
             }
 
-            var objUsuario = objUsuarios.FirstOrDefault(x => x.Password == usuarioDTO.Password);
+            var objUsuario = objUsuarios.FirstOrDefault(x => x.Password == dto.Password);
 
             if (objUsuario == null)
             {

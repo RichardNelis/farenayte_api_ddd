@@ -8,14 +8,14 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
     public class MapperAutorizacao : IMapperAutorizacao
     {
         #region properties
-
-        readonly List<UsuarioDTO> _usuarioDTOs = new List<UsuarioDTO>();
+        
+        readonly List<UsuarioRequestDTO> _usuarioDTOs = new List<UsuarioRequestDTO>();
 
         #endregion
 
         #region methods
 
-        public Usuario MapperToEntity(UsuarioDTO dto)
+        public Usuario MapperToEntity(UsuarioRequestDTO dto)
         {
             Usuario obj = new Usuario
             {
@@ -27,13 +27,13 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             return obj;
         }
 
-        public ICollection<UsuarioDTO> MapperListUsuarios(ICollection<Usuario> objs)
+        public ICollection<UsuarioRequestDTO> MapperListUsuarios(ICollection<Usuario> objs)
         {
             foreach (var obj in objs)
             {
-                UsuarioDTO usuarioDTO = new UsuarioDTO
+                UsuarioRequestDTO usuarioDTO = new UsuarioRequestDTO
                 {
-                    Id = obj.Id,
+                    //Id = obj.Id,
                     Email = obj.Email,
                     Password = obj.Password,
                 };
@@ -44,11 +44,11 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             return _usuarioDTOs;
         }
 
-        public UsuarioDTO MapperToDTO(Usuario obj)
+        public UsuarioRequestDTO MapperToDTO(Usuario obj)
         {
-            UsuarioDTO usuarioDTO = new UsuarioDTO
+            UsuarioRequestDTO usuarioDTO = new UsuarioRequestDTO
             {
-                Id = obj.Id,
+                //Id = obj.Id,
                 Email = obj.Email,
                 Password = obj.Password,
             };
@@ -56,9 +56,9 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             return usuarioDTO;
         }
 
-        public LoginDTO MapperToDTO(PessoaFisica obj)
+        public UsuarioResponseDTO MapperToDTO(PessoaFisica obj)
         {
-            LoginDTO dto = new LoginDTO
+            UsuarioResponseDTO dto = new UsuarioResponseDTO
             {
                 Id = obj.EsUsuario,
                 NomeCompleto = obj.NomeCompleto,
