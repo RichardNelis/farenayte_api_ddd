@@ -31,7 +31,7 @@ namespace FarenayteApi.Presentation.Controllers
                     return NotFound();
 
                 _applicationService.Add(dto);
-                return Ok("Pessoa juridica cadastrado com sucesso");
+                return Ok("Cadastro salvo com sucesso");
             }
             catch (Exception ex)
             {
@@ -50,7 +50,7 @@ namespace FarenayteApi.Presentation.Controllers
                 dto.Id = AuthUser().Id;
 
                 _applicationService.Update(dto);
-                return Ok("Pessoa Juridica atualizado com sucesso!");
+                return Ok("Cadastro atualizado com sucesso!");
             }
             catch (Exception ex)
             {

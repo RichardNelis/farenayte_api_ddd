@@ -35,7 +35,7 @@ namespace FarenayteApi.Presentation.Controllers
                     return NotFound();
 
                 _applicationService.Add(dto);
-                return Ok("Cadastrado com sucesso");
+                return Ok("Cadastro salvo com sucesso");
             }
             catch (Exception ex)
             {
