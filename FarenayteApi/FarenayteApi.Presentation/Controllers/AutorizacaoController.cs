@@ -19,7 +19,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostAsync([FromBody] UsuarioRequestDTO requestDTO)
+        public async Task<ActionResult> PostAsync([FromBody] LoginDTO requestDTO)
         {
             try
             {
