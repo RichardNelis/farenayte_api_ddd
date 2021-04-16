@@ -5,7 +5,7 @@ namespace FarenayteApi.Application.DTO.DTO
 {
     public class LoginDTO
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
                 
         public string Email { get; set; }
         
