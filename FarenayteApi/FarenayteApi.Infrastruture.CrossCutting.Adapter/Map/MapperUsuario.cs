@@ -9,36 +9,36 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
     {
         #region properties
 
-        readonly List<UsuarioRequestDTO> usuarioDTOs = new List<UsuarioRequestDTO>();
+        readonly List<UsuarioDTO> usuarioDTOs = new List<UsuarioDTO>();
         readonly MapperPessoaFisica _mapperPessoaFisica = new MapperPessoaFisica();
 
         #endregion
 
         #region methods
 
-        public Usuario MapperToEntity(UsuarioRequestDTO dto)
+        public Usuario MapperToEntity(UsuarioDTO dto)
         {
             Usuario obj = new Usuario
             {
-                //Id = dto.Id,
+                Id = dto.Id,
                 Email = dto.Email,
                 Password = dto.Password,
-                //PessoaFisica = _mapperPessoaFisica.MapperToEntity(dto.PessoaFisica)
+                PessoaFisica = _mapperPessoaFisica.MapperToEntity(dto.PessoaFisica)
             };
 
             return obj;
         }
 
-        public ICollection<UsuarioRequestDTO> MapperListUsuarios(ICollection<Usuario> objs)
+        public ICollection<UsuarioDTO> MapperListUsuarios(ICollection<Usuario> objs)
         {
             foreach (var obj in objs)
             {
-                UsuarioRequestDTO usuarioDTO = new UsuarioRequestDTO
+                UsuarioDTO usuarioDTO = new UsuarioDTO
                 {
-                    //Id = obj.Id,
+                    Id = obj.Id,
                     Email = obj.Email,
                     Password = obj.Password,
-                    //PessoaFisica = _mapperPessoaFisica.MapperToDTO(obj.PessoaFisica),
+                    PessoaFisica = _mapperPessoaFisica.MapperToDTO(obj.PessoaFisica),
                 };
 
                 usuarioDTOs.Add(usuarioDTO);
@@ -47,14 +47,14 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             return usuarioDTOs;
         }
 
-        public UsuarioRequestDTO MapperToDTO(Usuario obj)
+        public UsuarioDTO MapperToDTO(Usuario obj)
         {
-            UsuarioRequestDTO dto = new UsuarioRequestDTO
+            UsuarioDTO dto = new UsuarioDTO
             {
-                //Id = obj.Id,
+                Id = obj.Id,
                 Email = obj.Email,
                 Password = obj.Password,
-                //PessoaFisica = _mapperPessoaFisica.MapperToDTO(obj.PessoaFisica),
+                PessoaFisica = _mapperPessoaFisica.MapperToDTO(obj.PessoaFisica),
             };
 
             return dto;

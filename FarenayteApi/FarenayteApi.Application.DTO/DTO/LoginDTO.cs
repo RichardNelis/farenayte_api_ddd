@@ -1,17 +1,14 @@
-﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace FarenayteApi.Application.DTO.DTO
 {
-    public class UsuarioRequestDTO
+    public class LoginDTO
     {
-        public int Id { get; set; }        
-        
-        public string Email { get; set; }
-        
-        public string Password { get; set; }
+        [JsonProperty(PropertyName = "email")]
 
-        /*[JsonProperty(PropertyName = "pessoa_fisica")]
-        public virtual PessoaFisicaDTO PessoaFisica { get; set; }*/
+        public string Email { get; set; }
+
+        [JsonProperty(PropertyName = "password")]
+        public string Password { get; set; }
     }
 }

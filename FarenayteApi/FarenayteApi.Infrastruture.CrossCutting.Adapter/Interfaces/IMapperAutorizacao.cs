@@ -8,7 +8,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces
     {
         #region Mappers
 
-        UsuarioResponseDTO MapperToDTO(PessoaFisica pessoaFisica);
+        LoginResponseDTO MapperToDTO(PessoaFisica pessoaFisica);
 
         #endregion
     }

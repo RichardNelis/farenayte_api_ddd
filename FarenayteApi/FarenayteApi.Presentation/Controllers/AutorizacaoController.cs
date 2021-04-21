@@ -1,6 +1,7 @@
 ﻿using FarenayteApi.Application.DTO.DTO;
 using FarenayteApi.Application.Interfaces;
 using FarenayteApi.Presentation.Service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace FarenayteApi.Presentation.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class AutorizacaoController : ControllerBase
+    public class AutorizacaoController : BaseController
     {
         private readonly IApplicationServiceAutorizacao _applicationService;
 
@@ -18,18 +19,32 @@ namespace FarenayteApi.Presentation.Controllers
             _applicationService = ApplicationService;
         }
 
-        [HttpPost]
-        public async Task<ActionResult> PostAsync([FromBody] LoginDTO requestDTO)
+        [HttpPost("autenticar")]
+        public async Task<ActionResult> Post([FromBody] LoginDTO dto)
         {
             try
             {
-                if (requestDTO == null)
+                if (dto == null)
                     return NotFound();
 
-                UsuarioResponseDTO login = await _applicationService.ValidarAcesso(requestDTO);
-                var token = await Token.GenerateToken(login);
+                LoginResponseDTO login = await _applicationService.ValidarAcesso(dto);
+                login.Token = await Token.GenerateToken(login);
 
-                return Ok(new { usuario = login, token });
+                return Ok(login);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [Authorize()]
+        [HttpPost("validaracesso")]
+        public async Task<ActionResult> Post()
+        {
+            try
+            {
+                return Ok();
             }
             catch (Exception ex)
             {

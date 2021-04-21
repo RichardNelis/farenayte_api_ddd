@@ -8,11 +8,11 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces
     {
         #region Mappers
 
-        Usuario MapperToEntity(UsuarioRequestDTO UsuarioDTO);
+        Usuario MapperToEntity(UsuarioDTO UsuarioDTO);
 
-        ICollection<UsuarioRequestDTO> MapperListUsuarios(ICollection<Usuario> Usuarios);
+        ICollection<UsuarioDTO> MapperListUsuarios(ICollection<Usuario> Usuarios);
 
-        UsuarioRequestDTO MapperToDTO(Usuario Usuario);
+        UsuarioDTO MapperToDTO(Usuario Usuario);
 
         #endregion
     }

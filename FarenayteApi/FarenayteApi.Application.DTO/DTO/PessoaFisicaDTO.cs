@@ -10,7 +10,7 @@ namespace FarenayteApi.Application.DTO.DTO
         [JsonProperty(PropertyName = "es_usuario")]
         public int EsUsuario { get; set; }
 
-        public string Photo { get; set; }
+        public string Foto { get; set; }
 
         [JsonProperty(PropertyName = "nome_completo")]
         public string NomeCompleto { get; set; }

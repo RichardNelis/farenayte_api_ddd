@@ -7,63 +7,22 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
 {
     public class MapperAutorizacao : IMapperAutorizacao
     {
-        #region properties
-        
-        readonly List<UsuarioRequestDTO> _usuarioDTOs = new List<UsuarioRequestDTO>();
+        #region Properties
+        readonly MapperPessoaFisica _mapperPessoaFisica = new MapperPessoaFisica();
 
         #endregion
 
         #region methods
 
-        public Usuario MapperToEntity(UsuarioRequestDTO dto)
+        public LoginResponseDTO MapperToDTO(PessoaFisica obj)
         {
-            Usuario obj = new Usuario
-            {
-                Id = dto.Id,
-                Email = dto.Email,
-                Password = dto.Password,                
-            };
-
-            return obj;
-        }
-
-        public ICollection<UsuarioRequestDTO> MapperListUsuarios(ICollection<Usuario> objs)
-        {
-            foreach (var obj in objs)
-            {
-                UsuarioRequestDTO usuarioDTO = new UsuarioRequestDTO
-                {
-                    //Id = obj.Id,
-                    Email = obj.Email,
-                    Password = obj.Password,
-                };
-
-                _usuarioDTOs.Add(usuarioDTO);
-            }
-
-            return _usuarioDTOs;
-        }
-
-        public UsuarioRequestDTO MapperToDTO(Usuario obj)
-        {
-            UsuarioRequestDTO usuarioDTO = new UsuarioRequestDTO
-            {
-                //Id = obj.Id,
-                Email = obj.Email,
-                Password = obj.Password,
-            };
-
-            return usuarioDTO;
-        }
-
-        public UsuarioResponseDTO MapperToDTO(PessoaFisica obj)
-        {
-            UsuarioResponseDTO dto = new UsuarioResponseDTO
+            LoginResponseDTO dto = new LoginResponseDTO
             {
                 Id = obj.EsUsuario,
                 NomeCompleto = obj.NomeCompleto,
-                Photo = obj.Photo,
+                Foto = obj.Foto,
                 EsPessoaJuridica = obj.PessoaJuridica.EsPessoaFisica,
+                //PessoaFisica =_mapperPessoaFisica.MapperToDTO(obj),
             };
 
             return dto;

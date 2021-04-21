@@ -18,13 +18,13 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
         public PessoaFisica MapperToEntity(PessoaFisicaDTO dto)
         {
             PessoaFisica obj = new PessoaFisica
-            {                
+            {
                 EsUsuario = dto.EsUsuario,
-                Photo = dto.Photo,
+                Foto = dto.Foto,
                 NomeCompleto = dto.NomeCompleto,
                 DtNascimento = dto.DtNascimento,
                 Sexo = dto.Sexo,
-                TelefoneCelular = dto.TelefoneCelular,                
+                TelefoneCelular = dto.TelefoneCelular,
             };
 
             return obj;
@@ -35,13 +35,13 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             foreach (var obj in objs)
             {
                 PessoaFisicaDTO pessoaFisicaDTO = new PessoaFisicaDTO
-                {                    
+                {
                     EsUsuario = obj.EsUsuario,
-                    Photo = obj.Photo,
+                    Foto = obj.Foto,
                     NomeCompleto = obj.NomeCompleto,
                     DtNascimento = obj.DtNascimento,
                     Sexo = obj.Sexo,
-                    TelefoneCelular = obj.TelefoneCelular,                    
+                    TelefoneCelular = obj.TelefoneCelular,
                 };
 
                 _pessoaFisicaDTOs.Add(pessoaFisicaDTO);
@@ -52,14 +52,17 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
 
         public PessoaFisicaDTO MapperToDTO(PessoaFisica obj)
         {
+            if (obj == null)
+                return null;
+
             PessoaFisicaDTO dto = new PessoaFisicaDTO
-            {                
+            {
                 EsUsuario = obj.EsUsuario,
-                Photo = obj.Photo,
+                Foto = obj.Foto,
                 NomeCompleto = obj.NomeCompleto,
                 DtNascimento = obj.DtNascimento,
                 Sexo = obj.Sexo,
-                TelefoneCelular = obj.TelefoneCelular,                
+                TelefoneCelular = obj.TelefoneCelular,
             };
 
             return dto;

@@ -21,7 +21,7 @@ namespace FarenayteApi.Application.Service
             _mapper = Mapper;
         }
 
-        public async Task<UsuarioResponseDTO> ValidarAcesso(LoginDTO dto)
+        public async Task<LoginResponseDTO> ValidarAcesso(LoginDTO dto)
         {
             var objUsuarios = await _serviceUsuario.GetByEmail(dto.Email);
 

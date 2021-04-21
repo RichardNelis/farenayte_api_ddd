@@ -19,25 +19,25 @@ namespace FarenayteApi.Application.Service
             _mapper = Mapper;
         }
 
-        public async Task<ICollection<UsuarioRequestDTO>> GetByEmail(string email)
+        public async Task<ICollection<UsuarioDTO>> GetByEmail(string email)
         {
             var objUsuario = await _service.GetByEmail(email);
             return _mapper.MapperListUsuarios(objUsuario);
         }        
 
-        public async Task<ICollection<UsuarioRequestDTO>> GetAllAsync()
+        public async Task<ICollection<UsuarioDTO>> GetAllAsync()
         {
             var objUsuario = await _service.GetAllAsync();
             return _mapper.MapperListUsuarios(objUsuario);
         }        
 
-        public void Add(UsuarioRequestDTO dto)
+        public void Add(UsuarioDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
             _service.Add(obj);
         }
 
-        public void Update(UsuarioRequestDTO dto)
+        public void Update(UsuarioDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
             _service.Update(obj);

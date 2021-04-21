@@ -11,8 +11,8 @@ namespace FarenayteApi.Domain.Models
         [Column("es_usuario")]
         public int EsUsuario { get; set; }
 
-        [Column("photo")]
-        public string Photo { get; set; }
+        [Column("foto")]
+        public string Foto { get; set; }
 
         [Column("nome_completo")]
         public string NomeCompleto { get; set; }
