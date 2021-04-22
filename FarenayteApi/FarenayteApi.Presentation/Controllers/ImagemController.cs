@@ -42,6 +42,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> EnviaArquivo([FromForm] IFormFileCollection arquivos)
         {
             if (arquivos.Count > 0)
