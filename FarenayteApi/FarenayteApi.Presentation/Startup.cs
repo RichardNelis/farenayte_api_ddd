@@ -62,7 +62,7 @@ namespace FarenayteApi.Presentation
                 {
                     Version = "v1",
                     Title = "Farenayte API",
-                    Description = "Documentação do Projeto",
+                    Description = "DocumentaÃ§Ã£o do Projeto",
                     Contact = new OpenApiContact
                     {
                         Name = "Richard Nelis",
@@ -75,7 +75,7 @@ namespace FarenayteApi.Presentation
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = @"JWT Authorization header usando o schema Bearer.
-                            <br>Entre com 'Bearer' [spaço] e a token que foi gerada na caixa de texto.
+                            <br>Entre com 'Bearer' [spaï¿½o] e a token que foi gerada na caixa de texto.
                             <br>Exemplo: 'Bearer 12345abcdef'",
                     Name = "Authorization",
                     In = ParameterLocation.Header,

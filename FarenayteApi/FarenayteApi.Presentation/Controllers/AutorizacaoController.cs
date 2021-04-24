@@ -19,7 +19,7 @@ namespace FarenayteApi.Presentation.Controllers
             _applicationService = ApplicationService;
         }
 
-        [HttpPost("autenticar")]
+        [HttpPost("autenticar")]        
         public async Task<ActionResult> Post([FromBody] LoginDTO dto)
         {
             try

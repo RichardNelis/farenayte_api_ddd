@@ -20,6 +20,12 @@ public abstract class BaseController : ControllerBase
         return base.BadRequest(message);
     }
 
+    public NotFoundObjectResult NotFound()
+    {
+        MessageDTO message = FormatMessageResult("Não encontrado!");
+        return base.NotFound(message);
+    }
+
     private MessageDTO FormatMessageResult(object value)
     {
         MessageDTO message = new MessageDTO();

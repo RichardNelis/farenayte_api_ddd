@@ -52,7 +52,7 @@ namespace FarenayteApi.Presentation.Controllers
             try
             {
                 if (dto == null)
-                    return NotFound("Não encontrado!");
+                    return NotFound();
 
                 dto.Id = AuthUser().Id;
 
