@@ -14,6 +14,8 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces
 
         PessoaFisicaDTO MapperToDTO(PessoaFisica pessoaFisica);
 
+        PessoaFisicaResponseDTO MapperToDTOResponse(PessoaFisica pessoaFisica);
+
         #endregion
     }
 }

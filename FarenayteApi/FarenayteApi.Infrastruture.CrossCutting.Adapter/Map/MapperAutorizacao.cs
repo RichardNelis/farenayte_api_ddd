@@ -21,7 +21,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                 Id = obj.EsUsuario,
                 NomeCompleto = obj.NomeCompleto,
                 Foto = obj.Foto,
-                EsPessoaJuridica = obj.PessoaJuridica.EsPessoaFisica,
+                EsPessoaJuridica = obj.PessoaJuridica != null ? obj.PessoaJuridica.EsPessoaFisica : 0,
                 //PessoaFisica =_mapperPessoaFisica.MapperToDTO(obj),
             };
 

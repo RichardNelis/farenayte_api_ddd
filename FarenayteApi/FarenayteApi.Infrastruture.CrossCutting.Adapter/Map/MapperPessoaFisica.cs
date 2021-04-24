@@ -68,6 +68,23 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             return dto;
         }
 
+        public PessoaFisicaResponseDTO MapperToDTOResponse(PessoaFisica obj)
+        {
+            if (obj == null)
+                return null;
+
+            PessoaFisicaResponseDTO dto = new PessoaFisicaResponseDTO
+            {                
+                Foto = obj.Foto,
+                NomeCompleto = obj.NomeCompleto,
+                DtNascimento = obj.DtNascimento,
+                Sexo = obj.Sexo,
+                TelefoneCelular = obj.TelefoneCelular,
+            };
+
+            return dto;
+        }
+
         #endregion
     }
 }

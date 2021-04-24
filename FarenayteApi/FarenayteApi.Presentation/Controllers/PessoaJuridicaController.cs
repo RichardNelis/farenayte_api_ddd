@@ -3,6 +3,7 @@ using FarenayteApi.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 
 namespace FarenayteApi.Presentation.Controllers
 {
@@ -31,11 +32,15 @@ namespace FarenayteApi.Presentation.Controllers
                     return NotFound();
 
                 _applicationService.Add(dto);
-                return Ok("Cadastro salvo com sucesso");
+
+                MessageDTO message = new MessageDTO();
+                message.Messages = new List<string> { "Cadastro salvo com sucesso!" };
+                
+                return CreatedAtAction(nameof(Get), new { usuario = dto, message });
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex.Message);
             }
         }
 
@@ -54,7 +59,7 @@ namespace FarenayteApi.Presentation.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex.Message);
             }
         }
     }

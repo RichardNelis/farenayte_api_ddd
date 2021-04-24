@@ -3,6 +3,7 @@ using FarenayteApi.Application.Interfaces;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,22 +24,35 @@ namespace FarenayteApi.Application.Service
 
         public async Task<LoginResponseDTO> ValidarAcesso(LoginDTO dto)
         {
-            var objUsuarios = await _serviceUsuario.GetByEmail(dto.Email);
+            var objUsuarios = await GetByEmail(dto.Email);
+            var objUsuario = GetByPassword(objUsuarios, dto.Password);
+            var objPessoaFisica = _servicePessoaFisica.GetById(objUsuario.Id);
+
+            return _mapper.MapperToDTO(objPessoaFisica);
+        }
+
+        private async Task<ICollection<Domain.Models.Usuario>> GetByEmail(string email)
+        {
+            var objUsuarios = await _serviceUsuario.GetByEmail(email);
 
             if (objUsuarios.Count == 0)
             {
                 throw new Exception("Cadastro não encontrado!");
             }
 
-            var objUsuario = objUsuarios.FirstOrDefault(x => x.Password == dto.Password);
+            return objUsuarios;
+        }
+
+        private Domain.Models.Usuario GetByPassword(ICollection<Domain.Models.Usuario> objUsuarios, string password)
+        {
+            var objUsuario = objUsuarios.FirstOrDefault(x => x.Password == password);
 
             if (objUsuario == null)
             {
                 throw new Exception("Senha incorreta!");
             }
 
-            var objPessoaFisica = _servicePessoaFisica.GetById(objUsuario.Id);
-            return _mapper.MapperToDTO(objPessoaFisica);
+            return objUsuario;
         }
 
         public void Dispose()

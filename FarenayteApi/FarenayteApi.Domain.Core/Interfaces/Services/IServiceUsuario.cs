@@ -10,9 +10,11 @@ namespace FarenayteApi.Domain.Core.Interfaces.Services
 
         Task<ICollection<Usuario>> GetAllAsync();
 
+        Task<Usuario> GetById(int id);
+
         Task<ICollection<Usuario>> GetByEmail(string email);
 
-void Update(Usuario obj);
+        void Update(Usuario obj);
 
         void Dispose();
     }

@@ -39,5 +39,10 @@ namespace FarenayteApi.Domain.Services.Services
         {
             _repository.Dispose();
         }
+
+        public virtual async Task<Usuario> GetById(int id)
+        {
+            return await _repository.GetById(id);
+        }
     }
 }

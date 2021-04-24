@@ -34,7 +34,7 @@ namespace FarenayteApi.Presentation.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex.Message);
             }
         }
 
@@ -48,7 +48,7 @@ namespace FarenayteApi.Presentation.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex.Message);
             }
         }
     }

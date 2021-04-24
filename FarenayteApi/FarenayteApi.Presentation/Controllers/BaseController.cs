@@ -7,13 +7,6 @@ using System.Linq;
 
 public abstract class BaseController : ControllerBase
 {
-    MessageDTO _message;
-
-    public BaseController()
-    {
-        _message = new MessageDTO();
-    }
-
     protected AutenticadoDTO AuthUser()
     {
         AutenticadoDTO authUser = new AutenticadoDTO();
@@ -23,7 +16,23 @@ public abstract class BaseController : ControllerBase
 
     public override BadRequestObjectResult BadRequest([ActionResultObjectValue] object value)
     {
-        _message.Messages = (ICollection<string>)value;
-        return new BadRequestObjectResult(_message);
+        MessageDTO message = FormatMessageResult(value);
+        return base.BadRequest(message);
+    }
+
+    private MessageDTO FormatMessageResult(object value)
+    {
+        MessageDTO message = new MessageDTO();
+
+        if (value.GetType() == typeof(string))
+        {
+            message.Messages = value.ToString().Split('|');
+        }
+        else
+        {
+            message.Messages = (ICollection<string>)value;
+        }
+
+        return message;
     }
 }

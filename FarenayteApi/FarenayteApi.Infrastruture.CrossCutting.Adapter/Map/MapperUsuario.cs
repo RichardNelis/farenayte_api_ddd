@@ -60,6 +60,17 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             return dto;
         }
 
+        public UsuarioResponseDTO MapperToDTOResponse(Usuario obj)
+        {
+            UsuarioResponseDTO dto = new UsuarioResponseDTO
+            {                
+                Email = obj.Email,                
+                PessoaFisica = _mapperPessoaFisica.MapperToDTOResponse(obj.PessoaFisica),
+            };
+
+            return dto;
+        }
+
         #endregion
     }
 }

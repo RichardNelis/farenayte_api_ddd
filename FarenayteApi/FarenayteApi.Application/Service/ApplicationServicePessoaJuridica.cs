@@ -21,7 +21,7 @@ namespace FarenayteApi.Application.Service
         public void Add(PessoaJuridicaDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
-            _service.Add(obj);
+            _service.Add(obj);            
         }
 
         public void Dispose()

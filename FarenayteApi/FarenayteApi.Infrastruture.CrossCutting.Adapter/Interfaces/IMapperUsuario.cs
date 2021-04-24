@@ -14,6 +14,8 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces
 
         UsuarioDTO MapperToDTO(Usuario Usuario);
 
+        UsuarioResponseDTO MapperToDTOResponse(Usuario obj);
+
         #endregion
     }
 }

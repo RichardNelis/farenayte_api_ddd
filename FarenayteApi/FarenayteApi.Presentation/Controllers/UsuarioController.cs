@@ -18,7 +18,7 @@ namespace FarenayteApi.Presentation.Controllers
             _applicationService = ApplicationService;
         }
 
-        [HttpGet]
+        [HttpGet, AllowAnonymous]
         public async Task<ActionResult<ICollection<string>>> Get()
         {
             //dto.Id = AuthUser().Id;
@@ -34,12 +34,15 @@ namespace FarenayteApi.Presentation.Controllers
                 if (dto == null)
                     return NotFound();
 
-                _applicationService.Add(dto);
-                return Ok("Cadastro salvo com sucesso");
+                UsuarioResponseDTO responseDTO = _applicationService.Add(dto);
+                MessageDTO message = new MessageDTO();
+                message.Messages = new List<string> { "Cadastro salvo com sucesso!" };
+
+                return CreatedAtAction(nameof(Get), new { usuario = responseDTO, message });
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex.Message);
             }
         }
 
@@ -54,11 +57,14 @@ namespace FarenayteApi.Presentation.Controllers
                 dto.Id = AuthUser().Id;
 
                 _applicationService.Update(dto);
-                return Ok("Cadastro atualizado com sucesso!");
+                MessageDTO message = new MessageDTO();
+                message.Messages = new List<string> { "Cadastro atualizado com sucesso!" };
+                
+                return Ok(message);
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex.Message);
             }
         }
     }

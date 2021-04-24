@@ -16,7 +16,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         public RepositoryUsuario(MySqlContext Context)
         {
             _context = Context;
-        }        
+        }
 
         public virtual void Add(Usuario obj)
         {
@@ -27,18 +27,19 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
 
-        public virtual async Task<ICollection<Usuario>> GetByEmail(string email) => 
-            await _context.Usuarios.Where(x => x.Email == email).ToListAsync();        
-                
+        public virtual async Task<ICollection<Usuario>> GetByEmail(string email) =>
+            await _context.Usuarios.Where(x => x.Email == email).ToListAsync();
+
         public virtual async Task<ICollection<Usuario>> GetAll()
         {
             return await _context.Usuarios.Include(x => x.PessoaFisica).ToListAsync();
-        }   
+        }
+
+        public virtual async Task<Usuario> GetById(int id) => await _context.Usuarios.FindAsync(id);
 
         public virtual void Update(Usuario obj)
         {
@@ -52,10 +53,10 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                 throw ex;
             }
         }
-        
+
         public virtual void Dispose()
         {
             _context.Dispose();
-        }    
+        }
     }
 }
