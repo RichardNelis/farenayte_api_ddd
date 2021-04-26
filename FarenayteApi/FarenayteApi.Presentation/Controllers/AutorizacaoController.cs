@@ -32,7 +32,7 @@ namespace FarenayteApi.Presentation.Controllers
                 login.Token = await Token.GenerateToken(login);
 
                 MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Bem-vindo " + login.NomeCompleto };
+                message.Messages = new List<string> { "Bem-vindo(a) " + login.NomeCompleto };
 
                 return Ok(new { usuario = login, message });
             }
