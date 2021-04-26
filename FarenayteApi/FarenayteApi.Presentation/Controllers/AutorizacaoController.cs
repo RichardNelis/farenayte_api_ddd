@@ -42,7 +42,7 @@ namespace FarenayteApi.Presentation.Controllers
             }
         }
 
-        [Authorize()]
+        /*[Authorize()]
         [HttpPost("validaracesso")]
         public async Task<ActionResult> Post()
         {
@@ -54,6 +54,6 @@ namespace FarenayteApi.Presentation.Controllers
             {
                 return BadRequest(ex.Message);
             }
-        }
+        }*/
     }
 }
