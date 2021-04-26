@@ -2,6 +2,7 @@
 using FarenayteApi.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace FarenayteApi.Presentation.Controllers
@@ -16,10 +17,24 @@ namespace FarenayteApi.Presentation.Controllers
             _applicationService = ApplicationService;
         }
 
-        [HttpGet("filter")]
-        public ActionResult<ICollection<string>> Get([FromQuery] PesquisaDTO data)
+        [HttpGet]
+        public ActionResult Get([FromQuery] PesquisaDTO data)
         {
-            return Ok(_applicationService.GetFilter(data));
+            try
+            {
+                var list = _applicationService.GetFilter(data);
+
+                if (list.Count == 0)
+                {
+                    return BadRequest("Nenhuma publicação encontrada!");
+                }
+
+                return Ok(list);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Houve um erro!");
+            }
         }
     }
 }
