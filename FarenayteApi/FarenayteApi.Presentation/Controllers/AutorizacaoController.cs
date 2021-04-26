@@ -48,8 +48,9 @@ namespace FarenayteApi.Presentation.Controllers
         {
             try
             {
-                LoginResponseDTO login  = await _applicationService.GetById(AuthUser().Id);
-
+                LoginResponseDTO login = await _applicationService.GetById(AuthUser().Id);
+                login.Token = await Token.GenerateToken(login);
+                
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Bem-vindo(a) novamente " + login.NomeCompleto };
 
