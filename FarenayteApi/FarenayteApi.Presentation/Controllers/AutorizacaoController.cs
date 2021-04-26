@@ -4,6 +4,7 @@ using FarenayteApi.Presentation.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation.Controllers
@@ -19,7 +20,7 @@ namespace FarenayteApi.Presentation.Controllers
             _applicationService = ApplicationService;
         }
 
-        [HttpPost("autenticar")]        
+        [HttpPost("autenticar")]
         public async Task<ActionResult> Post([FromBody] LoginDTO dto)
         {
             try
@@ -30,7 +31,10 @@ namespace FarenayteApi.Presentation.Controllers
                 LoginResponseDTO login = await _applicationService.ValidarAcesso(dto);
                 login.Token = await Token.GenerateToken(login);
 
-                return Ok(login);
+                MessageDTO message = new MessageDTO();
+                message.Messages = new List<string> { "Bem-vindo " + login.NomeCompleto };
+
+                return Ok(new { usuario = login, message });
             }
             catch (Exception ex)
             {
