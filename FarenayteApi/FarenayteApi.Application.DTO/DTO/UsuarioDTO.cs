@@ -4,7 +4,7 @@ namespace FarenayteApi.Application.DTO.DTO
 {
     public class UsuarioDTO
     {        
-        [JsonIgnore]
+        [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
         [JsonProperty(PropertyName = "email")]

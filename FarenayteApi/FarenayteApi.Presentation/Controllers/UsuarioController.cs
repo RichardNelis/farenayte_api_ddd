@@ -19,7 +19,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ICollection<string>>> Get()
+        public async Task<ActionResult> Get()
         {
             return Ok(await _applicationService.GetById(AuthUser().Id));
         }
