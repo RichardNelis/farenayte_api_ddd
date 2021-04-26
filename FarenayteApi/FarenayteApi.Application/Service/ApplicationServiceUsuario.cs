@@ -10,11 +10,13 @@ namespace FarenayteApi.Application.Service
 {
     public class ApplicationServiceUsuario : IDisposable, IApplicationServiceUsuario
     {
+        private readonly IServicePessoaFisica _servicePessoaFisica;
         private readonly IServiceUsuario _service;
         private readonly IMapperUsuario _mapper;
 
-        public ApplicationServiceUsuario(IServiceUsuario Service, IMapperUsuario Mapper)
+        public ApplicationServiceUsuario(IServicePessoaFisica ServicePessoaFisica, IServiceUsuario Service, IMapperUsuario Mapper)
         {
+            _servicePessoaFisica = ServicePessoaFisica;
             _service = Service;
             _mapper = Mapper;
         }
@@ -52,7 +54,7 @@ namespace FarenayteApi.Application.Service
 
         public async Task<UsuarioDTO> GetById(int id)
         {
-            var objUsuario = await _service.GetById(id);
+            var objUsuario = await _service.GetById(id);            
             return _mapper.MapperToDTO(objUsuario);
         }
     }

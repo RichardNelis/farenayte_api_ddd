@@ -39,7 +39,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             return await _context.Usuarios.Include(x => x.PessoaFisica).ToListAsync();
         }
 
-        public virtual async Task<Usuario> GetById(int id) => await _context.Usuarios.FindAsync(id);
+        public virtual async Task<Usuario> GetById(int id) => await _context.Usuarios.Include(x => x.PessoaFisica).FirstOrDefaultAsync(x => x.Id == id);
 
         public virtual void Update(Usuario obj)
         {
