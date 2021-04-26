@@ -68,6 +68,7 @@ namespace FarenayteApi.Presentation
 
                         context.Response.OnStarting(async () =>
                         {
+                            context.Response.ContentType = "application/json";
                             await context.Response.WriteAsync(JsonConvert.SerializeObject(message));
                         });
 
