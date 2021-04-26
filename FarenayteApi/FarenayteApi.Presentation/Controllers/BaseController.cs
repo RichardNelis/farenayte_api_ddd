@@ -14,6 +14,12 @@ public abstract class BaseController : ControllerBase
         return authUser;
     }
 
+    public override UnauthorizedResult Unauthorized()
+    {
+        MessageDTO message = FormatMessageResult("Usuário não autenticado!");
+        return base.Unauthorized();
+    }
+
     public override BadRequestObjectResult BadRequest([ActionResultObjectValue] object value)
     {
         MessageDTO message = FormatMessageResult(value);

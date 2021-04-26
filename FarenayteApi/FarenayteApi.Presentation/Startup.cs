@@ -1,21 +1,26 @@
 using Autofac;
+using FarenayteApi.Application.DTO.DTO;
 using FarenayteApi.Infrastructure.Data;
 using FarenayteApi.Infrastruture.CrossCutting.IOC;
 using FarenayteApi.Presentation.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation
 {
@@ -53,6 +58,21 @@ namespace FarenayteApi.Presentation
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("erthpguetibuyh5ut9reeytr9")),
                     ValidateIssuer = false,
                     ValidateAudience = false
+                };
+                x.Events = new JwtBearerEvents
+                {
+                    OnChallenge = context =>
+                    {
+                        MessageDTO message = new MessageDTO();
+                        message.Messages = new List<string> { "Usuário não autenticado!" };
+
+                        context.Response.OnStarting(async () =>
+                        {
+                            await context.Response.WriteAsync(JsonConvert.SerializeObject(message));
+                        });
+
+                        return Task.CompletedTask;
+                    }
                 };
             });
 
