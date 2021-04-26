@@ -42,18 +42,23 @@ namespace FarenayteApi.Presentation.Controllers
             }
         }
 
-        /*[Authorize()]
+        [Authorize()]
         [HttpPost("validaracesso")]
         public async Task<ActionResult> Post()
         {
             try
             {
-                return Ok();
+                LoginResponseDTO login  = await _applicationService.GetById(AuthUser().Id);
+
+                MessageDTO message = new MessageDTO();
+                message.Messages = new List<string> { "Bem-vindo(a) novamente " + login.NomeCompleto };
+
+                return Ok(new { usuario = login, message });
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-        }*/
+        }
     }
 }

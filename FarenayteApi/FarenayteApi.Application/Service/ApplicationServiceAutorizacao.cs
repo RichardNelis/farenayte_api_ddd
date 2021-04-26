@@ -31,6 +31,13 @@ namespace FarenayteApi.Application.Service
             return _mapper.MapperToDTO(objPessoaFisica);
         }
 
+        public async Task<LoginResponseDTO> GetById(int id)
+        {
+            var objUsuario = await _serviceUsuario.GetById(id);
+            var objPessoaFisica = _servicePessoaFisica.GetById(objUsuario.Id);
+            return _mapper.MapperToDTO(objPessoaFisica);
+        }
+
         private async Task<ICollection<Domain.Models.Usuario>> GetByEmail(string email)
         {
             var objUsuarios = await _serviceUsuario.GetByEmail(email);

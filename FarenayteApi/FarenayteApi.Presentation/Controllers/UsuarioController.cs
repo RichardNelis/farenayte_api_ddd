@@ -20,7 +20,7 @@ namespace FarenayteApi.Presentation.Controllers
 
         [HttpGet]
         public async Task<ActionResult<ICollection<string>>> Get()
-        {            
+        {
             return Ok(await _applicationService.GetById(AuthUser().Id));
         }
 
@@ -58,7 +58,7 @@ namespace FarenayteApi.Presentation.Controllers
                 _applicationService.Update(dto);
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Cadastro atualizado com sucesso!" };
-                
+
                 return Ok(message);
             }
             catch (Exception ex)

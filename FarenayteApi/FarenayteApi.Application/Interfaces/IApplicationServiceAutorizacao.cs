@@ -7,6 +7,8 @@ namespace FarenayteApi.Application.Interfaces
     {
         Task<LoginResponseDTO> ValidarAcesso(LoginDTO dto);
 
+        Task<LoginResponseDTO> GetById(int id);
+
         void Dispose();
     }
 }
