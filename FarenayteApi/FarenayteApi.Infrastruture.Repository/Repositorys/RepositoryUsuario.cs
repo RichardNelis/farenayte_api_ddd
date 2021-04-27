@@ -45,7 +45,14 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         {
             try
             {
-                _context.Entry(obj).State = EntityState.Modified;
+                Usuario usuario = _context.Usuarios.Include(x => x.PessoaFisica).First(x => x.Id == obj.Id);
+                usuario.PessoaFisica.NomeCompleto = obj.PessoaFisica.NomeCompleto;
+                usuario.PessoaFisica.Foto = obj.PessoaFisica.Foto;
+                usuario.PessoaFisica.Sexo = obj.PessoaFisica.Sexo;
+                usuario.PessoaFisica.TelefoneCelular = obj.PessoaFisica.TelefoneCelular;
+                usuario.PessoaFisica.DtNascimento = obj.PessoaFisica.DtNascimento;
+
+                _context.Entry(usuario).State = EntityState.Modified;
                 _context.SaveChanges();
             }
             catch (Exception ex)
