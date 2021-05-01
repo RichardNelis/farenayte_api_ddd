@@ -19,9 +19,10 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         public virtual ICollection<PessoaJuridica> GetFilter(PessoaJuridica obj)
         {
             ICollection<PessoaJuridica> list = _context.PessoaJuridicas
-                .Include(x => x.Publicacao).ThenInclude(x => x.Comentarios)
-                .Include(x => x.Publicacao).ThenInclude(x => x.PublicacaoFotos)
-                .Include(x => x.Publicacao.Comentarios).ThenInclude(x => x.PessoaFisica)
+                .Include(x => x.Publicacao)
+                //.Include(x => x.Publicacao).ThenInclude(x => x.Comentarios)
+                //.Include(x => x.Publicacao).ThenInclude(x => x.PublicacaoFotos)
+                //.Include(x => x.Publicacao.Comentarios).ThenInclude(x => x.PessoaFisica)
                 .Where(x => x.IBGE == obj.IBGE)
                 .ToList();
 

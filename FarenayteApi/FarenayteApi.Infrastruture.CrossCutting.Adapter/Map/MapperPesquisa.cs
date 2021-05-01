@@ -9,6 +9,8 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
     {
         #region Properties
 
+        readonly MapperPublicacao _mapperPublicacao = new MapperPublicacao();
+
         readonly List<PesquisaResponseDTO> _pessoaJuridicaDTOs = new List<PesquisaResponseDTO>();
 
         #endregion
@@ -20,6 +22,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             PessoaJuridica obj = new PessoaJuridica
             {
                 IBGE = dto.IBGE,
+                Publicacao = new Publicacao()
             };
 
             return obj;
