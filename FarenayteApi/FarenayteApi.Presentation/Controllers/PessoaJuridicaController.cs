@@ -17,12 +17,6 @@ namespace FarenayteApi.Presentation.Controllers
             _applicationService = ApplicationService;
         }
 
-        [HttpGet("{id}")]
-        public ActionResult Get(int id)
-        {
-            return Ok(_applicationService.GetById(id));
-        }
-
         [HttpGet]
         public ActionResult Get()
         {
