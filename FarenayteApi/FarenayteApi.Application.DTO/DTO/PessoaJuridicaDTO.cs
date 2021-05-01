@@ -5,9 +5,6 @@ namespace FarenayteApi.Application.DTO.DTO
     public class PessoaJuridicaDTO
     {
         [JsonIgnore]
-        public int? Id { get; set; }
-
-        [JsonIgnore]
         [JsonProperty(PropertyName = "es_pessoa_fisica")]
         public int EsPessoaFisica { get; set; }
 

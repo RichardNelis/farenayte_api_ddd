@@ -31,11 +31,12 @@ namespace FarenayteApi.Presentation.Controllers
                 if (dto == null)
                     return NotFound();
 
+                dto.EsPessoaFisica = AuthUser().Id;
                 _applicationService.Add(dto);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Cadastro salvo com sucesso!" };
-                
+
                 return CreatedAtAction(nameof(Get), new { usuario = dto, message });
             }
             catch (Exception ex)
@@ -52,7 +53,7 @@ namespace FarenayteApi.Presentation.Controllers
                 if (dto == null)
                     return NotFound();
 
-                dto.Id = AuthUser().Id;
+                dto.EsPessoaFisica = AuthUser().Id;
 
                 _applicationService.Update(dto);
                 return Ok("Cadastro atualizado com sucesso!");
