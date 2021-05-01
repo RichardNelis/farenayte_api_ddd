@@ -14,6 +14,15 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         public RepositoryPessoaJuridica(MySqlContext Context) : base(Context)
         {
             _context = Context;
-        }             
+        }       
+
+        public override PessoaJuridica GetById(int id)
+        {
+            return _context.PessoaJuridicas
+                .Where(x => x.EsPessoaFisica == id)
+                .Include(x => x.Publicacao)
+                .Include(x => x.Publicacao.PublicacaoFotos)
+                .FirstOrDefault();
+        }      
     }
 }

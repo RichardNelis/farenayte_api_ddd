@@ -63,8 +63,8 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                 Descricao = obj.Descricao,
                 Preco = obj.Preco,
                 TipoCobranca = obj.TipoCobranca,
-                Comentarios = _mapperComentario.MapperList(obj.Comentarios),
-                PublicacaoFotos = _mapperPublicacaoFoto.MapperList(obj.PublicacaoFotos),
+                Comentarios = obj.Comentarios == null || obj.Comentarios.Count == 0 ? null : _mapperComentario.MapperList(obj.Comentarios),
+                PublicacaoFotos = obj.PublicacaoFotos == null || obj.PublicacaoFotos.Count == 0 ? null : _mapperPublicacaoFoto.MapperList(obj.PublicacaoFotos),
             };
 
             return dto;
