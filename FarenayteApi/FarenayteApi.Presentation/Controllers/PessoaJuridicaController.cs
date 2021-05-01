@@ -18,9 +18,15 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult Get(int id)
         {
             return Ok(_applicationService.GetById(id));
+        }
+
+        [HttpGet]
+        public ActionResult Get()
+        {
+            return Ok(_applicationService.GetById(AuthUser().Id));
         }
 
         [HttpPost]

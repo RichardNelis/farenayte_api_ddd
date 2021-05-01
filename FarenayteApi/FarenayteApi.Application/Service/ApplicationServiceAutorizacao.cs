@@ -22,25 +22,25 @@ namespace FarenayteApi.Application.Service
             _mapper = Mapper;
         }
 
-        public async Task<LoginResponseDTO> ValidarAcesso(LoginDTO dto)
+        public LoginResponseDTO ValidarAcesso(LoginDTO dto)
         {
-            var objUsuarios = await GetByEmail(dto.Email);
+            var objUsuarios = GetByEmail(dto.Email);
             var objUsuario = GetByPassword(objUsuarios, dto.Password);
             var objPessoaFisica = _servicePessoaFisica.GetById(objUsuario.Id);
 
             return _mapper.MapperToDTO(objPessoaFisica);
         }
 
-        public async Task<LoginResponseDTO> GetById(int id)
+        public LoginResponseDTO GetById(int id)
         {
-            var objUsuario = await _serviceUsuario.GetById(id);
+            var objUsuario = _serviceUsuario.GetById(id);
             var objPessoaFisica = _servicePessoaFisica.GetById(objUsuario.Id);
             return _mapper.MapperToDTO(objPessoaFisica);
         }
 
-        private async Task<ICollection<Domain.Models.Usuario>> GetByEmail(string email)
+        private ICollection<Domain.Models.Usuario> GetByEmail(string email)
         {
-            var objUsuarios = await _serviceUsuario.GetByEmail(email);
+            var objUsuarios = _serviceUsuario.GetByEmail(email);
 
             if (objUsuarios.Count == 0)
             {

@@ -21,17 +21,16 @@ namespace FarenayteApi.Application.Service
             _mapper = Mapper;
         }
 
-        public async Task<ICollection<UsuarioDTO>> GetByEmail(string email)
+        /*public async Task<ICollection<UsuarioDTO>> GetByEmail(string email)
         {
             var objUsuario = await _service.GetByEmail(email);
             return _mapper.MapperListUsuarios(objUsuario);
-        }
-
-        public async Task<ICollection<UsuarioDTO>> GetAllAsync()
+        }*/
+        /*public async Task<ICollection<UsuarioDTO>> GetAllAsync()
         {
             var objUsuario = await _service.GetAllAsync();
             return _mapper.MapperListUsuarios(objUsuario);
-        }
+        }*/
 
         public UsuarioResponseDTO Add(UsuarioDTO dto)
         {
@@ -52,9 +51,9 @@ namespace FarenayteApi.Application.Service
             _service.Dispose();
         }
 
-        public async Task<UsuarioDTO> GetById(int id)
+        public UsuarioDTO GetById(int id)
         {
-            var objUsuario = await _service.GetById(id);            
+            var objUsuario = _service.GetById(id);            
             return _mapper.MapperToDTO(objUsuario);
         }
     }

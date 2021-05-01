@@ -20,15 +20,15 @@ namespace FarenayteApi.Domain.Services.Services
             _repository.Add(obj);
         }
 
-        public virtual async Task<ICollection<Usuario>> GetByEmail(string email)
+        public virtual ICollection<Usuario> GetByEmail(string email)
         {
-            return await _repository.GetByEmail(email);
+            return _repository.GetByEmail(email);
         }
 
-        public virtual async Task<ICollection<Usuario>> GetAllAsync()
+        /*public virtual async Task<ICollection<Usuario>> GetAllAsync()
         {
             return await _repository.GetAll();
-        }
+        }*/
 
         public virtual void Update(Usuario obj)
         {
@@ -40,9 +40,9 @@ namespace FarenayteApi.Domain.Services.Services
             _repository.Dispose();
         }
 
-        public virtual async Task<Usuario> GetById(int id)
+        public virtual Usuario GetById(int id)
         {
-            return await _repository.GetById(id);
+            return _repository.GetById(id);
         }
     }
 }

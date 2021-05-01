@@ -21,7 +21,7 @@ namespace FarenayteApi.Presentation.Controllers
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            return Ok(await _applicationService.GetById(AuthUser().Id));
+            return Ok(_applicationService.GetById(AuthUser().Id));
         }
 
         [HttpPost]

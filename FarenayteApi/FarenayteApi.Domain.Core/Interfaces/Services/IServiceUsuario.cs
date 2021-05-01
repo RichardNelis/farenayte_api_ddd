@@ -8,11 +8,11 @@ namespace FarenayteApi.Domain.Core.Interfaces.Services
     {
         void Add(Usuario obj);
 
-        Task<ICollection<Usuario>> GetAllAsync();
+        //Task<ICollection<Usuario>> GetAllAsync();
 
-        Task<Usuario> GetById(int id);
+        Usuario GetById(int id);
 
-        Task<ICollection<Usuario>> GetByEmail(string email);
+        ICollection<Usuario> GetByEmail(string email);
 
         void Update(Usuario obj);
 

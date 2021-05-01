@@ -31,15 +31,14 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             }
         }
 
-        public virtual async Task<ICollection<Usuario>> GetByEmail(string email) =>
-            await _context.Usuarios.Where(x => x.Email == email).ToListAsync();
+        public virtual ICollection<Usuario> GetByEmail(string email) => _context.Usuarios.Where(x => x.Email == email).ToList();
 
-        public virtual async Task<ICollection<Usuario>> GetAll()
+        /*public virtual async Task<ICollection<Usuario>> GetAll()
         {
             return await _context.Usuarios.Include(x => x.PessoaFisica).ToListAsync();
         }
-
-        public virtual async Task<Usuario> GetById(int id) => await _context.Usuarios.Include(x => x.PessoaFisica).FirstOrDefaultAsync(x => x.Id == id);
+*/
+        public virtual Usuario GetById(int id) => _context.Usuarios.Include(x => x.PessoaFisica).FirstOrDefault(x => x.Id == id);
 
         public virtual void Update(Usuario obj)
         {
