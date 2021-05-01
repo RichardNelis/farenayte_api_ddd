@@ -34,6 +34,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             {
                 PesquisaResponseDTO dto = new PesquisaResponseDTO
                 {
+                    EsUsuario = obj.EsPessoaFisica,
                     Logo = obj.Logo,
                     RazaoSocial = obj.RazaoSocial,
                     NomeFantasia = obj.NomeFantasia,

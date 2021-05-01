@@ -4,6 +4,9 @@ namespace FarenayteApi.Application.DTO.DTO
 {
     public class PesquisaResponseDTO
     {
+        [JsonProperty(PropertyName = "es_usuario")]
+        public int EsUsuario { get; set; }
+
         public string Logo { get; set; }
 
         [JsonProperty(PropertyName = "razao_social")]
