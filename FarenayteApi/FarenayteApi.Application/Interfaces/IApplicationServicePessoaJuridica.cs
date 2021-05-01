@@ -9,7 +9,7 @@ namespace FarenayteApi.Application.Interfaces
 
         PessoaJuridicaDTO GetById(int id);
 
-        ICollection<PessoaJuridicaDTO> GetAll();
+        PessoaJuridicaDTO GetByIdFull(int id);
                 
         void Update(PessoaJuridicaDTO dto);
 

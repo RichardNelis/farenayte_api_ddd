@@ -9,31 +9,27 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
     {
         #region Properties
 
-        readonly List<PesquisaDTO> _pessoaJuridicaDTOs = new List<PesquisaDTO>();
+        readonly List<PesquisaResponseDTO> _pessoaJuridicaDTOs = new List<PesquisaResponseDTO>();
 
         #endregion
 
         #region methods
 
-        public PessoaJuridica MapperToEntity(PesquisaDTO dto)
+        public PessoaJuridica MapperToEntity(PesquisaRequestDTO dto)
         {
             PessoaJuridica obj = new PessoaJuridica
             {
-                Logo = dto.Logo,
-                RazaoSocial = dto.RazaoSocial,
-                NomeFantasia = dto.NomeFantasia,
                 IBGE = dto.IBGE,
-                Publicacao = new Publicacao(titulo: dto.Titulo, descricao: dto.Descricao, preco: dto.Preco),
             };
 
             return obj;
         }
 
-        public ICollection<PesquisaDTO> MapperList(ICollection<PessoaJuridica> objs)
+        public ICollection<PesquisaResponseDTO> MapperList(ICollection<PessoaJuridica> objs)
         {
             foreach (var obj in objs)
             {
-                PesquisaDTO dto = new PesquisaDTO
+                PesquisaResponseDTO dto = new PesquisaResponseDTO
                 {
                     Logo = obj.Logo,
                     RazaoSocial = obj.RazaoSocial,
@@ -50,14 +46,14 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             return _pessoaJuridicaDTOs;
         }
 
-        public PesquisaDTO MapperToDTO(PessoaJuridica obj)
+        public PesquisaResponseDTO MapperToDTO(PessoaJuridica obj)
         {
             if (obj == null)
             {
                 return null;
             }
 
-            PesquisaDTO dto = new PesquisaDTO
+            PesquisaResponseDTO dto = new PesquisaResponseDTO
             {
                 Logo = obj.Logo,
                 RazaoSocial = obj.RazaoSocial,

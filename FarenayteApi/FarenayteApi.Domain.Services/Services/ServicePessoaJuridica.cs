@@ -14,5 +14,10 @@ namespace FarenayteApi.Domain.Services.Services
         {
             _repository = Repository;
         }
+
+        public PessoaJuridica GetByIdFull(int id)
+        {
+            return _repository.GetByIdFull(id);
+        }
     }
 }

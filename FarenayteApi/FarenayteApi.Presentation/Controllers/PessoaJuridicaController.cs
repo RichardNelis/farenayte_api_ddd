@@ -23,6 +23,12 @@ namespace FarenayteApi.Presentation.Controllers
             return Ok(_applicationService.GetById(AuthUser().Id));
         }
 
+        [HttpGet("{id}")]
+        public ActionResult Get(int esUsuario)
+        {
+            return Ok(_applicationService.GetByIdFull(esUsuario));
+        }
+
         [HttpPost]
         public ActionResult Post([FromBody] PessoaJuridicaDTO dto)
         {

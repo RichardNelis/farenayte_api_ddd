@@ -23,6 +23,16 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                 .Include(x => x.Publicacao)
                 .Include(x => x.Publicacao.PublicacaoFotos)
                 .FirstOrDefault();
-        }      
+        }
+
+        public PessoaJuridica GetByIdFull(int id)
+        {
+            return _context.PessoaJuridicas
+                .Where(x => x.EsPessoaFisica == id)
+                .Include(x => x.Publicacao)
+                .Include(x => x.Publicacao.PublicacaoFotos)
+                .Include(x => x.Publicacao.Comentarios)
+                .FirstOrDefault();
+        }
     }
 }

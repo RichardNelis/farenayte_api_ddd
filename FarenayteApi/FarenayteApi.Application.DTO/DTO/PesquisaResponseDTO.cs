@@ -2,7 +2,7 @@
 
 namespace FarenayteApi.Application.DTO.DTO
 {
-    public class PesquisaDTO
+    public class PesquisaResponseDTO
     {
         public string Logo { get; set; }
 

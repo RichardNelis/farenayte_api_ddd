@@ -18,7 +18,7 @@ namespace FarenayteApi.Application.Service
             _mapper = Mapper;
         }
 
-        public ICollection<PesquisaDTO> GetFilter(PesquisaDTO dto)
+        public ICollection<PesquisaResponseDTO> GetFilter(PesquisaRequestDTO dto)
         {            
             var obj = _service.GetFilter(_mapper.MapperToEntity(dto));
             return _mapper.MapperList(obj);

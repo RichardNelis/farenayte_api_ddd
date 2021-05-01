@@ -3,7 +3,6 @@ using FarenayteApi.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 
 namespace FarenayteApi.Presentation.Controllers
 {
@@ -18,7 +17,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpGet]
-        public ActionResult Get([FromQuery] PesquisaDTO data)
+        public ActionResult Get([FromQuery] PesquisaRequestDTO data)
         {
             try
             {

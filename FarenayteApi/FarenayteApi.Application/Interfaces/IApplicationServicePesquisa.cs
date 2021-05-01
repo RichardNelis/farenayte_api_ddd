@@ -5,7 +5,7 @@ namespace FarenayteApi.Application.Interfaces
 {
     public interface IApplicationServicePesquisa
     {
-        ICollection<PesquisaDTO> GetFilter(PesquisaDTO data);
+        ICollection<PesquisaResponseDTO> GetFilter(PesquisaRequestDTO data);
 
         void Dispose();
     }

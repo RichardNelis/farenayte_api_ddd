@@ -21,7 +21,7 @@ namespace FarenayteApi.Application.Service
         public void Add(PessoaJuridicaDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
-            _service.Add(obj);            
+            _service.Add(obj);
         }
 
         public void Dispose()
@@ -38,6 +38,12 @@ namespace FarenayteApi.Application.Service
         public PessoaJuridicaDTO GetById(int id)
         {
             var obj = _service.GetById(id);
+            return _mapper.MapperToDTO(obj);
+        }
+
+        public PessoaJuridicaDTO GetByIdFull(int id)
+        {
+            var obj = _service.GetByIdFull(id);
             return _mapper.MapperToDTO(obj);
         }
 
