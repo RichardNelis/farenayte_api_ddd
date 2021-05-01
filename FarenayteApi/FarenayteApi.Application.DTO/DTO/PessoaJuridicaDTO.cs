@@ -35,7 +35,7 @@ namespace FarenayteApi.Application.DTO.DTO
 
         public string Bairro { get; set; }
 
-        public int Cep { get; set; }
+        public string Cep { get; set; }
 
         public string Complemento { get; set; }
 

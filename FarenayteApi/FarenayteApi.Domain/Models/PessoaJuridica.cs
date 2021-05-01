@@ -41,7 +41,7 @@ namespace FarenayteApi.Domain.Models
         public string Bairro { get; set; }
 
         [Column("cep")]
-        public int Cep { get; set; }
+        public string Cep { get; set; }
 
         [Column("complemento")]
         public string Complemento { get; set; }
