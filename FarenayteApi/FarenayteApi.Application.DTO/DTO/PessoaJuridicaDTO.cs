@@ -25,6 +25,8 @@ namespace FarenayteApi.Application.DTO.DTO
         [JsonProperty(PropertyName = "email_contato")]
         public string EmailContato { get; set; }
 
+        public string Site { get; set; }
+
         public string Rua { get; set; }
 
         public string Numero { get; set; }

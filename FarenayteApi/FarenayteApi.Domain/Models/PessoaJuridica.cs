@@ -31,6 +31,9 @@ namespace FarenayteApi.Domain.Models
         [Column("email_contato")]
         public string EmailContato { get; set; }
 
+        [Column("site")]
+        public string Site { get; set; }
+
         [Column("rua")]
         public string Rua { get; set; }
 
