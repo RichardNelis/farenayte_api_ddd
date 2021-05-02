@@ -62,7 +62,10 @@ namespace FarenayteApi.Presentation.Controllers
                 dto.EsPessoaFisica = AuthUser().Id;
 
                 _applicationService.Update(dto);
-                return Ok("Cadastro atualizado com sucesso!");
+                MessageDTO message = new MessageDTO();
+                message.Messages = new List<string> { "Cadastro atualizado com sucesso!" };
+
+                return Ok(message);
             }
             catch (Exception ex)
             {

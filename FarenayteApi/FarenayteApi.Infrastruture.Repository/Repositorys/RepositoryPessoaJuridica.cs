@@ -39,7 +39,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         {
             try
             {
-                PessoaJuridica pessoaJuridica = _context.PessoaJuridicas.Include(x => x.EsPessoaFisica).First(x => x.EsPessoaFisica == obj.EsPessoaFisica);
+                PessoaJuridica pessoaJuridica = _context.PessoaJuridicas.Include(x => x.Publicacao).First(x => x.EsPessoaFisica == obj.EsPessoaFisica);
                 pessoaJuridica.Logo = obj.Logo;
                 pessoaJuridica.Cnpj = obj.Cnpj;
                 pessoaJuridica.RazaoSocial = obj.RazaoSocial;
