@@ -4,7 +4,7 @@ namespace FarenayteApi.Application.DTO.DTO
 {
     public class PessoaJuridicaDTO
     {
-        [JsonIgnore]        
+        [JsonProperty(PropertyName = "es_pessoa_fisica")]
         public int EsPessoaFisica { get; set; }
 
         public string Logo { get; set; }
