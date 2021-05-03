@@ -3,6 +3,7 @@ using System.Linq;
 using FarenayteApi.Domain.Core.Interfaces.Repositorys;
 using FarenayteApi.Domain.Models;
 using FarenayteApi.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace FarenayteApi.Infrastruture.Repository.Repositorys
 {
@@ -17,7 +18,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
 
         public virtual ICollection<Comentario> GetByEsPublicacao(int esPublicacao)
         {
-            return _context.Comentarios.Where(x => x.EsPublicacao == esPublicacao).ToList();
+            return _context.Comentarios.Include(x => x.PessoaFisica).Where(x => x.EsPublicacao == esPublicacao).ToList();
         }
     }
 }
