@@ -1,5 +1,5 @@
-﻿using FarenayteApi.Application.DTO.DTO;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using FarenayteApi.Application.DTO.DTO;
 
 namespace FarenayteApi.Application.Interfaces
 {
@@ -8,6 +8,8 @@ namespace FarenayteApi.Application.Interfaces
         void Add(ComentarioDTO dto);
 
         ComentarioDTO GetById(int id);
+
+        ICollection<ComentarioDTO> GetByEsPublicacao(int esPublicacao);
 
         ICollection<ComentarioDTO> GetAll();
 

@@ -41,6 +41,12 @@ namespace FarenayteApi.Application.Service
             return _mapper.MapperToDTO(obj);
         }
 
+        public ICollection<ComentarioDTO> GetByEsPublicacao(int id)
+        {
+            var obj = _service.GetByEsPublicacao(id);
+            return _mapper.MapperList(obj);
+        }
+
         public void Remove(ComentarioDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
