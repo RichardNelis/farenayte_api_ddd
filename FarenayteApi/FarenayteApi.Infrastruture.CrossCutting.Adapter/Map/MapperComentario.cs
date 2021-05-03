@@ -27,7 +27,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                 Rating = dto.Rating,
                 ComentarioPF = dto.ComentarioPF,
                 Resposta = dto.Resposta,
-                PessoaFisica = _mapperPessoaFisica.MapperToEntity(dto.PessoaFisica)
+                PessoaFisica = dto.PessoaFisica == null ? null : _mapperPessoaFisica.MapperToEntity(dto.PessoaFisica)
             };
 
             return obj;

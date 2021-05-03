@@ -18,6 +18,12 @@ namespace FarenayteAPI.Controllers
             _applicationService = ApplicationService;
         }
 
+        [HttpGet("{id}")]
+        public ActionResult GetById(int id)
+        {
+            return Ok(_applicationService.GetByEsPublicacao(id));
+        }
+
         [HttpPost]
         public ActionResult Post([FromBody] ComentarioDTO dto)
         {
@@ -31,7 +37,7 @@ namespace FarenayteAPI.Controllers
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Comentário salvo com sucesso!" };
 
-                return CreatedAtAction(nameof(Get), new { id = dto.Id }, dto);
+                return CreatedAtAction(nameof(GetById), new { id = dto.Id }, new { comentario = dto, message });
             }
             catch (Exception ex)
             {
@@ -92,7 +98,7 @@ namespace FarenayteAPI.Controllers
         {
             return Ok(_applicationService.GetAll());
         }
-      
+
         [HttpGet("{esPublicacao}")]
         public ActionResult Get(int esPublicacao)
         {
