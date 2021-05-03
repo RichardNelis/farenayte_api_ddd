@@ -15,7 +15,7 @@ namespace FarenayteApi.Application.DTO.DTO
         public int EsPessoaFisica { get; set; }
 
         [JsonProperty(PropertyName = "rating")]
-        public int Rating { get; set; }
+        public double Rating { get; set; }
 
         [JsonProperty(PropertyName = "comentario")]
         public string ComentarioPF { get; set; }

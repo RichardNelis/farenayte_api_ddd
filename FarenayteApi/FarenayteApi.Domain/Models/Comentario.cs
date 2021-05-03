@@ -18,7 +18,7 @@ namespace FarenayteApi.Domain.Models
         public int EsPessoaFisica { get; set; }
 
         [Column("rating")]
-        public int Rating { get; set; }
+        public double Rating { get; set; }
 
         [Column("comentario")]
         public string ComentarioPF { get; set; }
