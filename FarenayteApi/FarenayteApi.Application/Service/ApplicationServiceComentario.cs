@@ -22,6 +22,7 @@ namespace FarenayteApi.Application.Service
         {
             var obj = _mapper.MapperToEntity(dto);
             _service.Add(obj);
+            dto.Id = obj.Id;
         }
 
         public void Dispose()

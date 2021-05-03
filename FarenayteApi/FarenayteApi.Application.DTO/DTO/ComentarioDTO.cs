@@ -6,7 +6,6 @@ namespace FarenayteApi.Application.DTO.DTO
     [Table("comentario")]
     public class ComentarioDTO
     {
-        [JsonIgnore]
         public int Id { get; set; }
 
         [JsonProperty(PropertyName = "es_publicacao")]
@@ -23,9 +22,6 @@ namespace FarenayteApi.Application.DTO.DTO
 
         [JsonProperty(PropertyName = "resposta")]
         public string Resposta { get; set; }
-
-        //[JsonIgnore]
-        //public virtual PublicacaoDTO Publicacao { get; set; }
 
         [JsonProperty(PropertyName = "pessoa_fisica")]
         public virtual PessoaFisicaDTO PessoaFisica { get; set; }       
