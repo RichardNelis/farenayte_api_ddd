@@ -21,6 +21,10 @@ namespace FarenayteApi.Application.DTO.DTO
         public string Sexo { get; set; }
 
         [JsonProperty(PropertyName = "telefone_celular")]
-        public string TelefoneCelular { get; set; }        
+        public string TelefoneCelular { get; set; }
+
+        public string UF { get; set; }
+
+        public int IBGE { get; set; }
     }
 }

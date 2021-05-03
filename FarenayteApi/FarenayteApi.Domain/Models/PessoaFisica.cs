@@ -26,11 +26,17 @@ namespace FarenayteApi.Domain.Models
         [Column("telefone_celular")]
         public string TelefoneCelular { get; set; }
 
+        [Column("uf")]
+        public string UF { get; set; }
+
+        [Column("ibge")]
+        public int IBGE { get; set; }
+
         public virtual PessoaJuridica PessoaJuridica { get; set; }
 
         public virtual Comentario Comentario { get; set; }
-        
+
         [ForeignKey("EsUsuario")]
-        public virtual Usuario Usuario { get; set; }     
+        public virtual Usuario Usuario { get; set; }
     }
 }
