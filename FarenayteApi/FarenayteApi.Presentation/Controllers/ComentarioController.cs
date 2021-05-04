@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace FarenayteAPI.Controllers
 {
@@ -21,7 +20,13 @@ namespace FarenayteAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult GetById(int id)
         {
-            return Ok(_applicationService.GetByEsPublicacao(id));
+            return Ok(_applicationService.GetById(id));
+        }
+
+        [HttpGet]
+        public ActionResult Get([FromQuery] int esPublicacao)
+        {
+            return Ok(_applicationService.GetByEsPublicacao(esPublicacao));
         }
 
         [HttpPost]
@@ -92,17 +97,5 @@ namespace FarenayteAPI.Controllers
                 return BadRequest(_message);
             }
         }*/
-
-        [HttpGet]
-        public ActionResult GetAll()
-        {
-            return Ok(_applicationService.GetAll());
-        }
-
-        [HttpGet("{esPublicacao}")]
-        public ActionResult Get(int esPublicacao)
-        {
-            return Ok(_applicationService.GetByEsPublicacao(esPublicacao));
-        }
     }
 }
