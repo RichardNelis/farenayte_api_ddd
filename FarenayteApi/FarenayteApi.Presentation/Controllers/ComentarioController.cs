@@ -94,7 +94,7 @@ namespace FarenayteAPI.Controllers
         }
 
         [HttpPut("resposta")]
-        public ActionResult PutResposta([FromQuery] int tipo, [FromBody] ComentarioDTO dto)
+        public ActionResult PutResposta([FromBody] ComentarioDTO dto)
         {
             try
             {
@@ -106,15 +106,7 @@ namespace FarenayteAPI.Controllers
                 _applicationService.Update(dto);
 
                 MessageDTO message = new MessageDTO();
-
-                if (tipo == 1) // 1 - add
-                {
-                    message.Messages = new List<string> { "Resposta salva com sucesso!" };
-                }
-                else // 2 - update
-                {
-                    message.Messages = new List<string> { "Resposta alterada com sucesso!" };
-                }
+                message.Messages = new List<string> { "Resposta salva com sucesso!" };
 
                 return Ok(message);
             }
