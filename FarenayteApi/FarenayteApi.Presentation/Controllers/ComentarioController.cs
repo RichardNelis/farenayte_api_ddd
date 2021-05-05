@@ -18,7 +18,7 @@ namespace FarenayteAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult GetById(int id)
+        private ActionResult GetById(int id)
         {
             return Ok(_applicationService.GetById(id));
         }
@@ -63,7 +63,7 @@ namespace FarenayteAPI.Controllers
                 _applicationService.Update(dto);
 
                 MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Comentário atualizado com sucesso!" };
+                message.Messages = new List<string> { "Comentário salvo com sucesso!" };
 
                 return Ok(message);
             }
@@ -73,29 +73,24 @@ namespace FarenayteAPI.Controllers
             }
         }
 
-        /*[HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
         {
             try
             {
-                var data = await _repository.FindId(id);
+                var dto = _applicationService.GetById(id);
 
-                if (data == null)
-                {
-                    _message.Messages.Add("Comentário não encontrado!");
-                    return NotFound(_message);
-                }
+                _applicationService.Remove(dto);
 
-                await _repository.Remove(data);
+                MessageDTO message = new MessageDTO();
+                message.Messages = new List<string> { "Comentário excluído com sucesso!" };
 
-                _message.Messages.Add("Comentário excluído com sucesso!");
-                return Ok(_message);
+                return Ok(message);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                _message.Messages.Add("Erro ao deletar o comentário!");
-                return BadRequest(_message);
+                return BadRequest(ex.Message);
             }
-        }*/
+        }
     }
 }
