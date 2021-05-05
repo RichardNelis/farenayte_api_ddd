@@ -1,9 +1,13 @@
 ﻿using FarenayteApi.Application.DTO.DTO;
 using FarenayteApi.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation.Controllers
@@ -13,9 +17,12 @@ namespace FarenayteApi.Presentation.Controllers
     {
         private readonly IApplicationServiceUsuario _applicationService;
 
-        public UsuarioController(IApplicationServiceUsuario ApplicationService)
+        private readonly IWebHostEnvironment webHostEnvironment;
+
+        public UsuarioController(IApplicationServiceUsuario ApplicationService, IWebHostEnvironment hostEnvironment)
         {
             _applicationService = ApplicationService;
+            webHostEnvironment = hostEnvironment;
         }
 
         [HttpGet]
@@ -26,12 +33,14 @@ namespace FarenayteApi.Presentation.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Post([FromBody] UsuarioDTO dto)
+        public async Task<ActionResult> PostAsync([FromForm] UsuarioDTO dto)
         {
             try
             {
                 if (dto == null)
                     return NotFound();
+
+                dto.PessoaFisica.Foto = await new ImagemController(webHostEnvironment).UploadedFileAsync(dto.PessoaFisica.File);
 
                 UsuarioResponseDTO responseDTO = _applicationService.Add(dto);
                 MessageDTO message = new MessageDTO();

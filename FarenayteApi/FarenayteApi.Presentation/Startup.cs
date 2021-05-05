@@ -121,6 +121,8 @@ namespace FarenayteApi.Presentation
                     }
                 });
             });
+
+            
         }
 
         public void ConfigureContainer(ContainerBuilder Builder)

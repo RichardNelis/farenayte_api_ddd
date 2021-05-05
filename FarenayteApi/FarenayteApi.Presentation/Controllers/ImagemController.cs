@@ -12,22 +12,23 @@ namespace FarenayteApi.Presentation.Controllers
     [ApiController, Route("[controller]"), Authorize]
     public class ImagemController : BaseController
     {
-        private string _pathRoot;        
-        public static IWebHostEnvironment _environment;
+        private string _pathRoot;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public ImagemController(IWebHostEnvironment environment)
+        public ImagemController(IWebHostEnvironment hostEnvironment)
         {
-            _environment = environment;
+            webHostEnvironment = hostEnvironment;
 
-            if (!Directory.Exists(_environment.ContentRootPath + "\\Imagens\\"))
+            if (!Directory.Exists(webHostEnvironment.ContentRootPath + "\\Imagens\\"))
             {
-                Directory.CreateDirectory(_environment.ContentRootPath + "\\Imagens\\");
+                Directory.CreateDirectory(webHostEnvironment.ContentRootPath + "\\Imagens\\");
             }
 
-            _pathRoot = _environment.ContentRootPath + "\\Imagens\\";
+            _pathRoot = webHostEnvironment.ContentRootPath + "\\Imagens\\";
         }
 
         [HttpGet("{name}")]
+        [AllowAnonymous]
         public IActionResult Get(string name)
         {
             try
@@ -41,7 +42,30 @@ namespace FarenayteApi.Presentation.Controllers
             }
         }
 
-        [HttpPost]
+        public async Task<string> UploadedFileAsync(IFormFile file)
+        {
+            string uniqueFileName = null;
+
+            if (file != null)
+            {
+                string nomeArquivo = DateTime.Now.Year.ToString();
+                nomeArquivo += DateTime.Now.Month.ToString();
+                nomeArquivo += DateTime.Now.Day.ToString();
+                nomeArquivo += DateTime.Now.Second.ToString();
+                nomeArquivo += "_" + file.FileName;
+
+                using (FileStream filestream = System.IO.File.Create(_pathRoot + nomeArquivo))
+                {
+                    String caminho = "\\Imagens\\" + nomeArquivo;
+                    await file.CopyToAsync(filestream);
+                    filestream.Flush();
+                }
+            }
+
+            return uniqueFileName;
+        }
+
+        /*[HttpPost]
         [AllowAnonymous]
         public async Task<ActionResult> EnviaArquivo([FromForm] IFormFileCollection arquivos)
         {
@@ -75,6 +99,6 @@ namespace FarenayteApi.Presentation.Controllers
             {
                 return Ok();
             }
-        }
+        }*/
     }
 }
