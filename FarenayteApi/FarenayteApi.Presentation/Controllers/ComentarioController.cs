@@ -93,7 +93,7 @@ namespace FarenayteAPI.Controllers
             }
         }
 
-        [HttpPut("/resposta")]
+        [HttpPut("resposta")]
         public ActionResult PutResposta([FromQuery] int tipo, [FromBody] ComentarioDTO dto)
         {
             try

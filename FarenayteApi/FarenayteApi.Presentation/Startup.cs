@@ -96,7 +96,7 @@ namespace FarenayteApi.Presentation
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = @"JWT Authorization header usando o schema Bearer.
-                            <br>Entre com 'Bearer' [spa�o] e a token que foi gerada na caixa de texto.
+                            <br>Entre com 'Bearer' [spaço] e a token que foi gerada na caixa de texto.
                             <br>Exemplo: 'Bearer 12345abcdef'",
                     Name = "Authorization",
                     In = ParameterLocation.Header,
