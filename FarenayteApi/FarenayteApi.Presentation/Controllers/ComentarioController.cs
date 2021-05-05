@@ -73,8 +73,8 @@ namespace FarenayteAPI.Controllers
             }
         }
 
-        [HttpDelete("/resposta/{id}")]
-        public ActionResult Delete(int id)
+        [HttpDelete("{id}")]
+        public ActionResult DeleteComentario(int id)
         {
             try
             {
@@ -107,18 +107,35 @@ namespace FarenayteAPI.Controllers
 
                 MessageDTO message = new MessageDTO();
 
-                if (tipo == 1) // add
+                if (tipo == 1) // 1 - add
                 {
                     message.Messages = new List<string> { "Resposta salva com sucesso!" };
                 }
-                else if (tipo == 2) // update
+                else // 2 - update
                 {
                     message.Messages = new List<string> { "Resposta alterada com sucesso!" };
                 }
-                else // delete
-                {
-                    message.Messages = new List<string> { "Resposta excluída com sucesso!" };
-                }
+
+                return Ok(message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("resposta/{id}")]
+        public ActionResult DeleteResposta(int id)
+        {
+            try
+            {
+                var dto = _applicationService.GetById(id);
+                dto.Resposta = null;
+
+                _applicationService.Update(dto);
+
+                MessageDTO message = new MessageDTO();
+                message.Messages = new List<string> { "Resposta excluída com sucesso!" };
 
                 return Ok(message);
             }
