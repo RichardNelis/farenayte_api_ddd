@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FarenayteApi.Application.DTO.DTO
 {
-    [Table("comentario")]
     public class ComentarioDTO
     {
         public int Id { get; set; }
@@ -24,6 +23,6 @@ namespace FarenayteApi.Application.DTO.DTO
         public string Resposta { get; set; }
 
         [JsonProperty(PropertyName = "pessoa_fisica")]
-        public virtual PessoaFisicaDTO PessoaFisica { get; set; }       
+        public virtual PessoaFisicaDTO PessoaFisica { get; set; }
     }
 }

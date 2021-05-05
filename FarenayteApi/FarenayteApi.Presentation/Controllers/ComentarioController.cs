@@ -51,7 +51,7 @@ namespace FarenayteAPI.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] ComentarioDTO dto)
+        public ActionResult PutComentario([FromBody] ComentarioDTO dto)
         {
             try
             {
@@ -84,6 +84,41 @@ namespace FarenayteAPI.Controllers
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Comentário excluído com sucesso!" };
+
+                return Ok(message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("/resposta")]
+        public ActionResult PutResposta([FromQuery] int tipo, [FromBody] ComentarioDTO dto)
+        {
+            try
+            {
+                if (dto == null)
+                {
+                    return NotFound();
+                }
+
+                _applicationService.Update(dto);
+
+                MessageDTO message = new MessageDTO();
+
+                if (tipo == 1) // add
+                {
+                    message.Messages = new List<string> { "Resposta salva com sucesso!" };
+                }
+                else if (tipo == 2) // update
+                {
+                    message.Messages = new List<string> { "Resposta alterada com sucesso!" };
+                }
+                else // delete
+                {
+                    message.Messages = new List<string> { "Resposta excluída com sucesso!" };
+                }
 
                 return Ok(message);
             }
