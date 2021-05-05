@@ -73,7 +73,7 @@ namespace FarenayteAPI.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("/resposta/{id}")]
         public ActionResult Delete(int id)
         {
             try
