@@ -14,11 +14,9 @@ namespace FarenayteApi.Presentation.Controllers
     {
         private string _pathRoot;
         private readonly IWebHostEnvironment webHostEnvironment;
-
         public ImagemController(IWebHostEnvironment hostEnvironment)
         {
             webHostEnvironment = hostEnvironment;
-
             if (!Directory.Exists(webHostEnvironment.ContentRootPath + "\\Imagens\\"))
             {
                 Directory.CreateDirectory(webHostEnvironment.ContentRootPath + "\\Imagens\\");
@@ -44,16 +42,12 @@ namespace FarenayteApi.Presentation.Controllers
 
         public async Task<string> UploadedFileAsync(IFormFile file)
         {
-            string uniqueFileName = null;
+            string nomeArquivo = String.Empty;
 
             if (file != null)
             {
-                string nomeArquivo = DateTime.Now.Year.ToString();
-                nomeArquivo += DateTime.Now.Month.ToString();
-                nomeArquivo += DateTime.Now.Day.ToString();
-                nomeArquivo += DateTime.Now.Second.ToString();
-                nomeArquivo += "_" + file.FileName;
-
+                nomeArquivo = $"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Second}{DateTime.Now.Millisecond}_{file.FileName}";                               
+                
                 using (FileStream filestream = System.IO.File.Create(_pathRoot + nomeArquivo))
                 {
                     String caminho = "\\Imagens\\" + nomeArquivo;
@@ -62,7 +56,7 @@ namespace FarenayteApi.Presentation.Controllers
                 }
             }
 
-            return uniqueFileName;
+            return nomeArquivo;
         }
 
         /*[HttpPost]

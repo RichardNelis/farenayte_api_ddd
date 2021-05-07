@@ -59,5 +59,15 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         {
             _context.Dispose();
         }
+
+        public ICollection<Usuario> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Usuario obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

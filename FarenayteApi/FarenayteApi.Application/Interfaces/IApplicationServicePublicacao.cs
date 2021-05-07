@@ -8,9 +8,7 @@ namespace FarenayteApi.Application.Interfaces
         void Add(PublicacaoDTO dto);
 
         PublicacaoDTO GetById(int id);
-
-        ICollection<PublicacaoDTO> GetAll();
-
+        
         void Update(PublicacaoDTO dto);
 
         void Remove(PublicacaoDTO dto);

@@ -3,34 +3,21 @@ using FarenayteApi.Application.Interfaces;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace FarenayteApi.Application.Service
 {
     public class ApplicationServiceUsuario : IDisposable, IApplicationServiceUsuario
     {
-        private readonly IServicePessoaFisica _servicePessoaFisica;
-        private readonly IServiceUsuario _service;
         private readonly IMapperUsuario _mapper;
+        private readonly IServiceUsuario _service;
+        private readonly IServicePessoaFisica _servicePessoaFisica;
 
         public ApplicationServiceUsuario(IServicePessoaFisica ServicePessoaFisica, IServiceUsuario Service, IMapperUsuario Mapper)
         {
-            _servicePessoaFisica = ServicePessoaFisica;
-            _service = Service;
             _mapper = Mapper;
+            _service = Service;
+            _servicePessoaFisica = ServicePessoaFisica;
         }
-
-        /*public async Task<ICollection<UsuarioDTO>> GetByEmail(string email)
-        {
-            var objUsuario = await _service.GetByEmail(email);
-            return _mapper.MapperListUsuarios(objUsuario);
-        }*/
-        /*public async Task<ICollection<UsuarioDTO>> GetAllAsync()
-        {
-            var objUsuario = await _service.GetAllAsync();
-            return _mapper.MapperListUsuarios(objUsuario);
-        }*/
 
         public UsuarioResponseDTO Add(UsuarioDTO dto)
         {
@@ -53,7 +40,7 @@ namespace FarenayteApi.Application.Service
 
         public UsuarioDTO GetById(int id)
         {
-            var objUsuario = _service.GetById(id);            
+            var objUsuario = _service.GetById(id);
             return _mapper.MapperToDTO(objUsuario);
         }
     }

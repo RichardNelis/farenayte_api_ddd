@@ -24,12 +24,6 @@ namespace FarenayteApi.Application.Service
             _service.Add(obj);
         }        
 
-        public ICollection<PublicacaoDTO> GetAll()
-        {
-            var obj = _service.GetAll();
-            return _mapper.MapperList(obj);
-        }
-
         public PublicacaoDTO GetById(int id)
         {
             var obj = _service.GetById(id);

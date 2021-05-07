@@ -1,9 +1,13 @@
 ﻿using FarenayteApi.Application.DTO.DTO;
 using FarenayteApi.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation.Controllers
 {
@@ -12,9 +16,12 @@ namespace FarenayteApi.Presentation.Controllers
     {
         private readonly IApplicationServicePessoaJuridica _applicationService;
 
-        public PessoaJuridicaController(IApplicationServicePessoaJuridica ApplicationService)
+        private readonly IWebHostEnvironment webHostEnvironment;
+
+        public PessoaJuridicaController(IApplicationServicePessoaJuridica ApplicationService, IWebHostEnvironment hostEnvironment)
         {
             _applicationService = ApplicationService;
+            webHostEnvironment = hostEnvironment;
         }
 
         [HttpGet]
@@ -30,12 +37,32 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] PessoaJuridicaDTO dto)
+        public async Task<ActionResult> PostAsync([FromForm] string usuario, [FromForm] IFormFile file, [FromForm] IFormCollection files)
         {
             try
             {
-                if (dto == null)
+                ImagemController imagemController = new ImagemController(webHostEnvironment);
+
+                if (usuario == null)
                     return NotFound();
+
+                PessoaJuridicaDTO dto = JsonConvert.DeserializeObject<PessoaJuridicaDTO>(usuario);
+
+                if (file != null)
+                {
+                    dto.Logo = await imagemController.UploadedFileAsync(file);
+                }
+
+                if (files != null)
+                {
+                    for (int i = 0; i < files.Count; i++)
+                    {
+                        PublicacaoFotoDTO fotoDTO = new PublicacaoFotoDTO();
+                        fotoDTO.Foto = await imagemController.UploadedFileAsync(files.Files[i]);
+
+                        dto.Publicacao.PublicacaoFotos.Add(fotoDTO);
+                    }
+                }
 
                 dto.EsPessoaFisica = AuthUser().Id;
                 _applicationService.Add(dto);
@@ -52,12 +79,32 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] PessoaJuridicaDTO dto)
+        public async Task<ActionResult> PutAsync([FromForm] string usuario, [FromForm] IFormFile file, [FromForm] IFormCollection files)
         {
             try
             {
-                if (dto == null)
+                ImagemController imagemController = new ImagemController(webHostEnvironment);
+
+                if (usuario == null)
                     return NotFound();
+
+                PessoaJuridicaDTO dto = JsonConvert.DeserializeObject<PessoaJuridicaDTO>(usuario);
+
+                if (file != null)
+                {
+                    dto.Logo = await imagemController.UploadedFileAsync(file);
+                }
+
+                if (files != null)
+                {
+                    for (int i = 0; i < files.Count; i++)
+                    {
+                        PublicacaoFotoDTO fotoDTO = new PublicacaoFotoDTO();
+                        fotoDTO.Foto = await imagemController.UploadedFileAsync(files.Files[i]);
+
+                        dto.Publicacao.PublicacaoFotos.Add(fotoDTO);
+                    }
+                }
 
                 dto.EsPessoaFisica = AuthUser().Id;
 

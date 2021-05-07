@@ -20,7 +20,7 @@ namespace FarenayteApi.Domain.Services.Services
             return _repository.GetFilter(obj);
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             _repository.Dispose();
         }

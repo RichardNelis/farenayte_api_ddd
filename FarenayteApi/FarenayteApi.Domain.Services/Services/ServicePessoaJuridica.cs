@@ -1,7 +1,6 @@
 ﻿using FarenayteApi.Domain.Core.Interfaces.Repositorys;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Domain.Models;
-using System.Collections.Generic;
 
 namespace FarenayteApi.Domain.Services.Services
 {
@@ -15,7 +14,7 @@ namespace FarenayteApi.Domain.Services.Services
             _repository = Repository;
         }
 
-        public PessoaJuridica GetByIdFull(int id)
+        public virtual PessoaJuridica GetByIdFull(int id)
         {
             return _repository.GetByIdFull(id);
         }

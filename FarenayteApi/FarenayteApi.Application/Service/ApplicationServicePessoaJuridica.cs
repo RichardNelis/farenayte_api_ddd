@@ -29,12 +29,6 @@ namespace FarenayteApi.Application.Service
             _service.Dispose();
         }
 
-        public ICollection<PessoaJuridicaDTO> GetAll()
-        {
-            var obj = _service.GetAll();
-            return _mapper.MapperList(obj);
-        }
-
         public PessoaJuridicaDTO GetById(int id)
         {
             var obj = _service.GetById(id);

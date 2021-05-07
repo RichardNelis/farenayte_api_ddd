@@ -43,7 +43,10 @@ namespace FarenayteApi.Presentation.Controllers
 
                 UsuarioDTO dto = JsonConvert.DeserializeObject<UsuarioDTO>(usuario);
 
-                dto.PessoaFisica.Foto = await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
+                if (file != null)
+                {
+                    dto.PessoaFisica.Foto = await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
+                }
 
                 UsuarioResponseDTO responseDTO = _applicationService.Add(dto);
                 MessageDTO message = new MessageDTO();
@@ -58,15 +61,22 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] UsuarioDTO dto)
+        public async Task<ActionResult> PutAsync([FromForm] string usuario, [FromForm] IFormFile file)
         {
             try
             {
-                if (dto == null)
+                if (usuario == null)
                     return NotFound();
+
+                UsuarioDTO dto = JsonConvert.DeserializeObject<UsuarioDTO>(usuario);
 
                 dto.Id = AuthUser().Id;
 
+                if (file != null)
+                {
+                    dto.PessoaFisica.Foto = await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
+                }
+                
                 _applicationService.Update(dto);
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Cadastro atualizado com sucesso!" };

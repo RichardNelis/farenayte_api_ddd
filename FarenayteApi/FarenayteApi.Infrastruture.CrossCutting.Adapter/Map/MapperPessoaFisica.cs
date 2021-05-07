@@ -25,7 +25,6 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                 DtNascimento = dto.DtNascimento,
                 Sexo = dto.Sexo,
                 TelefoneCelular = dto.TelefoneCelular,
-
             };
 
             return obj;
@@ -43,7 +42,6 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                     DtNascimento = obj.DtNascimento,
                     Sexo = obj.Sexo,
                     TelefoneCelular = obj.TelefoneCelular,
-
                 };
 
                 _pessoaFisicaDTOs.Add(pessoaFisicaDTO);
@@ -65,7 +63,6 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                 DtNascimento = obj.DtNascimento,
                 Sexo = obj.Sexo,
                 TelefoneCelular = obj.TelefoneCelular,
-
             };
 
             return dto;
@@ -83,8 +80,6 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                 DtNascimento = obj.DtNascimento,
                 Sexo = obj.Sexo,
                 TelefoneCelular = obj.TelefoneCelular,
-
-
             };
 
             return dto;
