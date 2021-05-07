@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,14 +34,16 @@ namespace FarenayteApi.Presentation.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> PostAsync([FromForm] UsuarioDTO dto)
+        public async Task<ActionResult> PostAsync([FromForm] string usuario, [FromForm] IFormFile file)
         {
             try
             {
-                if (dto == null)
+                if (usuario == null)
                     return NotFound();
 
-                dto.PessoaFisica.Foto = await new ImagemController(webHostEnvironment).UploadedFileAsync(dto.PessoaFisica.File);
+                UsuarioDTO dto = JsonConvert.DeserializeObject<UsuarioDTO>(usuario);
+
+                dto.PessoaFisica.Foto = await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
 
                 UsuarioResponseDTO responseDTO = _applicationService.Add(dto);
                 MessageDTO message = new MessageDTO();
