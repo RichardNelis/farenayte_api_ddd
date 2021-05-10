@@ -16,7 +16,13 @@ namespace FarenayteApi.Presentation.Controllers
         private readonly IWebHostEnvironment webHostEnvironment;
         public ImagemController(IWebHostEnvironment hostEnvironment)
         {
-            webHostEnvironment = hostEnvironment;            
+            webHostEnvironment = hostEnvironment;
+
+            if (!Directory.Exists(webHostEnvironment.ContentRootPath + "\\Imagens\\"))
+            {
+                Directory.CreateDirectory(webHostEnvironment.ContentRootPath + "\\Imagens\\");
+            }
+
             _pathRoot = webHostEnvironment.ContentRootPath + "\\Imagens\\";
         }
 
