@@ -26,6 +26,9 @@ namespace FarenayteApi.Domain.Models
         [Column("tipo_cobranca")]
         public int TipoCobranca { get; set; }
 
+        [Column("ordem")]
+        public int Ordem { get; set; }
+
         [ForeignKey("EsPessoaJuridica")]
         public virtual PessoaJuridica PessoaJuridica { get; set; }
 

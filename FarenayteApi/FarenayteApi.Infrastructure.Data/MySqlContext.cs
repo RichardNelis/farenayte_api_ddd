@@ -21,9 +21,7 @@ namespace FarenayteApi.Infrastructure.Data
 
         public override int SaveChanges()
         {
-            foreach (var entry in ChangeTracker.Entries().Where(entry => 
-            entry.Entity.GetType().GetProperty("DataInclusao") != null 
-            || entry.Entity.GetType().GetProperty("DataAlteracao") != null))
+            foreach (var entry in ChangeTracker.Entries())
             {
                 if (entry.State == EntityState.Added)
                 {
@@ -32,7 +30,8 @@ namespace FarenayteApi.Infrastructure.Data
 
                 if (entry.State == EntityState.Modified)
                 {
-                    entry.Property("DataAlteracao").IsModified = false;
+                    entry.Property("DataAlteracao").IsModified = true;
+                    entry.Property("DataAlteracao").CurrentValue = DateTime.Now;
                 }
             }
 

@@ -53,7 +53,7 @@ namespace FarenayteApi.Presentation.Controllers
                     dto.Logo = await imagemController.UploadedFileAsync(file);
                 }
 
-                if (files != null)
+                if (files.Files.Count > 0)
                 {
                     for (int i = 0; i < files.Count; i++)
                     {
@@ -95,7 +95,7 @@ namespace FarenayteApi.Presentation.Controllers
                     dto.Logo = await imagemController.UploadedFileAsync(file);
                 }
 
-                if (files != null)
+                if (files.Files.Count > 0)
                 {
                     for (int i = 0; i < files.Count; i++)
                     {

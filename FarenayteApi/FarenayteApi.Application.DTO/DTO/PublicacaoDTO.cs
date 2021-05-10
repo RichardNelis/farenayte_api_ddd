@@ -18,6 +18,8 @@ namespace FarenayteApi.Application.DTO.DTO
                 
         [JsonIgnore]
         public int TipoCobranca { get; set; }
+
+        public int Ordem { get; set; }
                 
         [JsonProperty(PropertyName = "fotos")]
         public virtual ICollection<PublicacaoFotoDTO> PublicacaoFotos { get; set; }
