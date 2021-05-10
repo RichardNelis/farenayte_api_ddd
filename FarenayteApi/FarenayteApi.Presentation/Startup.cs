@@ -156,13 +156,13 @@ namespace FarenayteApi.Presentation
 
             app.UseStaticFiles();
 
-            app.UseFileServer(new FileServerOptions
+            /*app.UseFileServer(new FileServerOptions
             {
                 FileProvider = new PhysicalFileProvider(
                     Path.Combine(env.ContentRootPath, "Imagens")),
                 RequestPath = "/imagem",
                 EnableDirectoryBrowsing = true
-            });
+            });*/
 
             app.UseSwagger();
 

@@ -18,10 +18,10 @@ namespace FarenayteApi.Presentation.Controllers
         {
             webHostEnvironment = hostEnvironment;
 
-            if (!Directory.Exists(webHostEnvironment.ContentRootPath + "\\Imagens\\"))
+            /*if (!Directory.Exists(webHostEnvironment.ContentRootPath + "\\Imagens\\"))
             {
                 Directory.CreateDirectory(webHostEnvironment.ContentRootPath + "\\Imagens\\");
-            }
+            }*/
 
             _pathRoot = webHostEnvironment.ContentRootPath + "\\Imagens\\";
         }
