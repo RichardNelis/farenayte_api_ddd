@@ -13,5 +13,8 @@ namespace FarenayteApi.Application.DTO.DTO
 
         [JsonProperty(PropertyName = "foto")]
         public string Foto { get; set; }
+
+        [JsonProperty(PropertyName = "posicao")]
+        public int Posicao { get; set; }
     }
 }

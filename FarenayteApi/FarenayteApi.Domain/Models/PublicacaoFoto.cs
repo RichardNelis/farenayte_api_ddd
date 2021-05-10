@@ -18,6 +18,9 @@ namespace FarenayteApi.Domain.Models
         [Column("foto")]
         public string Foto { get; set; }
 
+        [Column("posicao")]
+        public int Posicao { get; set; }
+
         [ForeignKey("EsPublicacao")]
         public virtual Publicacao Publicacao { get; set; }
     }
