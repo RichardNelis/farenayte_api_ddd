@@ -42,21 +42,17 @@ namespace FarenayteApi.Presentation.Controllers
 
         public async Task<string> UploadedFileAsync(IFormFile file)
         {
-            string nomeArquivo = String.Empty;
-
             if (file != null)
             {
-                nomeArquivo = $"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Second}{DateTime.Now.Millisecond}_{file.FileName}";                               
-                
-                using (FileStream filestream = System.IO.File.Create(_pathRoot + nomeArquivo))
+                using (FileStream filestream = System.IO.File.Create(_pathRoot + file.FileName))
                 {
-                    String caminho = "\\Imagens\\" + nomeArquivo;
+                    String caminho = "\\Imagens\\" + file.FileName;
                     await file.CopyToAsync(filestream);
                     filestream.Flush();
                 }
             }
 
-            return nomeArquivo;
+            return file.FileName;
         }
 
         /*[HttpPost]
