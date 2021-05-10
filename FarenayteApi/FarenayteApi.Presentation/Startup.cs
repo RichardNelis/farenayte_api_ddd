@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +18,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -144,17 +142,20 @@ namespace FarenayteApi.Presentation
             }
 
             app.UseHttpsRedirection();
-            
+
             app.UseRouting();
 
             app.UseAuthentication();
 
             app.UseAuthorization();
 
+            if (!Directory.Exists(env.ContentRootPath + "\\Imagens\\"))
+            {
+                Directory.CreateDirectory(env.ContentRootPath + "\\Imagens\\");
+            }
+
             app.UseStaticFiles();
 
-            // using Microsoft.Extensions.FileProviders;
-            // using System.IO;
             app.UseFileServer(new FileServerOptions
             {
                 FileProvider = new PhysicalFileProvider(
