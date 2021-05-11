@@ -35,7 +35,7 @@ namespace FarenayteApi.Presentation
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {            
+        {
             services.AddDbContext<MySqlContext>(options => options.UseMySQL(Configuration["MySqlConnection:MySqlConnectionString"]));
             services.AddMemoryCache();
             services.AddControllers(options => options.Filters.Add<ValidationMiddleware>())
@@ -154,14 +154,6 @@ namespace FarenayteApi.Presentation
             }
 
             app.UseStaticFiles();
-
-            /*app.UseFileServer(new FileServerOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(env.ContentRootPath, "Imagens")),
-                RequestPath = "/imagem",
-                EnableDirectoryBrowsing = true
-            });*/
 
             app.UseSwagger();
 
