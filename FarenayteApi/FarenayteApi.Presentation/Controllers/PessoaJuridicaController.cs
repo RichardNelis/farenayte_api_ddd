@@ -50,7 +50,7 @@ namespace FarenayteApi.Presentation.Controllers
 
                 if (file != null)
                 {
-                    dto.Logo = await imagemController.UploadedFileAsync(file);
+                    await imagemController.UploadedFileAsync(file);
                 }
 
                 if (files.Files.Count > 0)
@@ -92,17 +92,14 @@ namespace FarenayteApi.Presentation.Controllers
 
                 if (file != null)
                 {
-                    dto.Logo = await imagemController.UploadedFileAsync(file);
+                    await imagemController.UploadedFileAsync(file);
                 }
 
                 if (files.Files.Count > 0)
                 {
                     for (int i = 0; i < files.Count; i++)
                     {
-                        PublicacaoFotoDTO fotoDTO = new PublicacaoFotoDTO();
-                        fotoDTO.Foto = await imagemController.UploadedFileAsync(files.Files[i]);
-
-                        dto.Publicacao.PublicacaoFotos.Add(fotoDTO);
+                        await imagemController.UploadedFileAsync(files.Files[i]);
                     }
                 }
 

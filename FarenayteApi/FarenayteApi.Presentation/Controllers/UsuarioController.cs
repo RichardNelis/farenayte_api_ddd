@@ -45,7 +45,7 @@ namespace FarenayteApi.Presentation.Controllers
 
                 if (file != null)
                 {
-                    dto.PessoaFisica.Foto = await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
+                    await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
                 }
 
                 UsuarioResponseDTO responseDTO = _applicationService.Add(dto);
@@ -74,7 +74,7 @@ namespace FarenayteApi.Presentation.Controllers
 
                 if (file != null)
                 {
-                    dto.PessoaFisica.Foto = await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
+                    await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
                 }
                 
                 _applicationService.Update(dto);
