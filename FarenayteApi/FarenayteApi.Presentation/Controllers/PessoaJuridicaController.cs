@@ -57,10 +57,7 @@ namespace FarenayteApi.Presentation.Controllers
                 {
                     for (int i = 0; i < files.Count; i++)
                     {
-                        PublicacaoFotoDTO fotoDTO = new PublicacaoFotoDTO();
-                        fotoDTO.Foto = await imagemController.UploadedFileAsync(files.Files[i]);
-
-                        dto.Publicacao.PublicacaoFotos.Add(fotoDTO);
+                        await imagemController.UploadedFileAsync(files.Files[i]);
                     }
                 }
 
