@@ -37,7 +37,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostAsync([FromForm] string usuario, [FromForm] IFormFile file, [FromForm] IFormCollection files)
+        public async Task<ActionResult> PostAsync([FromForm] string usuario, [FromForm] IFormFile file, [FromForm] List<IFormFile> files)
         {
             try
             {
@@ -53,11 +53,11 @@ namespace FarenayteApi.Presentation.Controllers
                     await imagemController.UploadedFileAsync(file);
                 }
 
-                if (files.Files.Count > 0)
+                if (files.Count > 0)
                 {
                     for (int i = 0; i < files.Count; i++)
                     {
-                        await imagemController.UploadedFileAsync(files.Files[i]);
+                        await imagemController.UploadedFileAsync(files[i]);
                     }
                 }
 
@@ -76,7 +76,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> PutAsync([FromForm] string usuario, [FromForm] IFormFile file, [FromForm] IFormCollection files)
+        public async Task<ActionResult> PutAsync([FromForm] string usuario, [FromForm] IFormFile file, [FromForm] List<IFormFile> files)
         {
             try
             {
@@ -92,11 +92,11 @@ namespace FarenayteApi.Presentation.Controllers
                     await imagemController.UploadedFileAsync(file);
                 }
 
-                if (files.Files.Count > 0)
+                if (files.Count > 0)
                 {
                     for (int i = 0; i < files.Count; i++)
                     {
-                        await imagemController.UploadedFileAsync(files.Files[i]);
+                        await imagemController.UploadedFileAsync(files[i]);
                     }
                 }
 
