@@ -32,8 +32,9 @@ namespace FarenayteApi.Presentation.Controllers
         {
             try
             {
-                Byte[] b = System.IO.File.ReadAllBytes(_pathRoot + name);   // You can use your own method over here.         
-                return File(b, "image/" + name.Split(".").Last());
+                Byte[] b = System.IO.File.ReadAllBytes(_pathRoot + name);   // You can use your own method over here.
+                String tipo = name.Split(".").Last() == "png" ? "png" : "jpeg";
+                return File(b, "image/" + tipo);
             }
             catch (Exception)
             {
