@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace FarenayteApi.Application.DTO.DTO
 {
@@ -13,8 +12,5 @@ namespace FarenayteApi.Application.DTO.DTO
 
         [JsonProperty(PropertyName = "foto")]
         public string Foto { get; set; }
-
-        [JsonProperty(PropertyName = "posicao")]
-        public int Posicao { get; set; }
     }
 }
