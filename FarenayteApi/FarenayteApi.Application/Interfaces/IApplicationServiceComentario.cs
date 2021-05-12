@@ -15,6 +15,8 @@ namespace FarenayteApi.Application.Interfaces
 
         void Update(ComentarioDTO dto);
 
+        void RemoverResposta(int id);
+
         void Remove(ComentarioDTO dto);
 
         void Dispose();

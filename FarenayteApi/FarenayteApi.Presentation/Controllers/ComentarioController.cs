@@ -121,10 +121,7 @@ namespace FarenayteAPI.Controllers
         {
             try
             {
-                var dto = _applicationService.GetById(id);
-                dto.Resposta = null;
-
-                _applicationService.Update(dto);
+                _applicationService.RemoverResposta(id);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Resposta excluída com sucesso!" };

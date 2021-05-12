@@ -59,5 +59,12 @@ namespace FarenayteApi.Application.Service
             var obj = _mapper.MapperToEntity(dto);
             _service.Update(obj);
         }
+
+        public void RemoverResposta(int id)
+        {
+            var obj = _service.GetById(id);
+            obj.Resposta = null;
+            _service.Update(obj);
+        }
     }
 }
