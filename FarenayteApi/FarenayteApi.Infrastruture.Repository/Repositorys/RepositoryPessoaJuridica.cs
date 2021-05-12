@@ -21,7 +21,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             return _context.PessoaJuridicas
                 .Where(x => x.EsPessoaFisica == id)
                 .Include(x => x.Publicacao)
-                .Include(x => x.Publicacao.PublicacaoFotos)
+                .Include(x => x.Publicacao.PublicacaoFotos)                
                 .FirstOrDefault();
         }
 
@@ -30,8 +30,10 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             return _context.PessoaJuridicas
                 .Where(x => x.EsPessoaFisica == id)
                 .Include(x => x.Publicacao)
-                .Include(x => x.Publicacao.PublicacaoFotos)
-                .Include(x => x.Publicacao.Comentarios)
+                .ThenInclude(x => x.PublicacaoFotos)
+                .Include(x => x.Publicacao)
+                .ThenInclude(x => x.Comentarios)
+                .ThenInclude(x => x.PessoaFisica)
                 .FirstOrDefault();
         }
 
