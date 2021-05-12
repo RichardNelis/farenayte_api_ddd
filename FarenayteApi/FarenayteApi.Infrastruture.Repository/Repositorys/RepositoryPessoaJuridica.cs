@@ -20,8 +20,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         {
             return _context.PessoaJuridicas
                 .Where(x => x.EsPessoaFisica == id)
-                .Include(x => x.Publicacao)
-                .Include(x => x.Publicacao.PublicacaoFotos)                
+                .Include(x => x.Publicacao).ThenInclude(x => x.PublicacaoFotos)
                 .FirstOrDefault();
         }
 
@@ -29,11 +28,8 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         {
             return _context.PessoaJuridicas
                 .Where(x => x.EsPessoaFisica == id)
-                .Include(x => x.Publicacao)
-                .ThenInclude(x => x.PublicacaoFotos)
-                .Include(x => x.Publicacao)
-                .ThenInclude(x => x.Comentarios)
-                .ThenInclude(x => x.PessoaFisica)
+                .Include(x => x.Publicacao).ThenInclude(x => x.PublicacaoFotos)
+                .Include(x => x.Publicacao).ThenInclude(x => x.Comentarios).ThenInclude(x => x.PessoaFisica)
                 .FirstOrDefault();
         }
 
@@ -45,7 +41,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                     .Include(x => x.Publicacao)
                     .ThenInclude(x => x.PublicacaoFotos)
                     .First(x => x.EsPessoaFisica == obj.EsPessoaFisica);
-                
+
                 pessoaJuridica.Logo = obj.Logo;
                 pessoaJuridica.Cnpj = obj.Cnpj;
                 pessoaJuridica.RazaoSocial = obj.RazaoSocial;
@@ -68,7 +64,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                 pessoaJuridica.Publicacao.TipoCobranca = obj.Publicacao.TipoCobranca;
 
                 pessoaJuridica.Publicacao.PublicacaoFotos = obj.Publicacao.PublicacaoFotos;
-                
+
                 _context.Entry(pessoaJuridica).State = EntityState.Modified;
                 _context.SaveChanges();
             }
