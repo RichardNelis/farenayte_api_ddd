@@ -8,11 +8,7 @@ namespace FarenayteApi.Application.Interfaces
     {
         UsuarioResponseDTO Add(UsuarioDTO dto);
 
-        //Task<ICollection<UsuarioDTO>> GetAllAsync();
-
         UsuarioDTO GetById(int id);
-
-        //Task<ICollection<UsuarioDTO>> GetByEmail(string email);
 
         void Update(UsuarioDTO dto);
 

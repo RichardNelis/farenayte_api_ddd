@@ -78,9 +78,7 @@ namespace FarenayteAPI.Controllers
         {
             try
             {
-                var dto = _applicationService.GetById(id);
-
-                _applicationService.Remove(dto);
+                _applicationService.Remove(id);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Comentário excluído com sucesso!" };

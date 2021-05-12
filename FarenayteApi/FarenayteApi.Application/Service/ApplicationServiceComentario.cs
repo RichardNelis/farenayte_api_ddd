@@ -25,17 +25,6 @@ namespace FarenayteApi.Application.Service
             dto.Id = obj.Id;
         }
 
-        public void Dispose()
-        {
-            _service.Dispose();
-        }
-
-        public ICollection<ComentarioDTO> GetAll()
-        {
-            var obj = _service.GetAll();
-            return _mapper.MapperList(obj);
-        }
-
         public ComentarioDTO GetById(int id)
         {
             var obj = _service.GetById(id);
@@ -48,9 +37,9 @@ namespace FarenayteApi.Application.Service
             return _mapper.MapperList(obj);
         }
 
-        public void Remove(ComentarioDTO dto)
+        public void Remove(int id)
         {
-            var obj = _mapper.MapperToEntity(dto);
+            var obj = _service.GetById(id);
             _service.Remove(obj);
         }
 
@@ -65,6 +54,11 @@ namespace FarenayteApi.Application.Service
             var obj = _service.GetById(id);
             obj.Resposta = null;
             _service.Update(obj);
+        }
+
+        public void Dispose()
+        {
+            _service.Dispose();
         }
     }
 }

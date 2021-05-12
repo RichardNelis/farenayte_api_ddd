@@ -33,15 +33,15 @@ namespace FarenayteApi.Application.Service
             _service.Update(obj);
         }
 
-        public void Dispose()
-        {
-            _service.Dispose();
-        }
-
         public UsuarioDTO GetById(int id)
         {
             var objUsuario = _service.GetById(id);
             return _mapper.MapperToDTO(objUsuario);
+        }
+
+        public void Dispose()
+        {
+            _service.Dispose();
         }
     }
 }

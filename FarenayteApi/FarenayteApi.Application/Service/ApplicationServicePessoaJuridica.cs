@@ -24,11 +24,6 @@ namespace FarenayteApi.Application.Service
             _service.Add(obj);
         }
 
-        public void Dispose()
-        {
-            _service.Dispose();
-        }
-
         public PessoaJuridicaDTO GetById(int id)
         {
             var obj = _service.GetById(id);
@@ -41,16 +36,15 @@ namespace FarenayteApi.Application.Service
             return _mapper.MapperToDTO(obj);
         }
 
-        public void Remove(PessoaJuridicaDTO dto)
-        {
-            var obj = _mapper.MapperToEntity(dto);
-            _service.Remove(obj);
-        }
-
         public void Update(PessoaJuridicaDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
             _service.Update(obj);
+        }
+
+        public void Dispose()
+        {
+            _service.Dispose();
         }
     }
 }

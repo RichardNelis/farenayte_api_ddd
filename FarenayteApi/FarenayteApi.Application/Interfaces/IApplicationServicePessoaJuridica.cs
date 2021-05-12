@@ -13,8 +13,6 @@ namespace FarenayteApi.Application.Interfaces
                 
         void Update(PessoaJuridicaDTO dto);
 
-        void Remove(PessoaJuridicaDTO dto);
-
         void Dispose();
     }
 }

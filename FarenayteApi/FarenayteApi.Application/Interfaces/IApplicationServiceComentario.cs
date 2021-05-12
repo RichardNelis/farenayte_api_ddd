@@ -10,14 +10,12 @@ namespace FarenayteApi.Application.Interfaces
         ComentarioDTO GetById(int id);
 
         ICollection<ComentarioDTO> GetByEsPublicacao(int esPublicacao);
-
-        ICollection<ComentarioDTO> GetAll();
-
+        
         void Update(ComentarioDTO dto);
 
         void RemoverResposta(int id);
 
-        void Remove(ComentarioDTO dto);
+        void Remove(int id);
 
         void Dispose();
     }
