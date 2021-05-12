@@ -60,8 +60,9 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                 pessoaJuridica.UF = obj.UF;
                 pessoaJuridica.IBGE = obj.IBGE;
 
-                pessoaJuridica.Publicacao.Preco = obj.Publicacao.Preco;
                 pessoaJuridica.Publicacao.Titulo = obj.Publicacao.Titulo;
+                pessoaJuridica.Publicacao.Descricao = obj.Publicacao.Descricao;
+                pessoaJuridica.Publicacao.Preco = obj.Publicacao.Preco;
                 pessoaJuridica.Publicacao.TipoCobranca = obj.Publicacao.TipoCobranca;
 
                 pessoaJuridica.Publicacao.PublicacaoFotos = obj.Publicacao.PublicacaoFotos;
