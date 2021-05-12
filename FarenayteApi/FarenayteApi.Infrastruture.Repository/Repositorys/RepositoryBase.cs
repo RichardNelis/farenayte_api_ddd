@@ -25,7 +25,6 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

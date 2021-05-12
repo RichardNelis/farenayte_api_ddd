@@ -44,7 +44,7 @@ namespace FarenayteApi.Application.Service
 
             if (objUsuarios.Count == 0)
             {
-                throw new Exception("Cadastro não encontrado!");
+                throw new ArgumentException("Cadastro não encontrado!");
             }
 
             return objUsuarios;
@@ -56,7 +56,7 @@ namespace FarenayteApi.Application.Service
 
             if (objUsuario == null)
             {
-                throw new Exception("Senha incorreta!");
+                throw new ArgumentException("Senha incorreta!");
             }
 
             return objUsuario;

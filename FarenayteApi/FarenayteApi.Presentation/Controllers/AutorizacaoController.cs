@@ -36,6 +36,10 @@ namespace FarenayteApi.Presentation.Controllers
 
                 return Ok(new { usuario = login, message });
             }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
@@ -56,9 +60,13 @@ namespace FarenayteApi.Presentation.Controllers
 
                 return Ok(new { usuario = login, message });
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
                 return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
             }
         }
     }

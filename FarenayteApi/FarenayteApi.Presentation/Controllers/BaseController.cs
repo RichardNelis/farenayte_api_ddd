@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public abstract class BaseController : ControllerBase
+public abstract class   BaseController : ControllerBase
 {
     protected AutenticadoDTO AuthUser()
     {
@@ -18,6 +18,12 @@ public abstract class BaseController : ControllerBase
     {
         MessageDTO message = FormatMessageResult("Usuário não autenticado!");
         return base.Unauthorized();
+    }
+
+    public override BadRequestResult BadRequest()
+    {
+        MessageDTO message = FormatMessageResult("Desculpe encontrados um erro!\nTente novamente mais tarde.");
+        return base.BadRequest();
     }
 
     public override BadRequestObjectResult BadRequest([ActionResultObjectValue] object value)
