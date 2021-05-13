@@ -4,6 +4,7 @@ using FarenayteApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Infrastruture.Repository.Repositorys
 {
@@ -16,15 +17,15 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public virtual ICollection<PessoaJuridica> GetFilter(PessoaJuridica obj)
+        public virtual async Task<ICollection<PessoaJuridica>> GetFilterAsync(PessoaJuridica obj)
         {
-            ICollection<PessoaJuridica> list = _context.PessoaJuridicas
+            ICollection<PessoaJuridica> list = await _context.PessoaJuridicas
                 .Include(x => x.Publicacao)
                 //.Include(x => x.Publicacao).ThenInclude(x => x.Comentarios)
                 //.Include(x => x.Publicacao).ThenInclude(x => x.PublicacaoFotos)
                 //.Include(x => x.Publicacao.Comentarios).ThenInclude(x => x.PessoaFisica)
                 .Where(x => x.IBGE == obj.IBGE)
-                .ToList();
+                .ToListAsync();
 
             if (!string.IsNullOrEmpty(obj.RazaoSocial))
             {

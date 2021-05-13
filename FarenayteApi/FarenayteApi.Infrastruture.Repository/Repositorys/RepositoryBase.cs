@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Infrastruture.Repository.Repositorys
 {
@@ -16,12 +17,12 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public virtual void Add(TEntity obj)
+        public virtual async Task AddAsync(TEntity obj)
         {
             try
             {
                 _context.Set<TEntity>().Add(obj);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -29,22 +30,17 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             }
         }
 
-        public virtual TEntity GetById(int id)
+        public virtual async Task<TEntity> GetByIdAsync(int id)
         {
-            return _context.Set<TEntity>().Find(id);
+            return await _context.Set<TEntity>().FindAsync(id);
         }
 
-        public virtual ICollection<TEntity> GetAll()
-        {
-            return _context.Set<TEntity>().ToList();
-        }
-
-        public virtual void Update(TEntity obj)
+        public virtual async Task UpdateAsync(TEntity obj)
         {
             try
             {
                 _context.Entry(obj).State = EntityState.Modified;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -52,12 +48,12 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             }
         }
 
-        public virtual void Remove(TEntity obj)
+        public virtual async Task RemoveAsync(TEntity obj)
         {
             try
             {
                 _context.Set<TEntity>().Remove(obj);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -68,6 +64,6 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         public virtual void Dispose()
         {
             _context.Dispose();
-        }
+        }   
     }
 }

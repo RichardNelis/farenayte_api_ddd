@@ -1,7 +1,7 @@
 ﻿using FarenayteApi.Domain.Core.Interfaces.Repositorys;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using System;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Domain.Services.Services
 {
@@ -14,34 +14,29 @@ namespace FarenayteApi.Domain.Services.Services
             _repository = Repository;
         }
 
-        public virtual void Add(TEntity obj)
+        public virtual async Task AddAsync(TEntity obj)
         {
-            _repository.Add(obj);
+            await _repository.AddAsync(obj);
         }
 
-        public virtual TEntity GetById(int id)
+        public virtual async Task<TEntity> GetByIdAsync(int id)
         {
-            return _repository.GetById(id);
+            return await _repository.GetByIdAsync(id);
+        }
+               
+        public virtual async Task UpdateAsync(TEntity obj)
+        {
+            await _repository.UpdateAsync(obj);
         }
 
-        public virtual ICollection<TEntity> GetAll()
+        public virtual async Task RemoveAsync(TEntity obj)
         {
-            return _repository.GetAll();
-        }
-                
-        public virtual void Update(TEntity obj)
-        {
-            _repository.Update(obj);
-        }
-
-        public virtual void Remove(TEntity obj)
-        {
-            _repository.Remove(obj);
+            await _repository.RemoveAsync(obj);
         }
 
         public virtual void Dispose()
         {
             _repository.Dispose();
-        }
+        }        
     }
 }

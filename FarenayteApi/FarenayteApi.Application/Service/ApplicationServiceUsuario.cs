@@ -3,6 +3,7 @@ using FarenayteApi.Application.Interfaces;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Application.Service
 {
@@ -19,23 +20,23 @@ namespace FarenayteApi.Application.Service
             _servicePessoaFisica = ServicePessoaFisica;
         }
 
-        public UsuarioResponseDTO Add(UsuarioDTO dto)
+        public async Task<UsuarioResponseDTO> AddAsync(UsuarioDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
-            _service.Add(obj);
+            await _service.AddAsync(obj);
 
             return _mapper.MapperToDTOResponse(obj);
         }
 
-        public void Update(UsuarioDTO dto)
+        public async Task UpdateAsync(UsuarioDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
-            _service.Update(obj);
+            await _service.UpdateAsync(obj);
         }
 
-        public UsuarioDTO GetById(int id)
+        public async Task<UsuarioDTO> GetByIdAsync(int id)
         {
-            var objUsuario = _service.GetById(id);
+            var objUsuario = await _service.GetByIdAsync(id);
             return _mapper.MapperToDTO(objUsuario);
         }
 

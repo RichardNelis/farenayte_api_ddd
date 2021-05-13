@@ -20,13 +20,13 @@ namespace FarenayteAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult GetById(int id)
         {
-            return Ok(_applicationService.GetById(id));
+            return Ok(_applicationService.GetByIdAsync(id));
         }
 
         [HttpGet]
         public ActionResult Get([FromQuery] int esPublicacao)
         {
-            return Ok(_applicationService.GetByEsPublicacao(esPublicacao));
+            return Ok(_applicationService.GetByEsPublicacaoAsync(esPublicacao));
         }
 
         [HttpPost]
@@ -37,7 +37,7 @@ namespace FarenayteAPI.Controllers
                 if (dto == null)
                     return NotFound();
 
-                _applicationService.Add(dto);
+                _applicationService.AddAsync(dto);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Comentário salvo com sucesso!" };
@@ -60,7 +60,7 @@ namespace FarenayteAPI.Controllers
                     return NotFound();
                 }
 
-                _applicationService.Update(dto);
+                _applicationService.UpdateAsync(dto);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Comentário salvo com sucesso!" };
@@ -78,7 +78,7 @@ namespace FarenayteAPI.Controllers
         {
             try
             {
-                _applicationService.Remove(id);
+                _applicationService.RemoveAsync(id);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Comentário excluído com sucesso!" };
@@ -101,7 +101,7 @@ namespace FarenayteAPI.Controllers
                     return NotFound();
                 }
 
-                _applicationService.Update(dto);
+                _applicationService.UpdateAsync(dto);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Resposta salva com sucesso!" };
@@ -119,7 +119,7 @@ namespace FarenayteAPI.Controllers
         {
             try
             {
-                _applicationService.RemoverResposta(id);
+                _applicationService.RemoverRespostaAsync(id);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Resposta excluída com sucesso!" };

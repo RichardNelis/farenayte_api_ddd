@@ -4,6 +4,7 @@ using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Application.Service
 {
@@ -18,28 +19,28 @@ namespace FarenayteApi.Application.Service
             _mapper = Mapper;
         }
 
-        public void Add(PessoaJuridicaDTO dto)
+        public async Task AddAsync(PessoaJuridicaDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
-            _service.Add(obj);
+            await _service.AddAsync(obj);
         }
 
-        public PessoaJuridicaDTO GetById(int id)
+        public async Task<PessoaJuridicaDTO> GetByIdAsync(int id)
         {
-            var obj = _service.GetById(id);
+            var obj = await _service.GetByIdAsync(id);
             return _mapper.MapperToDTO(obj);
         }
 
-        public PessoaJuridicaDTO GetByIdFull(int id)
+        public async Task<PessoaJuridicaDTO> GetByIdFullAsync(int id)
         {
-            var obj = _service.GetByIdFull(id);
+            var obj = await _service.GetByIdFullAsync(id);
             return _mapper.MapperToDTO(obj);
         }
 
-        public void Update(PessoaJuridicaDTO dto)
+        public async Task UpdateAsync(PessoaJuridicaDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
-            _service.Update(obj);
+            await _service.UpdateAsync(obj);
         }
 
         public void Dispose()

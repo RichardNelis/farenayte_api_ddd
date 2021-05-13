@@ -1,4 +1,5 @@
-﻿using FarenayteApi.Domain.Core.Interfaces.Repositorys;
+﻿using System.Threading.Tasks;
+using FarenayteApi.Domain.Core.Interfaces.Repositorys;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Domain.Models;
 
@@ -14,9 +15,9 @@ namespace FarenayteApi.Domain.Services.Services
             _repository = Repository;
         }
 
-        public virtual PessoaJuridica GetByIdFull(int id)
+        public virtual async Task<PessoaJuridica> GetByIdFullAsync(int id)
         {
-            return _repository.GetByIdFull(id);
+            return await _repository.GetByIdFullAsync(id);
         }
     }
 }

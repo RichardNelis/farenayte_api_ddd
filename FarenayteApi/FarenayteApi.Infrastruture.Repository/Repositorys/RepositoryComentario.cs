@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using FarenayteApi.Domain.Core.Interfaces.Repositorys;
 using FarenayteApi.Domain.Models;
 using FarenayteApi.Infrastructure.Data;
@@ -16,9 +17,9 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public virtual ICollection<Comentario> GetByEsPublicacao(int esPublicacao)
+        public virtual async Task<ICollection<Comentario>> GetByEsPublicacaoAsync(int esPublicacao)
         {
-            return _context.Comentarios.Include(x => x.PessoaFisica).Where(x => x.EsPublicacao == esPublicacao).ToList();
+            return await _context.Comentarios.Include(x => x.PessoaFisica).Where(x => x.EsPublicacao == esPublicacao).ToListAsync();
         }
     }
 }

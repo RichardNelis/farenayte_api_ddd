@@ -22,25 +22,25 @@ namespace FarenayteApi.Application.Service
             _mapper = Mapper;
         }
 
-        public LoginResponseDTO ValidarAcesso(LoginDTO dto)
+        public async Task<LoginResponseDTO> ValidarAcessoAsync(LoginDTO dto)
         {
-            var objUsuarios = GetByEmail(dto.Email);
+            var objUsuarios = await GetByEmailAsync(dto.Email);
             var objUsuario = GetByPassword(objUsuarios, dto.Password);
-            var objPessoaFisica = _servicePessoaFisica.GetById(objUsuario.Id);
+            var objPessoaFisica = await _servicePessoaFisica.GetByIdAsync(objUsuario.Id);
 
             return _mapper.MapperToDTO(objPessoaFisica);
         }
 
-        public LoginResponseDTO GetById(int id)
+        public async Task<LoginResponseDTO> GetByIdAsync(int id)
         {
-            var objUsuario = _serviceUsuario.GetById(id);
-            var objPessoaFisica = _servicePessoaFisica.GetById(objUsuario.Id);
+            var objUsuario = await _serviceUsuario.GetByIdAsync(id);
+            var objPessoaFisica = await _servicePessoaFisica.GetByIdAsync(objUsuario.Id);
             return _mapper.MapperToDTO(objPessoaFisica);
         }
 
-        private ICollection<Domain.Models.Usuario> GetByEmail(string email)
+        private async Task<ICollection<Domain.Models.Usuario>> GetByEmailAsync(string email)
         {
-            var objUsuarios = _serviceUsuario.GetByEmail(email);
+            var objUsuarios = await _serviceUsuario.GetByEmailAsync(email);
 
             if (objUsuarios.Count == 0)
             {

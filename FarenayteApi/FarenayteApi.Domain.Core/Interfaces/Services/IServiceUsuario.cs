@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using FarenayteApi.Domain.Models;
 
 namespace FarenayteApi.Domain.Core.Interfaces.Services
 {
     public interface IServiceUsuario : IServiceBase<Usuario>
     {
-        ICollection<Usuario> GetByEmail(string email);
+        Task<ICollection<Usuario>> GetByEmailAsync(string email);
     }
 }

@@ -1,17 +1,18 @@
 ﻿using FarenayteApi.Application.DTO.DTO;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Application.Interfaces
 {
     public interface IApplicationServicePessoaJuridica
     {
-        void Add(PessoaJuridicaDTO dto);
+        Task AddAsync(PessoaJuridicaDTO dto);
 
-        PessoaJuridicaDTO GetById(int id);
+        Task<PessoaJuridicaDTO> GetByIdAsync(int id);
 
-        PessoaJuridicaDTO GetByIdFull(int id);
+        Task<PessoaJuridicaDTO> GetByIdFullAsync(int id);
                 
-        void Update(PessoaJuridicaDTO dto);
+        Task UpdateAsync(PessoaJuridicaDTO dto);
 
         void Dispose();
     }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using FarenayteApi.Domain.Core.Interfaces.Repositorys;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Domain.Models;
@@ -15,9 +16,9 @@ namespace FarenayteApi.Domain.Services.Services
             _repository = Repository;
         }
 
-        public virtual ICollection<Usuario> GetByEmail(string email)
+        public virtual async Task<ICollection<Usuario>> GetByEmailAsync(string email)
         {
-            return _repository.GetByEmail(email);
+            return await _repository.GetByEmailAsync(email);
         }
     }
 }

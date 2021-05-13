@@ -29,7 +29,7 @@ namespace FarenayteApi.Presentation.Controllers
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            return Ok(_applicationService.GetById(AuthUser().Id));
+            return Ok(_applicationService.GetByIdAsync(AuthUser().Id));
         }
 
         [HttpPost]
@@ -48,7 +48,7 @@ namespace FarenayteApi.Presentation.Controllers
                     await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
                 }
 
-                UsuarioResponseDTO responseDTO = _applicationService.Add(dto);
+                UsuarioResponseDTO responseDTO = await _applicationService.AddAsync(dto);
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Cadastro salvo com sucesso!" };
 
@@ -77,7 +77,7 @@ namespace FarenayteApi.Presentation.Controllers
                     await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
                 }
                 
-                _applicationService.Update(dto);
+                await _applicationService.UpdateAsync(dto);
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Cadastro atualizado com sucesso!" };
 

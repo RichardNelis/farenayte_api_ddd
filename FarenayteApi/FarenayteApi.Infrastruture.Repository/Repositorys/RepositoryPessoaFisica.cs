@@ -3,6 +3,7 @@ using FarenayteApi.Domain.Models;
 using FarenayteApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Infrastruture.Repository.Repositorys
 {
@@ -15,12 +16,12 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public override PessoaFisica GetById(int id)
+        public override async Task<PessoaFisica> GetByIdAsync(int id)
         {
-            return _context.PessoaFisicas
+            return await _context.PessoaFisicas
                 .Where(x => x.EsUsuario == id)
                 .Include(x => x.PessoaJuridica)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
         }
     }
 }

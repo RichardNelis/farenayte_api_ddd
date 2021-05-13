@@ -4,6 +4,7 @@ using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Application.Service
 {
@@ -18,42 +19,42 @@ namespace FarenayteApi.Application.Service
             _mapper = Mapper;
         }
 
-        public void Add(ComentarioDTO dto)
+        public async Task AddAsync(ComentarioDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
-            _service.Add(obj);
+            await _service.AddAsync(obj);
             dto.Id = obj.Id;
         }
 
-        public ComentarioDTO GetById(int id)
+        public async Task<ComentarioDTO> GetByIdAsync(int id)
         {
-            var obj = _service.GetById(id);
+            var obj = await _service.GetByIdAsync(id);
             return _mapper.MapperToDTO(obj);
         }
 
-        public ICollection<ComentarioDTO> GetByEsPublicacao(int id)
+        public async Task<ICollection<ComentarioDTO>> GetByEsPublicacaoAsync(int id)
         {
-            var obj = _service.GetByEsPublicacao(id);
+            var obj = await _service.GetByEsPublicacaoAsync(id);
             return _mapper.MapperList(obj);
         }
 
-        public void Remove(int id)
+        public async Task RemoveAsync(int id)
         {
-            var obj = _service.GetById(id);
-            _service.Remove(obj);
+            var obj = await _service.GetByIdAsync(id);
+            await _service.RemoveAsync(obj);
         }
 
-        public void Update(ComentarioDTO dto)
+        public async Task UpdateAsync(ComentarioDTO dto)
         {
             var obj = _mapper.MapperToEntity(dto);
-            _service.Update(obj);
+            await _service.UpdateAsync(obj);
         }
 
-        public void RemoverResposta(int id)
+        public async Task RemoverRespostaAsync(int id)
         {
-            var obj = _service.GetById(id);
+            var obj = await _service.GetByIdAsync(id);
             obj.Resposta = null;
-            _service.Update(obj);
+            await _service.UpdateAsync(obj);
         }
 
         public void Dispose()

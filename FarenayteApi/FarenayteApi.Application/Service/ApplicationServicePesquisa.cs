@@ -4,6 +4,7 @@ using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Application.Service
 {
@@ -18,9 +19,9 @@ namespace FarenayteApi.Application.Service
             _mapper = Mapper;
         }
 
-        public ICollection<PesquisaResponseDTO> GetFilter(PesquisaRequestDTO dto)
-        {            
-            var obj = _service.GetFilter(_mapper.MapperToEntity(dto));
+        public async Task<ICollection<PesquisaResponseDTO>> GetFilterAsync(PesquisaRequestDTO dto)
+        {
+            var obj = await _service.GetFilterAsync(_mapper.MapperToEntity(dto));
             return _mapper.MapperList(obj);
         }
 

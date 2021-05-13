@@ -5,9 +5,9 @@ namespace FarenayteApi.Application.Interfaces
 {
     public interface IApplicationServiceAutorizacao
     {
-        LoginResponseDTO ValidarAcesso(LoginDTO dto);
+        Task<LoginResponseDTO> ValidarAcessoAsync(LoginDTO dto);
 
-        LoginResponseDTO GetById(int id);
+        Task<LoginResponseDTO> GetByIdAsync(int id);
 
         void Dispose();
     }

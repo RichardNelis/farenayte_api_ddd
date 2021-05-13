@@ -18,12 +18,12 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public virtual void Add(Usuario obj)
+        public virtual async Task AddAsync(Usuario obj)
         {
             try
             {
-                _context.Usuarios.Add(obj);
-                _context.SaveChanges();
+                await _context.Usuarios.AddAsync(obj);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -31,11 +31,11 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             }
         }
 
-        public virtual ICollection<Usuario> GetByEmail(string email) => _context.Usuarios.Where(x => x.Email == email).ToList();
+        public virtual async Task<ICollection<Usuario>> GetByEmailAsync(string email) => await _context.Usuarios.Where(x => x.Email == email).ToListAsync();
 
-        public virtual Usuario GetById(int id) => _context.Usuarios.Include(x => x.PessoaFisica).FirstOrDefault(x => x.Id == id);
+        public virtual async Task<Usuario> GetByIdAsync(int id) => await _context.Usuarios.Include(x => x.PessoaFisica).FirstOrDefaultAsync(x => x.Id == id);
 
-        public virtual void Update(Usuario obj)
+        public virtual async Task UpdateAsync(Usuario obj)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                 usuario.PessoaFisica.DtNascimento = obj.PessoaFisica.DtNascimento;
 
                 _context.Entry(usuario).State = EntityState.Modified;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -60,12 +60,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context.Dispose();
         }
 
-        public ICollection<Usuario> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(Usuario obj)
+        public Task RemoveAsync(Usuario obj)
         {
             throw new NotImplementedException();
         }

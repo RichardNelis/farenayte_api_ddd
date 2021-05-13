@@ -1,18 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Domain.Core.Interfaces.Repositorys
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {
-        void Add(TEntity obj);
+        Task AddAsync(TEntity obj);
 
-        TEntity GetById(int id);
+        Task<TEntity> GetByIdAsync(int id);
+        
+        Task UpdateAsync(TEntity obj);
 
-        ICollection<TEntity> GetAll();
-
-        void Update(TEntity obj);
-
-        void Remove(TEntity obj);
+        Task RemoveAsync(TEntity obj);
 
         void Dispose();
     }

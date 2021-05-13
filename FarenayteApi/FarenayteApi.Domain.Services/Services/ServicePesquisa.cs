@@ -3,6 +3,7 @@ using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Domain.Services.Services
 {
@@ -15,9 +16,9 @@ namespace FarenayteApi.Domain.Services.Services
             _repository = Repository;
         }
 
-        public virtual ICollection<PessoaJuridica> GetFilter(PessoaJuridica obj)
+        public virtual async Task<ICollection<PessoaJuridica>> GetFilterAsync(PessoaJuridica obj)
         {
-            return _repository.GetFilter(obj);
+            return await _repository.GetFilterAsync(obj);
         }
 
         public virtual void Dispose()

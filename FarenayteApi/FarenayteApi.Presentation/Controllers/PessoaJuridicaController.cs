@@ -27,13 +27,13 @@ namespace FarenayteApi.Presentation.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok(_applicationService.GetById(AuthUser().Id));
+            return Ok(_applicationService.GetByIdAsync(AuthUser().Id));
         }
 
         [HttpGet("{esUsuario}")]
         public ActionResult Get(int esUsuario)
         {
-            return Ok(_applicationService.GetByIdFull(esUsuario));
+            return Ok(_applicationService.GetByIdFullAsync(esUsuario));
         }
 
         [HttpPost]
@@ -62,7 +62,7 @@ namespace FarenayteApi.Presentation.Controllers
                 }
 
                 dto.EsPessoaFisica = AuthUser().Id;
-                _applicationService.Add(dto);
+                await _applicationService.AddAsync(dto);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Cadastro salvo com sucesso!" };
@@ -102,7 +102,7 @@ namespace FarenayteApi.Presentation.Controllers
 
                 dto.EsPessoaFisica = AuthUser().Id;
 
-                _applicationService.Update(dto);
+                await _applicationService.UpdateAsync(dto);
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Cadastro atualizado com sucesso!" };
 

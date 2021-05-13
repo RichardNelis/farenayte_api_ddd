@@ -17,12 +17,6 @@ namespace FarenayteApi.Presentation.Controllers
         public ImagemController(IWebHostEnvironment hostEnvironment)
         {
             webHostEnvironment = hostEnvironment;
-
-            /*if (!Directory.Exists(webHostEnvironment.ContentRootPath + "\\Imagens\\"))
-            {
-                Directory.CreateDirectory(webHostEnvironment.ContentRootPath + "\\Imagens\\");
-            }*/
-
             _pathRoot = webHostEnvironment.ContentRootPath + "\\Imagens\\";
         }
 
@@ -55,41 +49,5 @@ namespace FarenayteApi.Presentation.Controllers
 
             return file.FileName;
         }
-
-        /*[HttpPost]
-        [AllowAnonymous]
-        public async Task<ActionResult> EnviaArquivo([FromForm] IFormFileCollection arquivos)
-        {
-            if (arquivos.Count > 0)
-            {
-                try
-                {
-                    for (int i = 0; i < arquivos.Count; i++)
-                    {
-                        using (FileStream filestream = System.IO.File.Create(_pathRoot + arquivos[i].FileName))
-                        {
-                            String caminho = "\\Imagens\\" + arquivos[i].FileName;
-                            await arquivos[i].CopyToAsync(filestream);
-                            filestream.Flush();
-                        }
-                    }
-
-                    return Ok();
-                }
-                catch (Exception)
-                {
-                    for (int i = 0; i < arquivos.Count; i++)
-                    {
-                        System.IO.File.Delete(_pathRoot + arquivos[i].FileName);
-                    }
-
-                    return BadRequest();
-                }
-            }
-            else
-            {
-                return Ok();
-            }
-        }*/
     }
 }

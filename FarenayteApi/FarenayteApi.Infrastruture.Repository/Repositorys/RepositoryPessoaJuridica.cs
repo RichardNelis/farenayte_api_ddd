@@ -4,6 +4,7 @@ using FarenayteApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Infrastruture.Repository.Repositorys
 {
@@ -16,31 +17,31 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public override PessoaJuridica GetById(int id)
+        public override async Task<PessoaJuridica> GetByIdAsync(int id)
         {
-            return _context.PessoaJuridicas
+            return await _context.PessoaJuridicas
                 .Where(x => x.EsPessoaFisica == id)
                 .Include(x => x.Publicacao).ThenInclude(x => x.PublicacaoFotos)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
         }
 
-        public virtual PessoaJuridica GetByIdFull(int id)
+        public virtual async Task<PessoaJuridica> GetByIdFullAsync(int id)
         {
-            return _context.PessoaJuridicas
+            return await _context.PessoaJuridicas
                 .Where(x => x.EsPessoaFisica == id)
                 .Include(x => x.Publicacao).ThenInclude(x => x.PublicacaoFotos)
                 .Include(x => x.Publicacao).ThenInclude(x => x.Comentarios).ThenInclude(x => x.PessoaFisica)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
         }
 
-        public override void Update(PessoaJuridica obj)
+        public override async Task UpdateAsync(PessoaJuridica obj)
         {
             try
             {
-                PessoaJuridica pessoaJuridica = _context.PessoaJuridicas
+                PessoaJuridica pessoaJuridica = await _context.PessoaJuridicas
                     .Include(x => x.Publicacao)
                     .ThenInclude(x => x.PublicacaoFotos)
-                    .First(x => x.EsPessoaFisica == obj.EsPessoaFisica);
+                    .FirstAsync(x => x.EsPessoaFisica == obj.EsPessoaFisica);
 
                 pessoaJuridica.Logo = obj.Logo;
                 pessoaJuridica.Cnpj = obj.Cnpj;
@@ -66,7 +67,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                 pessoaJuridica.Publicacao.PublicacaoFotos = obj.Publicacao.PublicacaoFotos;
 
                 _context.Entry(pessoaJuridica).State = EntityState.Modified;
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {

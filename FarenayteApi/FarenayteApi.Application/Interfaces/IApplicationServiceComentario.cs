@@ -1,21 +1,22 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using FarenayteApi.Application.DTO.DTO;
 
 namespace FarenayteApi.Application.Interfaces
 {
     public interface IApplicationServiceComentario
     {
-        void Add(ComentarioDTO dto);
+        Task AddAsync(ComentarioDTO dto);
 
-        ComentarioDTO GetById(int id);
+        Task<ComentarioDTO> GetByIdAsync(int id);
 
-        ICollection<ComentarioDTO> GetByEsPublicacao(int esPublicacao);
+        Task<ICollection<ComentarioDTO>> GetByEsPublicacaoAsync(int esPublicacao);
         
-        void Update(ComentarioDTO dto);
+        Task UpdateAsync(ComentarioDTO dto);
 
-        void RemoverResposta(int id);
+        Task RemoverRespostaAsync(int id);
 
-        void Remove(int id);
+        Task RemoveAsync(int id);
 
         void Dispose();
     }

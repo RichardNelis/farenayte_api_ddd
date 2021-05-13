@@ -6,11 +6,11 @@ namespace FarenayteApi.Application.Interfaces
 {
     public interface IApplicationServiceUsuario
     {
-        UsuarioResponseDTO Add(UsuarioDTO dto);
+        Task<UsuarioResponseDTO> AddAsync(UsuarioDTO dto);
 
-        UsuarioDTO GetById(int id);
+        Task<UsuarioDTO> GetByIdAsync(int id);
 
-        void Update(UsuarioDTO dto);
+        Task UpdateAsync(UsuarioDTO dto);
 
         void Dispose();
     }

@@ -28,7 +28,7 @@ namespace FarenayteApi.Presentation.Controllers
                 if (dto == null)
                     return NotFound();
 
-                LoginResponseDTO login = _applicationService.ValidarAcesso(dto);
+                LoginResponseDTO login = await _applicationService.ValidarAcessoAsync(dto);
                 login.Token = await Token.GenerateToken(login);
 
                 MessageDTO message = new MessageDTO();
@@ -52,7 +52,7 @@ namespace FarenayteApi.Presentation.Controllers
         {
             try
             {
-                LoginResponseDTO login = _applicationService.GetById(AuthUser().Id);
+                LoginResponseDTO login = await _applicationService.GetByIdAsync(AuthUser().Id);
                 login.Token = await Token.GenerateToken(login);
 
                 MessageDTO message = new MessageDTO();

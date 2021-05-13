@@ -3,6 +3,7 @@ using FarenayteApi.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation.Controllers
 {
@@ -17,11 +18,11 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpGet]
-        public ActionResult Get([FromQuery] PesquisaRequestDTO data)
+        public async Task<ActionResult> GetAsync([FromQuery] PesquisaRequestDTO data)
         {
             try
             {
-                var list = _applicationService.GetFilter(data);
+                var list = await _applicationService.GetFilterAsync(data);
 
                 if (list.Count == 0)
                 {
