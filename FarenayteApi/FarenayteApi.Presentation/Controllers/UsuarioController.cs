@@ -26,8 +26,8 @@ namespace FarenayteApi.Presentation.Controllers
             webHostEnvironment = hostEnvironment;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpGet, ActionName("GetAsync")]
+        public async Task<IActionResult> GetAsync()
         {
             return Ok(await _applicationService.GetByIdAsync(AuthUser().Id));
         }
@@ -52,7 +52,7 @@ namespace FarenayteApi.Presentation.Controllers
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Cadastro salvo com sucesso!" };
 
-                return CreatedAtAction(nameof(Get), new { usuario = responseDTO, message });
+                return CreatedAtAction(nameof(GetAsync), new { usuario = responseDTO, message });
             }
             catch (Exception ex)
             {

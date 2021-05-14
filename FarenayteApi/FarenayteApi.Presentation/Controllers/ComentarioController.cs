@@ -18,7 +18,7 @@ namespace FarenayteAPI.Controllers
             _applicationService = ApplicationService;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), ActionName("GetByIdAsync")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             return Ok(await _applicationService.GetByIdAsync(id));

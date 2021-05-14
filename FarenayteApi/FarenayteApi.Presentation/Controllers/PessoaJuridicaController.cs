@@ -24,7 +24,7 @@ namespace FarenayteApi.Presentation.Controllers
             webHostEnvironment = hostEnvironment;
         }
 
-        [HttpGet]
+        [HttpGet, ActionName("GetAsync")]
         public async Task<IActionResult> GetAsync()
         {
             return Ok(await _applicationService.GetByIdAsync(AuthUser().Id));
