@@ -21,7 +21,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         {
             try
             {
-                _context.Set<TEntity>().Add(obj);
+                await _context.Set<TEntity>().AddAsync(obj);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
