@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FarenayteAPI.Controllers
 {
@@ -18,31 +19,31 @@ namespace FarenayteAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult GetById(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
-            return Ok(_applicationService.GetByIdAsync(id));
+            return Ok(await _applicationService.GetByIdAsync(id));
         }
 
         [HttpGet]
-        public ActionResult Get([FromQuery] int esPublicacao)
+        public async Task<IActionResult> GetAsync([FromQuery] int esPublicacao)
         {
-            return Ok(_applicationService.GetByEsPublicacaoAsync(esPublicacao));
+            return Ok(await _applicationService.GetByEsPublicacaoAsync(esPublicacao));
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] ComentarioDTO dto)
+        public async Task<IActionResult> Post([FromBody] ComentarioDTO dto)
         {
             try
             {
                 if (dto == null)
                     return NotFound();
 
-                _applicationService.AddAsync(dto);
+                await _applicationService.AddAsync(dto);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Comentário salvo com sucesso!" };
 
-                return CreatedAtAction(nameof(GetById), new { id = dto.Id }, new { comentario = dto, message });
+                return CreatedAtAction(nameof(GetByIdAsync), new { id = dto.Id }, new { comentario = dto, message });
             }
             catch (Exception ex)
             {
@@ -51,7 +52,7 @@ namespace FarenayteAPI.Controllers
         }
 
         [HttpPut]
-        public ActionResult PutComentario([FromBody] ComentarioDTO dto)
+        public async Task<IActionResult> PutComentarioAsync([FromBody] ComentarioDTO dto)
         {
             try
             {
@@ -60,7 +61,7 @@ namespace FarenayteAPI.Controllers
                     return NotFound();
                 }
 
-                _applicationService.UpdateAsync(dto);
+                await _applicationService.UpdateAsync(dto);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Comentário salvo com sucesso!" };
@@ -74,11 +75,11 @@ namespace FarenayteAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteComentario(int id)
+        public async Task<IActionResult> DeleteComentarioAsync(int id)
         {
             try
             {
-                _applicationService.RemoveAsync(id);
+                await _applicationService.RemoveAsync(id);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Comentário excluído com sucesso!" };
@@ -92,7 +93,7 @@ namespace FarenayteAPI.Controllers
         }
 
         [HttpPut("resposta")]
-        public ActionResult PutResposta([FromBody] ComentarioDTO dto)
+        public async Task<IActionResult> PutRespostaAsync([FromBody] ComentarioDTO dto)
         {
             try
             {
@@ -101,7 +102,7 @@ namespace FarenayteAPI.Controllers
                     return NotFound();
                 }
 
-                _applicationService.UpdateAsync(dto);
+                await _applicationService.UpdateAsync(dto);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Resposta salva com sucesso!" };
@@ -115,11 +116,11 @@ namespace FarenayteAPI.Controllers
         }
 
         [HttpDelete("resposta/{id}")]
-        public ActionResult DeleteResposta(int id)
+        public async Task<IActionResult> DeleteRespostaAsync(int id)
         {
             try
             {
-                _applicationService.RemoverRespostaAsync(id);
+                await _applicationService.RemoverRespostaAsync(id);
 
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Resposta excluída com sucesso!" };
