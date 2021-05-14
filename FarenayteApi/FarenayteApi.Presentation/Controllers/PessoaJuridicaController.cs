@@ -37,7 +37,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostAsync([FromForm] string usuario, [FromForm] IFormFile file, [FromForm] List<IFormFile> files)
+        public async Task<IActionResult> PostAsync([FromForm] string usuario, [FromForm] IFormFile file, [FromForm] List<IFormFile> files)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> PutAsync([FromForm] string usuario, [FromForm] IFormFile file, [FromForm] List<IFormFile> files)
+        public async Task<IActionResult> PutAsync([FromForm] string usuario, [FromForm] IFormFile file, [FromForm] List<IFormFile> files)
         {
             try
             {

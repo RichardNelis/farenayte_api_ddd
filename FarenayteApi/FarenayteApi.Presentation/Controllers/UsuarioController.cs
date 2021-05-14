@@ -27,14 +27,14 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_applicationService.GetByIdAsync(AuthUser().Id));
+            return Ok(await _applicationService.GetByIdAsync(AuthUser().Id));
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> PostAsync([FromForm] string usuario, [FromForm] IFormFile file)
+        public async Task<IActionResult> PostAsync([FromForm] string usuario, [FromForm] IFormFile file)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> PutAsync([FromForm] string usuario, [FromForm] IFormFile file)
+        public async Task<IActionResult> PutAsync([FromForm] string usuario, [FromForm] IFormFile file)
         {
             try
             {

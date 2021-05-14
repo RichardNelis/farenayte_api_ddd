@@ -18,7 +18,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAsync([FromQuery] PesquisaRequestDTO data)
+        public async Task<IActionResult> GetAsync([FromQuery] PesquisaRequestDTO data)
         {
             try
             {

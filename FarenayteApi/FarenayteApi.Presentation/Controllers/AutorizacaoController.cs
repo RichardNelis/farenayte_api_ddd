@@ -21,7 +21,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [HttpPost("autenticar")]
-        public async Task<ActionResult> Post([FromBody] LoginDTO dto)
+        public async Task<IActionResult> Post([FromBody] LoginDTO dto)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace FarenayteApi.Presentation.Controllers
 
         [Authorize()]
         [HttpPost("validaracesso")]
-        public async Task<ActionResult> Post()
+        public async Task<IActionResult> Post()
         {
             try
             {
