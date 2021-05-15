@@ -41,6 +41,10 @@ namespace FarenayteApi.Application.DTO.DTO
 
         public int IBGE { get; set; }
 
+        public double Latitude { get;set; }
+
+        public double Longitude { get;set; }
+
         [JsonProperty(PropertyName = "publicacao")]
         public virtual PublicacaoDTO Publicacao { get; set; }
     }

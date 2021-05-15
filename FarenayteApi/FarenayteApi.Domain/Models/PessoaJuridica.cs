@@ -55,6 +55,12 @@ namespace FarenayteApi.Domain.Models
         [Column("ibge")]
         public int IBGE { get; set; }
 
+        [Column("latitude")]
+        public double Latitude { get;set; }
+
+        [Column("longitude")]
+        public double Longitude { get;set; }
+
         [ForeignKey("EsPessoaFisica")]
         public virtual PessoaFisica PessoaFisica { get; set; }
 
