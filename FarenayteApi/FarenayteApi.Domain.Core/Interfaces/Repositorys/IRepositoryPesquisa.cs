@@ -6,7 +6,7 @@ namespace FarenayteApi.Domain.Core.Interfaces.Repositorys
 {
     public interface IRepositoryPesquisa
     {
-        Task<ICollection<PessoaJuridica>> GetFilterAsync(PessoaJuridica obj);
+        Task<ICollection<PessoaJuridica>> GetFilterAsync(dynamic obj);
 
         void Dispose();
     }

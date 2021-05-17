@@ -21,7 +21,7 @@ namespace FarenayteApi.Application.Service
 
         public async Task<ICollection<PesquisaResponseDTO>> GetFilterAsync(PesquisaRequestDTO dto)
         {
-            var obj = await _service.GetFilterAsync(_mapper.MapperToEntity(dto));
+            var obj = await _service.GetFilterAsync(dto);
             return _mapper.MapperList(obj);
         }
 

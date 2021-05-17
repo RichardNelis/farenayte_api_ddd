@@ -16,7 +16,7 @@ namespace FarenayteApi.Domain.Services.Services
             _repository = Repository;
         }
 
-        public virtual async Task<ICollection<PessoaJuridica>> GetFilterAsync(PessoaJuridica obj)
+        public virtual async Task<ICollection<PessoaJuridica>> GetFilterAsync(dynamic obj)
         {
             return await _repository.GetFilterAsync(obj);
         }
