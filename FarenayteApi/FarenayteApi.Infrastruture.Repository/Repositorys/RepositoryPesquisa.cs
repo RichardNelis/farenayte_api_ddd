@@ -50,7 +50,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                 list = list.Where(x => x.Publicacao.Descricao.Contains(obj.Publicacao.Descricao)).ToList();
             }
 
-            if (obj.Preco.HasValue)
+            if (obj.Preco != null && obj.Preco.HasValue)
             {
                 list = list.Where(x => x.Publicacao.Preco == obj.Publicacao.Preco).ToList();
             }
