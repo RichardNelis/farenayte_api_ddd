@@ -1,7 +1,6 @@
 ﻿using FarenayteApi.Domain.Core.Interfaces.Repositorys;
 using FarenayteApi.Domain.Models;
 using FarenayteApi.Infrastructure.Data;
-using GeoCoordinatePortable;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
