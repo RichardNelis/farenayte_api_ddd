@@ -50,7 +50,7 @@ namespace FarenayteApi.Domain.Models
         public string Complemento { get; set; }
 
         [Column("uf")]
-        public string UF { get; set; }
+        public int UF { get; set; }
 
         [Column("ibge")]
         public int IBGE { get; set; }

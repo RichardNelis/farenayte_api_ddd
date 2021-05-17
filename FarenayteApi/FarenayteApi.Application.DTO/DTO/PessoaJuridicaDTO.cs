@@ -37,7 +37,7 @@ namespace FarenayteApi.Application.DTO.DTO
 
         public string Complemento { get; set; }
 
-        public string UF { get; set; }
+        public int UF { get; set; }
 
         public int IBGE { get; set; }
 
