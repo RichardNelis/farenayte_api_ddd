@@ -25,6 +25,7 @@ namespace FarenayteApi.Infrastructure.Data
             {
                 if (entry.State == EntityState.Added)
                 {
+                    entry.Property("DataInclusao").IsModified = true;
                     entry.Property("DataInclusao").CurrentValue = DateTime.Now;
                 }
 

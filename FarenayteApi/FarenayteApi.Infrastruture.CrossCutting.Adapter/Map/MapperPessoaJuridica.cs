@@ -36,6 +36,8 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                 Complemento = dto.Complemento,
                 UF = dto.UF,
                 IBGE = dto.IBGE,
+                Latitude = dto.Latitude,
+                Longitude = dto.Longitude,
                 Publicacao = _mapperPublicacao.MapperToEntity(dto.Publicacao)
             };
 
@@ -64,6 +66,8 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                     Complemento = obj.Complemento,
                     UF = obj.UF,
                     IBGE = obj.IBGE,
+                    Latitude = obj.Latitude,
+                    Longitude = obj.Longitude,
                     Publicacao = _mapperPublicacao.MapperToDTO(obj.Publicacao)
                 };
 
@@ -98,6 +102,8 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                 Complemento = obj.Complemento,
                 UF = obj.UF,
                 IBGE = obj.IBGE,
+                Latitude = obj.Latitude,
+                Longitude = obj.Longitude,
                 Publicacao = _mapperPublicacao.MapperToDTO(obj.Publicacao)
             };
 
