@@ -29,6 +29,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                 .Where(x => (12742 * Math.Asin(Math.Sqrt(Math.Sin(((Math.PI / 180) * (x.Latitude - latitude)) / 2) * Math.Sin(((Math.PI / 180) * (x.Latitude - latitude)) / 2) +
                                      Math.Cos((Math.PI / 180) * latitude) * Math.Cos((Math.PI / 180) * (x.Latitude)) *
                                      Math.Sin(((Math.PI / 180) * (x.Longitude - longitude)) / 2) * Math.Sin(((Math.PI / 180) * (x.Longitude - longitude)) / 2)))) <= 50)
+                .OrderByDescending(x => x.Publicacao.Comentarios.Sum<Comentario>(y => y.Rating))                
                 .ToListAsync();    
             
             return list;
