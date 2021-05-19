@@ -2,6 +2,7 @@
 using FarenayteApi.Domain.Models;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
 {
@@ -42,6 +43,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                     Descricao = obj.Publicacao.Descricao,
                     Preco = obj.Publicacao.Preco,
                     IBGE = obj.IBGE,
+                    Rating = obj.Publicacao.Comentarios.Sum(x =>  x.Rating)
                 };
 
                 _pessoaJuridicaDTOs.Add(dto);

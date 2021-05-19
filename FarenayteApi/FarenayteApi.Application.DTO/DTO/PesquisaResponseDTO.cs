@@ -22,5 +22,7 @@ namespace FarenayteApi.Application.DTO.DTO
         public decimal? Preco { get; set; }
 
         public int IBGE { get; set; }
+
+        public double Rating{ get; set; }
     }
 }
