@@ -53,16 +53,32 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             {
                 throw ex;
             }
-        }
+        }        
 
-        public virtual void Dispose()
+        public virtual async Task UpdateAlterarSenhaAsync(int id, String password)
         {
-            _context.Dispose();
+            try
+            {
+                Usuario usuario = _context.Usuarios.Include(x => x.PessoaFisica).First(x => x.Id == id);
+                usuario.Password = password;
+
+                _context.Entry(usuario).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Task RemoveAsync(Usuario obj)
         {
             throw new NotImplementedException();
+        }
+
+        public virtual void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

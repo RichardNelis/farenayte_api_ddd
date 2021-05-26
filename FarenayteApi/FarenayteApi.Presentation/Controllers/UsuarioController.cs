@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation.Controllers
@@ -76,10 +74,32 @@ namespace FarenayteApi.Presentation.Controllers
                 {
                     await new ImagemController(webHostEnvironment).UploadedFileAsync(file);
                 }
-                
+
                 await _applicationService.UpdateAsync(dto);
                 MessageDTO message = new MessageDTO();
                 message.Messages = new List<string> { "Cadastro atualizado com sucesso!" };
+
+                return Ok(message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("password")]
+        public async Task<IActionResult> PutAsync(UsuarioAlterarSenhaDTO dto)
+        {
+            try
+            {
+                if (dto == null)
+                    return NotFound();
+
+                dto.Id = AuthUser().Id;
+
+                await _applicationService.UpdatePasswordAsync(dto);
+                MessageDTO message = new MessageDTO();
+                message.Messages = new List<string> { "Senha atualizada com sucesso!" };
 
                 return Ok(message);
             }

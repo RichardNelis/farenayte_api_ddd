@@ -22,7 +22,11 @@ namespace FarenayteApi.Application.Service
 
         public async Task<UsuarioResponseDTO> AddAsync(UsuarioDTO dto)
         {
+            string hmacSHA256 = GenerateHmac.HmacSHA256(dto.Password);
+
             var obj = _mapper.MapperToEntity(dto);
+            obj.Password = hmacSHA256;
+
             await _service.AddAsync(obj);
 
             return _mapper.MapperToDTOResponse(obj);
@@ -38,6 +42,18 @@ namespace FarenayteApi.Application.Service
         {
             var objUsuario = await _service.GetByIdAsync(id);
             return _mapper.MapperToDTO(objUsuario);
+        }
+
+        public async Task UpdatePasswordAsync(UsuarioAlterarSenhaDTO dto)
+        {
+            string hmacSHA256Atual = GenerateHmac.HmacSHA256(dto.PasswordAtual);
+            var objUsuario = await _service.GetByIdAsync(dto.Id);
+
+            if (hmacSHA256Atual == objUsuario.Password)
+            {
+                string hmacSHA256Nova = GenerateHmac.HmacSHA256(dto.PasswordNova);
+                await _service.UpdateAlterarSenhaAsync(dto.Id, hmacSHA256Nova);
+            }
         }
 
         public void Dispose()

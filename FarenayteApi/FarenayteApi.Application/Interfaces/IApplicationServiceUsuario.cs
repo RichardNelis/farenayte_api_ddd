@@ -12,6 +12,8 @@ namespace FarenayteApi.Application.Interfaces
 
         Task UpdateAsync(UsuarioDTO dto);
 
+        Task UpdatePasswordAsync(UsuarioAlterarSenhaDTO dto);
+
         void Dispose();
     }
 }

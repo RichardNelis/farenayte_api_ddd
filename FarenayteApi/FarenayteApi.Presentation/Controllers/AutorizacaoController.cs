@@ -64,7 +64,7 @@ namespace FarenayteApi.Presentation.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return BadRequest();
             }

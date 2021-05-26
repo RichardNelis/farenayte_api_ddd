@@ -1,0 +1,3 @@
+Antes https://github.com/jincod/dotnetcore-buildpack
+
+https://buildpack-registry.s3.amazonaws.com/buildpacks/jincod/dotnetcore.tgz

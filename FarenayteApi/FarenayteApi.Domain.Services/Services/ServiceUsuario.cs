@@ -20,5 +20,10 @@ namespace FarenayteApi.Domain.Services.Services
         {
             return await _repository.GetByEmailAsync(email);
         }
+
+        public virtual async Task UpdateAlterarSenhaAsync(int id, string password)
+        {
+            await _repository.UpdateAlterarSenhaAsync(id, password);
+        }
     }
 }
