@@ -15,7 +15,8 @@ namespace FarenayteApi.Presentation.Service
             var key = Encoding.ASCII.GetBytes("erthpguetibuyh5ut9reeytr9");
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Expires = System.DateTime.UtcNow.AddMinutes(60),
+                //Expires = System.DateTime.UtcNow.AddMinutes(60),
+                Expires = System.DateTime.UtcNow.AddDays(60),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Subject = new ClaimsIdentity(new Claim[]
                 {
