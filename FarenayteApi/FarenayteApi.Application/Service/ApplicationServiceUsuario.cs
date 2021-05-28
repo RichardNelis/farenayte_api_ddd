@@ -23,10 +23,10 @@ namespace FarenayteApi.Application.Service
         public async Task<UsuarioResponseDTO> AddAsync(UsuarioDTO dto)
         {
             string hmacSHA256 = GenerateHmac.HmacSHA256(dto.Password);
+            dto.Password = hmacSHA256;
 
             var obj = _mapper.MapperToEntity(dto);
-            obj.Password = hmacSHA256;
-
+            
             await _service.AddAsync(obj);
 
             return _mapper.MapperToDTOResponse(obj);
