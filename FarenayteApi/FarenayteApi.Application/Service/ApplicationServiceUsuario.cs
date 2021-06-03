@@ -22,12 +22,7 @@ namespace FarenayteApi.Application.Service
 
         public async Task<UsuarioResponseDTO> AddAsync(UsuarioDTO dto)
         {
-            var emails = await _service.GetByEmailAsync(dto.Email);
-
-            if (emails.Count > 0)
-            {
-                throw new Exception("O e-mail já esta sendo utilizado.\nInforme um novo e-mail ou tente recuperar a senha.");
-            }
+            await ExisteEmail(dto.Email);
 
             string hmacSHA256 = GenerateHmac.HmacSHA256(dto.Password);
             dto.Password = hmacSHA256;
@@ -60,6 +55,16 @@ namespace FarenayteApi.Application.Service
             {
                 string hmacSHA256Nova = GenerateHmac.HmacSHA256(dto.PasswordNova);
                 await _service.UpdateAlterarSenhaAsync(dto.Id, hmacSHA256Nova);
+            }
+        }
+
+        private async Task ExisteEmail(string email)
+        {
+            var emails = await _service.GetByEmailAsync(email);
+
+            if (emails.Count > 0)
+            {
+                throw new Exception("O e-mail já esta sendo utilizado.\nInforme um novo e-mail ou tente recuperar a senha.");
             }
         }
 
