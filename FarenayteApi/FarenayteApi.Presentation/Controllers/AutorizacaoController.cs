@@ -31,8 +31,10 @@ namespace FarenayteApi.Presentation.Controllers
                 LoginResponseDTO login = await _applicationService.ValidarAcessoAsync(dto);
                 login.Token = await Token.GenerateToken(login);
 
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Bem-vindo(a) " + login.NomeCompleto };
+                MessageDTO message = new MessageDTO
+                {
+                    Messages = new List<string> { "Bem-vindo(a) " + login.NomeCompleto }
+                };
 
                 return Ok(new { usuario = login, message });
             }
@@ -55,8 +57,10 @@ namespace FarenayteApi.Presentation.Controllers
                 LoginResponseDTO login = await _applicationService.GetByIdAsync(AuthUser().Id);
                 login.Token = await Token.GenerateToken(login);
 
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Bem-vindo(a) novamente " + login.NomeCompleto };
+                MessageDTO message = new MessageDTO
+                {
+                    Messages = new List<string> { "Bem-vindo(a) novamente " + login.NomeCompleto }
+                };
 
                 return Ok(new { usuario = login, message });
             }

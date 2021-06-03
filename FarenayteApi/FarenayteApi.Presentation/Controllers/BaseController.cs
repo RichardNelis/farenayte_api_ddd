@@ -9,20 +9,23 @@ public abstract class   BaseController : ControllerBase
 {
     protected AutenticadoDTO AuthUser()
     {
-        AutenticadoDTO authUser = new AutenticadoDTO();
-        authUser.Id = Int32.Parse(User.Claims.First().Value);
+        AutenticadoDTO authUser = new AutenticadoDTO
+        {
+            Id = Int32.Parse(User.Claims.First().Value)
+        };
+
         return authUser;
     }
 
     public override UnauthorizedResult Unauthorized()
     {
-        MessageDTO message = FormatMessageResult("Usuário não autenticado!");
+        _ = FormatMessageResult("Usuário não autenticado!");
         return base.Unauthorized();
     }
 
     public override BadRequestResult BadRequest()
     {
-        MessageDTO message = FormatMessageResult("Desculpe encontrados um erro!\nTente novamente mais tarde.");
+        _ = FormatMessageResult("Desculpe encontrados um erro!\nTente novamente mais tarde.");
         return base.BadRequest();
     }
 
