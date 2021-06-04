@@ -33,9 +33,6 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
         {
             foreach (var obj in objs)
             {
-                double rating = obj.Publicacao.Comentarios.Sum(x =>  x.Rating) / obj.Publicacao.Comentarios.Count;
-                rating = rating < 0 ? 0 : rating > 5 ? 5 : rating;
-
                 PesquisaResponseDTO dto = new PesquisaResponseDTO
                 {
                     EsUsuario = obj.EsPessoaFisica,
@@ -45,9 +42,10 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                     Titulo = obj.Publicacao.Titulo,
                     Descricao = obj.Publicacao.Descricao,
                     Preco = obj.Publicacao.Preco,
-                    IBGE = obj.IBGE,
-                    Rating =  rating, 
+                    IBGE = obj.IBGE,                    
                 };
+
+                dto.Rating = dto.CalcularRating(obj.Publicacao.Comentarios.Sum(x =>  x.Rating), obj.Publicacao.Comentarios.Count);
 
                 _pessoaJuridicaDTOs.Add(dto);
             }

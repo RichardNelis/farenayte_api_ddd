@@ -23,6 +23,14 @@ namespace FarenayteApi.Application.DTO.DTO
 
         public int IBGE { get; set; }
 
-        public double Rating{ get; set; }
+        public double Rating { get; set; }
+
+        public double CalcularRating(double RatingTotal, int QntComentarios)
+        {
+            double rating = RatingTotal / QntComentarios;
+            rating = rating < 0 ? 0 : rating > 5 ? 5 : rating;
+
+            return rating;
+        }
     }
 }
