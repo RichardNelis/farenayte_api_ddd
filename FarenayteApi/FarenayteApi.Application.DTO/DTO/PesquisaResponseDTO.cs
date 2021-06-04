@@ -27,8 +27,8 @@ namespace FarenayteApi.Application.DTO.DTO
 
         public double CalcularRating(double RatingTotal, int QntComentarios)
         {
-            double rating = RatingTotal / QntComentarios;
-            rating = rating < 0 ? 0 : rating > 5 ? 5 : rating;
+            double rating = RatingTotal / QntComentarios;            
+            rating = double.IsNaN(rating) || rating < 0 ? 0 : rating > 5 ? 5 : rating;
 
             return rating;
         }
