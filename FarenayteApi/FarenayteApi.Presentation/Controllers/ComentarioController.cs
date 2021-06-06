@@ -40,7 +40,7 @@ namespace FarenayteAPI.Controllers
 
                 await _applicationService.AddAsync(dto);
 
-                return CreatedAtAction(nameof(GetByIdAsync), new { id = dto.Id }, new { comentario = dto });
+                return CreatedAtAction(nameof(GetByIdAsync), new { id = dto.Id }, dto);
             }
             catch (Exception ex)
             {

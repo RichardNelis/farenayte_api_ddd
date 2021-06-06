@@ -35,7 +35,7 @@ namespace FarenayteApi.Presentation.Controllers
                     Mensagem = "Bem-vindo(a) " + login.NomeCompleto
                 };
 
-                return Ok(new { usuario = login, message });
+                return Ok(new { data = login, message });
             }
             catch (ArgumentException ex)
             {
@@ -61,7 +61,7 @@ namespace FarenayteApi.Presentation.Controllers
                     Mensagem = "Bem-vindo(a) novamente " + login.NomeCompleto
                 };
 
-                return Ok(new { usuario = login, message });
+                return Ok(new { data = login, message });
             }
             catch (ArgumentException ex)
             {
