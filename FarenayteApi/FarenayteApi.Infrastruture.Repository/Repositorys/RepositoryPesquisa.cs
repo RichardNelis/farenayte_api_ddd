@@ -19,19 +19,20 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         }
 
         public virtual async Task<ICollection<PessoaJuridica>> GetFilterAsync(dynamic obj)
-        {           
+        {
             double latitude = obj.Latitude;
             double longitude = obj.Longitude;
+            double distancia = obj.Distancia;
 
             ICollection<PessoaJuridica> list = (ICollection<PessoaJuridica>)await _context.PessoaJuridicas
                 .Include(x => x.Publicacao)
                 .ThenInclude(x => x.Comentarios)
                 .Where(x => (12742 * Math.Asin(Math.Sqrt(Math.Sin(((Math.PI / 180) * (x.Latitude - latitude)) / 2) * Math.Sin(((Math.PI / 180) * (x.Latitude - latitude)) / 2) +
                                      Math.Cos((Math.PI / 180) * latitude) * Math.Cos((Math.PI / 180) * (x.Latitude)) *
-                                     Math.Sin(((Math.PI / 180) * (x.Longitude - longitude)) / 2) * Math.Sin(((Math.PI / 180) * (x.Longitude - longitude)) / 2)))) <= 50)
+                                     Math.Sin(((Math.PI / 180) * (x.Longitude - longitude)) / 2) * Math.Sin(((Math.PI / 180) * (x.Longitude - longitude)) / 2)))) <= distancia)
                 .OrderByDescending(x => x.Publicacao.Comentarios.Average<Comentario>(y => y.Rating))
-                .ToListAsync();    
-            
+                .ToListAsync();
+
             return list;
         }
     }

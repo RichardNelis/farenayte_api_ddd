@@ -4,11 +4,11 @@ namespace FarenayteApi.Application.DTO.DTO
 {
     public class PesquisaRequestDTO
     {
-        public int IBGE { get; set; }   
+        public int IBGE { get; set; }
 
-        public double Latitude{ get;set; }    
-        
-        public double Longitude { get;set; }    
+        public double Latitude { get; set; }
+
+        public double Longitude { get; set; }
 
         public string RazaoSocial { get; set; }
 
@@ -19,5 +19,7 @@ namespace FarenayteApi.Application.DTO.DTO
         public string Descricao { get; set; }
 
         public decimal? Preco { get; set; }
+
+        public double Distancia { get; set; }
     }
 }
