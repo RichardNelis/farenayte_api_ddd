@@ -18,7 +18,7 @@ public abstract class BaseController : ControllerBase
     {
         ResultDTO result = new ResultDTO();
         result.Data = value;
-        result.Mensagem = MessageDTO.MensagensRetorno(MessageDTO.TiposMensagens.MensagemIncluidoSucesso).Mensagem;
+        result.Message = MessageDTO.MensagensRetorno(MessageDTO.TiposMensagens.MensagemIncluidoSucesso);
 
         return base.CreatedAtAction(actionName, routeValues, result);
     }
