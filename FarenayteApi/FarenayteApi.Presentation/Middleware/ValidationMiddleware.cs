@@ -13,8 +13,11 @@ namespace FarenayteApi.Presentation.Middleware
             if (!context.ModelState.IsValid)
             {
                 var jsonModelValidate = context.ModelState.Values.SelectMany(m => m.Errors).Select(e => e.ErrorMessage).ToList();
-                MessageDTO message = new MessageDTO();
-                message.Messages = jsonModelValidate;
+
+                MessageDTO message = new MessageDTO()
+                {
+                    Mensagem = string.Join(",", jsonModelValidate)
+                };
 
                 context.Result = new BadRequestObjectResult(message);
                 return;

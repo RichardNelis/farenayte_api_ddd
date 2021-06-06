@@ -4,7 +4,6 @@ using FarenayteApi.Presentation.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Presentation.Controllers
@@ -33,7 +32,7 @@ namespace FarenayteApi.Presentation.Controllers
 
                 MessageDTO message = new MessageDTO
                 {
-                    Messages = new List<string> { "Bem-vindo(a) " + login.NomeCompleto }
+                    Mensagem = "Bem-vindo(a) " + login.NomeCompleto
                 };
 
                 return Ok(new { usuario = login, message });
@@ -59,7 +58,7 @@ namespace FarenayteApi.Presentation.Controllers
 
                 MessageDTO message = new MessageDTO
                 {
-                    Messages = new List<string> { "Bem-vindo(a) novamente " + login.NomeCompleto }
+                    Mensagem = "Bem-vindo(a) novamente " + login.NomeCompleto
                 };
 
                 return Ok(new { usuario = login, message });

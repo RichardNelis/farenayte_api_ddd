@@ -47,10 +47,8 @@ namespace FarenayteApi.Presentation.Controllers
                 }
 
                 UsuarioResponseDTO responseDTO = await _applicationService.AddAsync(dto);
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Cadastro salvo com sucesso!" };
 
-                return CreatedAtAction(nameof(GetAsync), new { usuario = responseDTO, message });
+                return CreatedAtAction(nameof(GetAsync), responseDTO);
             }
             catch (Exception ex)
             {
@@ -76,8 +74,11 @@ namespace FarenayteApi.Presentation.Controllers
                 }
 
                 await _applicationService.UpdateAsync(dto);
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Cadastro atualizado com sucesso!" };
+
+                MessageDTO message = new MessageDTO()
+                {
+                    Mensagem = "Cadastro atualizado com sucesso!"
+                };
 
                 return Ok(message);
             }
@@ -98,8 +99,11 @@ namespace FarenayteApi.Presentation.Controllers
                 dto.Id = AuthUser().Id;
 
                 await _applicationService.UpdatePasswordAsync(dto);
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Senha atualizada com sucesso!" };
+
+                MessageDTO message = new MessageDTO()
+                {
+                    Mensagem = "Senha atualizada com sucesso!"
+                };
 
                 return Ok(message);
             }

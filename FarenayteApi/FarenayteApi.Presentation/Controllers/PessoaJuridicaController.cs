@@ -64,10 +64,7 @@ namespace FarenayteApi.Presentation.Controllers
                 dto.EsPessoaFisica = AuthUser().Id;
                 await _applicationService.AddAsync(dto);
 
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Cadastro salvo com sucesso!" };
-
-                return CreatedAtAction(nameof(GetAsync), new { usuario = dto, message });
+                return CreatedAtAction(nameof(GetAsync), new { usuario = dto });
             }
             catch (Exception ex)
             {
@@ -103,8 +100,11 @@ namespace FarenayteApi.Presentation.Controllers
                 dto.EsPessoaFisica = AuthUser().Id;
 
                 await _applicationService.UpdateAsync(dto);
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Cadastro atualizado com sucesso!" };
+                
+                MessageDTO message = new MessageDTO()
+                {
+                    Mensagem = "Cadastro atualizado com sucesso!"
+                };
 
                 return Ok(message);
             }

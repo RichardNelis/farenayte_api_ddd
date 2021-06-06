@@ -62,8 +62,10 @@ namespace FarenayteApi.Presentation
                 {
                     OnChallenge = context =>
                     {
-                        MessageDTO message = new MessageDTO();
-                        message.Messages = new List<string> { "Usuário não autenticado!" };
+                        MessageDTO message = new MessageDTO()
+                        {
+                            Mensagem = "Usuário não autenticado!"
+                        };
 
                         context.Response.OnStarting(async () =>
                         {

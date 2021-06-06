@@ -1,16 +1,43 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace FarenayteApi.Application.DTO.DTO
 {
     public class MessageDTO
     {
-        [JsonProperty(PropertyName = "messages")]
-        public ICollection<string> Messages { get; set; }
+        [JsonProperty(PropertyName = "mensagem")]
+        public string Mensagem { get; set; }
 
-        public MessageDTO()
+        public enum TiposMensagens
         {
-            Messages = new List<string>();
+            MensagemIncluidoSucesso = 0,
+            MensagemAlteradoSucesso = 1,
+            MensagemErro = 2,
+            MensagemDinamica = 3,
+        }
+
+        public static MessageDTO MensagensRetorno(TiposMensagens tipo, string mensagem = null)
+        {
+            switch (tipo)
+            {
+                case TiposMensagens.MensagemIncluidoSucesso:
+                    mensagem = "Incluído com sucesso!";
+                    break;
+                case TiposMensagens.MensagemAlteradoSucesso:
+                    mensagem = "Alterado com sucesso!";
+                    break;
+                case TiposMensagens.MensagemErro:
+                    mensagem = "Desculpe encontrados um erro!\nTente novamente mais tarde.";
+                    break;
+                case TiposMensagens.MensagemDinamica:
+                    break;
+                default:
+                    break;
+            }
+
+            return new MessageDTO()
+            {
+                Mensagem = mensagem
+            };
         }
     }
 }

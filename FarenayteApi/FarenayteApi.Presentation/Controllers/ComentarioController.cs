@@ -40,10 +40,7 @@ namespace FarenayteAPI.Controllers
 
                 await _applicationService.AddAsync(dto);
 
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Comentário salvo com sucesso!" };
-
-                return CreatedAtAction(nameof(GetByIdAsync), new { id = dto.Id }, new { comentario = dto, message });
+                return CreatedAtAction(nameof(GetByIdAsync), new { id = dto.Id }, new { comentario = dto });
             }
             catch (Exception ex)
             {
@@ -63,8 +60,10 @@ namespace FarenayteAPI.Controllers
 
                 await _applicationService.UpdateAsync(dto);
 
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Comentário salvo com sucesso!" };
+                MessageDTO message = new MessageDTO()
+                {
+                    Mensagem = "Comentário salvo com sucesso!"
+                };
 
                 return Ok(message);
             }
@@ -81,8 +80,10 @@ namespace FarenayteAPI.Controllers
             {
                 await _applicationService.RemoveAsync(id);
 
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Comentário excluído com sucesso!" };
+                MessageDTO message = new MessageDTO()
+                {
+                    Mensagem = "Comentário excluído com sucesso!"
+                };
 
                 return Ok(message);
             }
@@ -104,8 +105,10 @@ namespace FarenayteAPI.Controllers
 
                 await _applicationService.UpdateAsync(dto);
 
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Resposta salva com sucesso!" };
+                MessageDTO message = new MessageDTO()
+                {
+                    Mensagem = "Resposta salva com sucesso!"
+                };
 
                 return Ok(message);
             }
@@ -122,8 +125,10 @@ namespace FarenayteAPI.Controllers
             {
                 await _applicationService.RemoverRespostaAsync(id);
 
-                MessageDTO message = new MessageDTO();
-                message.Messages = new List<string> { "Resposta excluída com sucesso!" };
+                MessageDTO message = new MessageDTO()
+                {
+                    Mensagem = "Resposta excluída com sucesso!"
+                };
 
                 return Ok(message);
             }

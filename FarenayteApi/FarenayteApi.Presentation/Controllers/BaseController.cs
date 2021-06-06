@@ -2,58 +2,41 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
-public abstract class   BaseController : ControllerBase
+public abstract class BaseController : ControllerBase
 {
     protected AutenticadoDTO AuthUser()
     {
-        AutenticadoDTO authUser = new AutenticadoDTO
+        return new AutenticadoDTO
         {
             Id = Int32.Parse(User.Claims.First().Value)
         };
+    }
 
-        return authUser;
+    public override CreatedAtActionResult CreatedAtAction(string actionName, object routeValues, [ActionResultObjectValue] object value)
+    {
+        ResultDTO result = new ResultDTO();
+        result.Data = value;
+        result.Mensagem = MessageDTO.MensagensRetorno(MessageDTO.TiposMensagens.MensagemIncluidoSucesso).Mensagem;
+
+        return base.CreatedAtAction(actionName, routeValues, result);
     }
 
     public override UnauthorizedResult Unauthorized()
     {
-        _ = FormatMessageResult("Usuário não autenticado!");
+        _ = MessageDTO.MensagensRetorno(MessageDTO.TiposMensagens.MensagemDinamica, mensagem: "Usuário não autenticado!");
         return base.Unauthorized();
-    }
-
-    public override BadRequestResult BadRequest()
-    {
-        _ = FormatMessageResult("Desculpe encontrados um erro!\nTente novamente mais tarde.");
-        return base.BadRequest();
     }
 
     public override BadRequestObjectResult BadRequest([ActionResultObjectValue] object value)
     {
-        MessageDTO message = FormatMessageResult(value);
-        return base.BadRequest(message);
+        return base.BadRequest(MessageDTO.MensagensRetorno(MessageDTO.TiposMensagens.MensagemDinamica, mensagem: value.ToString()));
     }
 
     public NotFoundObjectResult NotFound()
     {
-        MessageDTO message = FormatMessageResult("Não encontrado!");
-        return base.NotFound(message);
+        return base.NotFound(MessageDTO.MensagensRetorno(MessageDTO.TiposMensagens.MensagemDinamica, mensagem: "Não encontrado!"));
     }
 
-    private MessageDTO FormatMessageResult(object value)
-    {
-        MessageDTO message = new MessageDTO();
-
-        if (value.GetType() == typeof(string))
-        {
-            message.Messages = value.ToString().Split('|');
-        }
-        else
-        {
-            message.Messages = (ICollection<string>)value;
-        }
-
-        return message;
-    }
 }
