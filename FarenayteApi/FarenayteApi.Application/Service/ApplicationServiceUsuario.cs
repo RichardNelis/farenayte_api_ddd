@@ -40,10 +40,10 @@ namespace FarenayteApi.Application.Service
             await _service.UpdateAsync(obj);
         }
 
-        public async Task<UsuarioDTO> GetByIdAsync(int id)
+        public async Task<UsuarioResponseDTO> GetByIdAsync(int id)
         {
             var objUsuario = await _service.GetByIdAsync(id);
-            return _mapper.MapperToDTO(objUsuario);
+            return _mapper.MapperToDTOResponse(objUsuario);
         }
 
         public async Task UpdatePasswordAsync(UsuarioAlterarSenhaDTO dto)

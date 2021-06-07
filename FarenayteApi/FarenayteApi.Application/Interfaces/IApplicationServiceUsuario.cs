@@ -8,7 +8,7 @@ namespace FarenayteApi.Application.Interfaces
     {
         Task<UsuarioResponseDTO> AddAsync(UsuarioDTO dto);
 
-        Task<UsuarioDTO> GetByIdAsync(int id);
+        Task<UsuarioResponseDTO> GetByIdAsync(int id);
 
         Task UpdateAsync(UsuarioDTO dto);
 
