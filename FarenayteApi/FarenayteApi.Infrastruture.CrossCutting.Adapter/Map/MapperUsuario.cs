@@ -63,8 +63,8 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
         public UsuarioResponseDTO MapperToDTOResponse(Usuario obj)
         {
             UsuarioResponseDTO dto = new UsuarioResponseDTO
-            {                
-                Email = obj.Email,                
+            {
+                Email = obj.Email,
                 PessoaFisica = _mapperPessoaFisica.MapperToDTOResponse(obj.PessoaFisica),
             };
 
