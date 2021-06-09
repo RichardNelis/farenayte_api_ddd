@@ -24,11 +24,11 @@ namespace FarenayteAPI.Controllers
             return Ok(await _applicationService.GetByIdAsync(id));
         }
 
-        [HttpGet]
+        /*[HttpGet, ActionName("GetAsync")]
         public async Task<IActionResult> GetAsync([FromQuery] int esPublicacao)
         {
             return Ok(await _applicationService.GetByEsPublicacaoAsync(esPublicacao));
-        }
+        }*/
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ComentarioDTO dto)

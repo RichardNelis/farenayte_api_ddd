@@ -17,7 +17,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public override async Task<PessoaJuridica> GetByIdAsync(int id)
+        public async Task<PessoaJuridica> GetByIdAsync(int id)
         {
             return await _context.PessoaJuridicas
                 .Where(x => x.EsPessoaFisica == id)
@@ -25,7 +25,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                 .FirstOrDefaultAsync();
         }
 
-        public virtual async Task<PessoaJuridica> GetByIdFullAsync(int id)
+        public async Task<PessoaJuridica> GetByIdFullAsync(int id)
         {
             return await _context.PessoaJuridicas
                 .Where(x => x.EsPessoaFisica == id)
@@ -34,7 +34,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
                 .FirstOrDefaultAsync();
         }
 
-        public override async Task UpdateAsync(PessoaJuridica obj)
+        public async Task UpdateAsync(PessoaJuridica obj)
         {
             try
             {

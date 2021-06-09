@@ -9,33 +9,20 @@ using System.Threading.Tasks;
 
 namespace FarenayteApi.Infrastruture.Repository.Repositorys
 {
-    public class RepositoryUsuario : IRepositoryUsuario, IDisposable
+    public class RepositoryUsuario : RepositoryBase<Usuario>, IRepositoryUsuario
     {
         private readonly MySqlContext _context;
 
-        public RepositoryUsuario(MySqlContext Context)
+        public RepositoryUsuario(MySqlContext Context) : base(Context)
         {
             _context = Context;
         }
 
-        public virtual async Task AddAsync(Usuario obj)
-        {
-            try
-            {
-                await _context.Usuarios.AddAsync(obj);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        public async Task<ICollection<Usuario>> GetByEmailAsync(string email) => await _context.Usuarios.Where(x => x.Email == email).ToListAsync();
 
-        public virtual async Task<ICollection<Usuario>> GetByEmailAsync(string email) => await _context.Usuarios.Where(x => x.Email == email).ToListAsync();
+        public async Task<Usuario> GetByIdAsync(int id) => await _context.Usuarios.Include(x => x.PessoaFisica).FirstOrDefaultAsync(x => x.Id == id);
 
-        public virtual async Task<Usuario> GetByIdAsync(int id) => await _context.Usuarios.Include(x => x.PessoaFisica).FirstOrDefaultAsync(x => x.Id == id);
-
-        public virtual async Task UpdateAsync(Usuario obj)
+        public async Task UpdateAsync(Usuario obj)
         {
             try
             {
@@ -53,9 +40,9 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             {
                 throw ex;
             }
-        }        
+        }
 
-        public virtual async Task UpdateAlterarSenhaAsync(int id, String password)
+        public async Task UpdateAlterarSenhaAsync(int id, String password)
         {
             try
             {
@@ -74,11 +61,6 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         public Task RemoveAsync(Usuario obj)
         {
             throw new NotImplementedException();
-        }
-
-        public virtual void Dispose()
-        {
-            _context.Dispose();
         }
     }
 }

@@ -20,10 +20,10 @@ namespace FarenayteApi.Application.DTO.DTO
             switch (tipo)
             {
                 case TiposMensagens.MensagemIncluidoSucesso:
-                    mensagem = "Incluído com sucesso!";
+                    mensagem = "Dados salvados com sucesso!";
                     break;
                 case TiposMensagens.MensagemAlteradoSucesso:
-                    mensagem = "Alterado com sucesso!";
+                    mensagem = "Dados alterados com sucesso!";
                     break;
                 case TiposMensagens.MensagemErro:
                     mensagem = "Desculpe encontrados um erro!\nTente novamente mais tarde.";

@@ -18,7 +18,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public virtual async Task<ICollection<PessoaJuridica>> GetFilterAsync(dynamic obj)
+        public async Task<ICollection<PessoaJuridica>> GetFilterAsync(dynamic obj)
         {
             double latitude = obj.Latitude;
             double longitude = obj.Longitude;

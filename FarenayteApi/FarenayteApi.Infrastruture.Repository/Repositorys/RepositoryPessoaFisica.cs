@@ -16,7 +16,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public override async Task<PessoaFisica> GetByIdAsync(int id)
+        public async Task<PessoaFisica> GetByIdAsync(int id)
         {
             return await _context.PessoaFisicas
                 .Where(x => x.EsUsuario == id)

@@ -17,11 +17,11 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public virtual async Task<ICollection<Comentario>> GetByEsPublicacaoAsync(int esPublicacao)
+        public async Task<ICollection<Comentario>> GetByEsPublicacaoAsync(int esPublicacao)
         {
             return await _context.Comentarios.Include(x => x.PessoaFisica).Where(x => x.EsPublicacao == esPublicacao).ToListAsync();
         }
 
-        public override async Task<Comentario> GetByIdAsync(int id) => await _context.Comentarios.Include(x => x.PessoaFisica).Where(x => x.Id == id).FirstAsync();
+        public async Task<Comentario> GetByIdAsync(int id) => await _context.Comentarios.Include(x => x.PessoaFisica).Where(x => x.Id == id).FirstAsync();
     }
 }
