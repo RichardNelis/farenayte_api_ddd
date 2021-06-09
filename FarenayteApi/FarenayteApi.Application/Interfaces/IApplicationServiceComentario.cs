@@ -10,6 +10,8 @@ namespace FarenayteApi.Application.Interfaces
 
         Task<ComentarioDTO> GetByIdAsync(int id);
 
+        Task<ComentarioDTO> GetByIdWithPessoaFisicaAsync(int id);
+
         Task<ICollection<ComentarioDTO>> GetByEsPublicacaoAsync(int esPublicacao);
         
         Task UpdateAsync(ComentarioDTO dto);

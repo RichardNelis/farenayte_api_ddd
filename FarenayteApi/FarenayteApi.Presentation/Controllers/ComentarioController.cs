@@ -18,10 +18,10 @@ namespace FarenayteAPI.Controllers
             _applicationService = ApplicationService;
         }
 
-        [HttpGet("{id}"), ActionName("GetByIdAsync")]
-        public async Task<IActionResult> GetByIdAsync(int id)
+        [HttpGet("{id}"), ActionName("GetByIdWithPessoaFisicaAsync")]
+        public async Task<IActionResult> GetByIdWithPessoaFisicaAsync(int id)
         {
-            return Ok(await _applicationService.GetByIdAsync(id));
+            return Ok(await _applicationService.GetByIdWithPessoaFisicaAsync(id));
         }
 
         /*[HttpGet, ActionName("GetAsync")]
@@ -40,7 +40,7 @@ namespace FarenayteAPI.Controllers
 
                 await _applicationService.AddAsync(dto);
 
-                return CreatedAtAction(nameof(GetByIdAsync), new { id = dto.Id }, dto);
+                return CreatedAtAction(nameof(GetByIdWithPessoaFisicaAsync), new { id = dto.Id }, dto);
             }
             catch (Exception ex)
             {

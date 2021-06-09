@@ -22,6 +22,6 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             return await _context.Comentarios.Include(x => x.PessoaFisica).Where(x => x.EsPublicacao == esPublicacao).ToListAsync();
         }
 
-        public async Task<Comentario> GetByIdAsync(int id) => await _context.Comentarios.Include(x => x.PessoaFisica).Where(x => x.Id == id).FirstAsync();
+        public async Task<Comentario> GetByIdWithPessoaFisicaAsync(int id) => await _context.Comentarios.Include(x => x.PessoaFisica).Where(x => x.Id == id).FirstAsync();
     }
 }

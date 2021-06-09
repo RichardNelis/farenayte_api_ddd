@@ -16,9 +16,14 @@ namespace FarenayteApi.Domain.Services.Services
             _repository = Repository;
         }
 
-        public virtual async Task<ICollection<Comentario>> GetByEsPublicacaoAsync(int esPublicacao)
+        public async Task<ICollection<Comentario>> GetByEsPublicacaoAsync(int esPublicacao)
         {
             return await _repository.GetByEsPublicacaoAsync(esPublicacao);
+        }
+
+        public async Task<Comentario> GetByIdWithPessoaFisicaAsync(int id)
+        {
+            return await _repository.GetByIdWithPessoaFisicaAsync(id);
         }
     }
 }
