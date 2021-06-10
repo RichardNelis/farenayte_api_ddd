@@ -3,7 +3,6 @@ using FarenayteApi.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FarenayteAPI.Controllers
@@ -18,17 +17,17 @@ namespace FarenayteAPI.Controllers
             _applicationService = ApplicationService;
         }
 
-        [HttpGet("{id}"), ActionName("GetByIdWithPessoaFisicaAsync")]
-        public async Task<IActionResult> GetByIdWithPessoaFisicaAsync(int id)
+        [HttpGet, ActionName("GetByIdWithPessoaFisicaAsync")]
+        public async Task<IActionResult> GetByIdWithPessoaFisicaAsync()
         {
-            return Ok(await _applicationService.GetByIdWithPessoaFisicaAsync(id));
+            return Ok(await _applicationService.GetByIdWithPessoaFisicaAsync(AuthUser().Id));
         }
 
-        /*[HttpGet, ActionName("GetAsync")]
+        [HttpGet, ActionName("GetAsync")]
         public async Task<IActionResult> GetAsync([FromQuery] int esPublicacao)
         {
             return Ok(await _applicationService.GetByEsPublicacaoAsync(esPublicacao));
-        }*/
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ComentarioDTO dto)
@@ -40,7 +39,9 @@ namespace FarenayteAPI.Controllers
 
                 await _applicationService.AddAsync(dto);
 
-                return CreatedAtAction(nameof(GetByIdWithPessoaFisicaAsync), new { id = dto.Id }, dto);
+                dto = await _applicationService.GetByIdWithPessoaFisicaAsync(dto.Id);
+
+                return CreatedAtAction("GetByIdWithPessoaFisicaAsync", dto);
             }
             catch (Exception ex)
             {

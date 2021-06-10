@@ -13,7 +13,7 @@ public abstract class BaseController : ControllerBase
             Id = Int32.Parse(User.Claims.First().Value)
         };
     }
-
+    
     public override CreatedAtActionResult CreatedAtAction(string actionName, object routeValues, [ActionResultObjectValue] object value)
     {
         ResultDTO result = new ResultDTO();
