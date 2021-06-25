@@ -3,7 +3,7 @@
 namespace FarenayteApi.Application.DTO.DTO
 {
     public class UsuarioAlterarSenhaDTO
-    {     
+    {
         public int Id { get; set; }
 
         [JsonProperty(PropertyName = "password_atual")]

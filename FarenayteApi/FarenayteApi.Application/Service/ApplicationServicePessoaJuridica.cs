@@ -3,7 +3,6 @@ using FarenayteApi.Application.Interfaces;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Application.Service

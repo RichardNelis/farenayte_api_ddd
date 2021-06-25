@@ -23,7 +23,7 @@ namespace FarenayteApi.Domain.Services.Services
         {
             return await _repository.GetByIdAsync(id);
         }
-               
+
         public virtual async Task UpdateAsync(TEntity obj)
         {
             await _repository.UpdateAsync(obj);
@@ -37,6 +37,6 @@ namespace FarenayteApi.Domain.Services.Services
         public virtual void Dispose()
         {
             _repository.Dispose();
-        }        
+        }
     }
 }

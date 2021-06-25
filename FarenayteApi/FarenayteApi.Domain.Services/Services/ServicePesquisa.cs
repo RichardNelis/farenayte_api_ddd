@@ -11,7 +11,7 @@ namespace FarenayteApi.Domain.Services.Services
     {
         private readonly IRepositoryPesquisa _repository;
 
-        public ServicePesquisa(IRepositoryPesquisa Repository)            
+        public ServicePesquisa(IRepositoryPesquisa Repository)
         {
             _repository = Repository;
         }

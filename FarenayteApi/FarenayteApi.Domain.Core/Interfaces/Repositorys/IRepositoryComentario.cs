@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using FarenayteApi.Domain.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using FarenayteApi.Domain.Models;
 
 namespace FarenayteApi.Domain.Core.Interfaces.Repositorys
 {

@@ -7,7 +7,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces
     public interface IMapperUsuario
     {
         #region Mappers
-        
+
         Usuario MapperToEntity(UsuarioDTO UsuarioDTO);
 
         ICollection<UsuarioDTO> MapperListUsuarios(ICollection<Usuario> Usuarios);

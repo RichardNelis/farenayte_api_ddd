@@ -1,5 +1,4 @@
 ﻿using FarenayteApi.Application.DTO.DTO;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Application.Interfaces
@@ -11,7 +10,7 @@ namespace FarenayteApi.Application.Interfaces
         Task<PessoaJuridicaDTO> GetByIdAsync(int id);
 
         Task<PessoaJuridicaDTO> GetByIdFullAsync(int id);
-                
+
         Task UpdateAsync(PessoaJuridicaDTO dto);
 
         void Dispose();

@@ -2,8 +2,6 @@
 using FarenayteApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Infrastruture.Repository.Repositorys
@@ -64,6 +62,6 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
         public virtual void Dispose()
         {
             _context.Dispose();
-        }   
+        }
     }
 }

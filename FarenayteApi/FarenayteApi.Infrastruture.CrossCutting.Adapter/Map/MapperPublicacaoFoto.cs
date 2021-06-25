@@ -22,7 +22,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             {
                 Id = dto.Id,
                 EsPublicacao = dto.EsPublicacao,
-                Foto = dto.Foto,                
+                Foto = dto.Foto,
             };
 
             return obj;

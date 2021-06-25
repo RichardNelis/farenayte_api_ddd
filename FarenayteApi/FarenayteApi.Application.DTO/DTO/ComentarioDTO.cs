@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FarenayteApi.Application.DTO.DTO
 {

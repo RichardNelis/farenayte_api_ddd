@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace FarenayteApi.Domain.Core.Interfaces.Repositorys
 {
@@ -8,7 +7,7 @@ namespace FarenayteApi.Domain.Core.Interfaces.Repositorys
         Task AddAsync(TEntity obj);
 
         Task<TEntity> GetByIdAsync(int id);
-        
+
         Task UpdateAsync(TEntity obj);
 
         Task RemoveAsync(TEntity obj);

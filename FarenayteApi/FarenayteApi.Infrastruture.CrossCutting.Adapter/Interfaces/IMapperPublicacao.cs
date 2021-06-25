@@ -7,7 +7,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces
     public interface IMapperPublicacao
     {
         #region Interfaces Mappers
-        
+
         Publicacao MapperToEntity(PublicacaoDTO PublicacaoDTO);
 
         ICollection<PublicacaoDTO> MapperList(ICollection<Publicacao> Publicacaos);

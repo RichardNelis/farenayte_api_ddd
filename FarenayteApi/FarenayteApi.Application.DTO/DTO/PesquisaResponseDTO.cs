@@ -1,5 +1,5 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace FarenayteApi.Application.DTO.DTO
 {
@@ -28,9 +28,9 @@ namespace FarenayteApi.Application.DTO.DTO
 
         public double CalcularRating(double RatingTotal, int QntComentarios)
         {
-            double rating = RatingTotal / QntComentarios;            
+            double rating = RatingTotal / QntComentarios;
             rating = double.IsNaN(rating) || rating < 0 ? 0 : rating > 5 ? 5 : rating;
-                        
+
             rating = Math.Round(rating, 1);
 
             return rating;

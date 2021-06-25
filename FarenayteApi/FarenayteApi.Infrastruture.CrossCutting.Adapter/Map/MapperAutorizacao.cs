@@ -1,7 +1,6 @@
 ﻿using FarenayteApi.Application.DTO.DTO;
 using FarenayteApi.Domain.Models;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
-using System.Collections.Generic;
 
 namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
 {

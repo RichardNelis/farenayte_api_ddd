@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using FarenayteApi.Application.DTO.DTO;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using FarenayteApi.Application.DTO.DTO;
 
 namespace FarenayteApi.Application.Interfaces
 {
@@ -13,7 +13,7 @@ namespace FarenayteApi.Application.Interfaces
         Task<ComentarioDTO> GetByIdWithPessoaFisicaAsync(int id);
 
         Task<ICollection<ComentarioDTO>> GetByEsPublicacaoAsync(int esPublicacao);
-        
+
         Task UpdateAsync(ComentarioDTO dto);
 
         Task RemoverRespostaAsync(int id);

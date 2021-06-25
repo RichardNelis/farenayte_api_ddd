@@ -25,12 +25,12 @@ namespace FarenayteApi.Application.Service
         public async Task<LoginResponseDTO> ValidarAcessoAsync(LoginDTO dto)
         {
             var objUsuarios = await GetByEmailAsync(dto.Email);
-            
+
             string hmacSHA256 = GenerateHmac.HmacSHA256(dto.Password);
 
             var objUsuario = GetByPassword(objUsuarios, hmacSHA256);
             var objPessoaFisica = await _servicePessoaFisica.GetByIdAsync(objUsuario.Id);
-            
+
 
             return _mapper.MapperToDTO(objPessoaFisica);
         }

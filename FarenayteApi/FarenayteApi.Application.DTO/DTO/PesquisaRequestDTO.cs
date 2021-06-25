@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace FarenayteApi.Application.DTO.DTO
+﻿namespace FarenayteApi.Application.DTO.DTO
 {
     public class PesquisaRequestDTO
     {

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using FarenayteApi.Domain.Core.Interfaces.Repositorys;
+﻿using FarenayteApi.Domain.Core.Interfaces.Repositorys;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Domain.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Domain.Services.Services
 {

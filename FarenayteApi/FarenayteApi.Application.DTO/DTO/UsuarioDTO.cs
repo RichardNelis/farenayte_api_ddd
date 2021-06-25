@@ -3,7 +3,7 @@
 namespace FarenayteApi.Application.DTO.DTO
 {
     public class UsuarioDTO
-    {        
+    {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }
 
@@ -12,7 +12,7 @@ namespace FarenayteApi.Application.DTO.DTO
 
         [JsonProperty(PropertyName = "password")]
         public string Password { get; set; }
-        
+
         [JsonProperty(PropertyName = "pessoa_fisica")]
         public virtual PessoaFisicaDTO PessoaFisica { get; set; }
     }

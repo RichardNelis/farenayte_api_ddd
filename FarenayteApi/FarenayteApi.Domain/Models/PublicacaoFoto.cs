@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FarenayteApi.Domain.Models
@@ -16,7 +15,7 @@ namespace FarenayteApi.Domain.Models
         public int EsPublicacao { get; set; }
 
         [Column("foto")]
-        public string Foto { get; set; }        
+        public string Foto { get; set; }
 
         [ForeignKey("EsPublicacao")]
         public virtual Publicacao Publicacao { get; set; }

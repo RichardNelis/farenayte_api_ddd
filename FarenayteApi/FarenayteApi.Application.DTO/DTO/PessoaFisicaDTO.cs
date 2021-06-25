@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace FarenayteApi.Application.DTO.DTO
 {
@@ -22,6 +21,6 @@ namespace FarenayteApi.Application.DTO.DTO
         public string Sexo { get; set; }
 
         [JsonProperty(PropertyName = "telefone_celular")]
-        public string TelefoneCelular { get; set; }        
+        public string TelefoneCelular { get; set; }
     }
 }

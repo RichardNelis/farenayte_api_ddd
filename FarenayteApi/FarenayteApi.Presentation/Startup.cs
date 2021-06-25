@@ -39,7 +39,7 @@ namespace FarenayteApi.Presentation
             services.AddMemoryCache();
             services.AddControllers(options => options.Filters.Add<ValidationMiddleware>())
                 .ConfigureApiBehaviorOptions(options => options.SuppressModelStateInvalidFilter = true)
-                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             services.AddAuthentication(x =>
             {

@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using FarenayteApi.Application.DTO.DTO;
+﻿using FarenayteApi.Application.DTO.DTO;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Application.Interfaces
 {

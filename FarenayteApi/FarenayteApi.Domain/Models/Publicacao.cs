@@ -24,7 +24,7 @@ namespace FarenayteApi.Domain.Models
         public decimal? Preco { get; set; }
 
         [Column("tipo_cobranca")]
-        public int TipoCobranca { get; set; }        
+        public int TipoCobranca { get; set; }
 
         [ForeignKey("EsPessoaJuridica")]
         public virtual PessoaJuridica PessoaJuridica { get; set; }

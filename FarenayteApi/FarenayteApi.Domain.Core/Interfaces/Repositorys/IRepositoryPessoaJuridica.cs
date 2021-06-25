@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using FarenayteApi.Domain.Models;
+﻿using FarenayteApi.Domain.Models;
+using System.Threading.Tasks;
 
 namespace FarenayteApi.Domain.Core.Interfaces.Repositorys
 {

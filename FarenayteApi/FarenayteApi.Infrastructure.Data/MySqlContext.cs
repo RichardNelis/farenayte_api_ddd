@@ -1,7 +1,6 @@
 ﻿using FarenayteApi.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Infrastructure.Data
@@ -25,7 +24,7 @@ namespace FarenayteApi.Infrastructure.Data
             foreach (var entry in ChangeTracker.Entries())
             {
                 if (entry.State == EntityState.Added)
-                {                    
+                {
                     entry.Property("DataInclusao").CurrentValue = DateTime.Now;
                 }
 
@@ -44,7 +43,7 @@ namespace FarenayteApi.Infrastructure.Data
             foreach (var entry in ChangeTracker.Entries())
             {
                 if (entry.State == EntityState.Added)
-                {                    
+                {
                     entry.Property("DataInclusao").CurrentValue = DateTime.Now;
                 }
 

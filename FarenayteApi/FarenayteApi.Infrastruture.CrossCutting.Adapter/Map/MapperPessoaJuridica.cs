@@ -19,7 +19,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
         public PessoaJuridica MapperToEntity(PessoaJuridicaDTO dto)
         {
             PessoaJuridica obj = new PessoaJuridica
-            {                
+            {
                 EsPessoaFisica = dto.EsPessoaFisica,
                 Logo = dto.Logo,
                 Cnpj = dto.Cnpj,
@@ -49,7 +49,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             foreach (var obj in objs)
             {
                 PessoaJuridicaDTO dto = new PessoaJuridicaDTO
-                {                    
+                {
                     EsPessoaFisica = obj.EsPessoaFisica,
                     Logo = obj.Logo,
                     Cnpj = obj.Cnpj,
@@ -85,7 +85,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             }
 
             PessoaJuridicaDTO dto = new PessoaJuridicaDTO
-            {                
+            {
                 EsPessoaFisica = obj.EsPessoaFisica,
                 Logo = obj.Logo,
                 Cnpj = obj.Cnpj,

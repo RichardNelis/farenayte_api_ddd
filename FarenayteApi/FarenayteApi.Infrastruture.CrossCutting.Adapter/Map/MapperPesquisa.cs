@@ -42,10 +42,10 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                     Titulo = obj.Publicacao.Titulo,
                     Descricao = obj.Publicacao.Descricao,
                     Preco = obj.Publicacao.Preco,
-                    IBGE = obj.IBGE,                    
+                    IBGE = obj.IBGE,
                 };
 
-                dto.Rating = dto.CalcularRating(obj.Publicacao.Comentarios.Sum(x =>  x.Rating), obj.Publicacao.Comentarios.Count);
+                dto.Rating = dto.CalcularRating(obj.Publicacao.Comentarios.Sum(x => x.Rating), obj.Publicacao.Comentarios.Count);
 
                 _pessoaJuridicaDTOs.Add(dto);
             }
