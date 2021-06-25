@@ -15,7 +15,6 @@
   "profiles": {
     "IIS Express": {
       "commandName": "Project",
-      "launchBrowser": true,
       "launchUrl": "pessoajuridica",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

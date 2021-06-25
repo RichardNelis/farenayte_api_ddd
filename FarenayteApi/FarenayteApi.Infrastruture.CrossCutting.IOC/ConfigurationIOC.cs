@@ -16,7 +16,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.IOC
         {
             #region Registra IOC
 
-            #region IOC Application
+            #region IOC Application            
             builder.RegisterType<ApplicationServiceUsuario>().As<IApplicationServiceUsuario>();
             builder.RegisterType<ApplicationServicePessoaJuridica>().As<IApplicationServicePessoaJuridica>();
             builder.RegisterType<ApplicationServiceComentario>().As<IApplicationServiceComentario>();

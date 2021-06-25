@@ -36,5 +36,11 @@ namespace FarenayteApi.Presentation.Controllers
                 return BadRequest("Houve um erro!");
             }
         }
+
+        [HttpGet("{id}"), AllowAnonymous]
+        public IActionResult Get(int id)
+        {
+            return Ok();
+        }
     }
 }
