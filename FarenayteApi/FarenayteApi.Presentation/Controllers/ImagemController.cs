@@ -14,10 +14,11 @@ namespace FarenayteApi.Presentation.Controllers
     {
         private string _pathRoot;
         private readonly IWebHostEnvironment webHostEnvironment;
+        
         public ImagemController(IWebHostEnvironment hostEnvironment)
         {
             webHostEnvironment = hostEnvironment;
-            _pathRoot = webHostEnvironment.ContentRootPath + "\\Imagens\\";
+            _pathRoot = Path.Combine(webHostEnvironment.ContentRootPath, "imagens/");
         }
 
         [HttpGet("{name}")]
@@ -40,8 +41,7 @@ namespace FarenayteApi.Presentation.Controllers
             if (file != null)
             {
                 using (FileStream filestream = System.IO.File.Create(_pathRoot + file.FileName))
-                {
-                    String caminho = "\\Imagens\\" + file.FileName;
+                {                    
                     await file.CopyToAsync(filestream);
                     filestream.Flush();
                 }

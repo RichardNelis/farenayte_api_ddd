@@ -156,9 +156,11 @@ namespace FarenayteApi.Presentation
 
             app.UseAuthorization();
 
-            if (!Directory.Exists(env.ContentRootPath + "\\Imagens\\"))
+            string path = Path.Combine(env.ContentRootPath, "imagens");
+
+            if (!Directory.Exists(path))
             {
-                Directory.CreateDirectory(env.ContentRootPath + "\\Imagens\\");
+                Directory.CreateDirectory(path);
             }
 
             app.UseStaticFiles();
