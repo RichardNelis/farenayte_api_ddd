@@ -38,5 +38,4 @@ public abstract class BaseController : ControllerBase
     {
         return base.NotFound(MessageDTO.MensagensRetorno(MessageDTO.TiposMensagens.MensagemDinamica, mensagem: "Não encontrado!"));
     }
-
 }

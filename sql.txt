@@ -1,0 +1,90 @@
+CREATE TABLE `comentario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `es_publicacao` int(11) NOT NULL,
+  `es_pessoa_fisica` int(11) NOT NULL,
+  `rating` double NOT NULL,
+  `comentario` varchar(500) DEFAULT NULL,
+  `resposta` varchar(500) DEFAULT NULL,
+  `dt_inclusao` datetime NOT NULL,
+  `dt_alteracao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_index` (`es_publicacao`,`es_pessoa_fisica`),
+  KEY `fk_publicacao_comentario_idx` (`es_publicacao`),
+  KEY `fk_pessoa_fisica_comentario_idx` (`es_pessoa_fisica`),
+  CONSTRAINT `fk_pessoa_fisica_comentario` FOREIGN KEY (`es_pessoa_fisica`) REFERENCES `pessoa_fisica` (`es_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_publicacao_comentario` FOREIGN KEY (`es_publicacao`) REFERENCES `publicacao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=204 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `pessoa_fisica` (
+  `es_usuario` int(11) NOT NULL,
+  `foto` longtext,
+  `nome_completo` varchar(180) NOT NULL,
+  `dt_nascimento` datetime NOT NULL,
+  `sexo` varchar(10) NOT NULL,
+  `telefone_celular` varchar(11) NOT NULL,
+  `dt_inclusao` datetime NOT NULL,
+  `dt_alteracao` datetime DEFAULT NULL,
+  PRIMARY KEY (`es_usuario`),
+  UNIQUE KEY `es_usuario_UNIQUE` (`es_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `pessoa_juridica` (
+  `es_pessoa_fisica` int(11) NOT NULL,
+  `logo` longtext,
+  `cnpj` varchar(14) DEFAULT NULL,
+  `razao_social` varchar(200) DEFAULT NULL,
+  `nome_fantasia` varchar(200) DEFAULT NULL,
+  `telefone_celular` varchar(45) DEFAULT NULL,
+  `whatsapp` tinyint(4) NOT NULL,
+  `email_contato` varchar(100) DEFAULT NULL,
+  `site` varchar(100) DEFAULT NULL,
+  `rua` varchar(100) DEFAULT NULL,
+  `numero` varchar(10) DEFAULT NULL,
+  `bairro` varchar(100) DEFAULT NULL,
+  `cep` varchar(8) DEFAULT NULL,
+  `complemento` varchar(100) DEFAULT NULL,
+  `uf` int(2) NOT NULL,
+  `ibge` int(11) NOT NULL,
+  `latitude` double NOT NULL,
+  `longitude` double NOT NULL,
+  `dt_inclusao` datetime NOT NULL,
+  `dt_alteracao` datetime DEFAULT NULL,
+  PRIMARY KEY (`es_pessoa_fisica`),
+  UNIQUE KEY `es_pessoa_fisica_UNIQUE` (`es_pessoa_fisica`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `publicacao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `es_pessoa_juridica` int(11) NOT NULL,
+  `titulo` varchar(250) NOT NULL,
+  `descricao` varchar(500) DEFAULT NULL,
+  `preco` decimal(18,2) DEFAULT NULL,
+  `tipo_cobranca` int(11) DEFAULT NULL,
+  `dt_inclusao` datetime NOT NULL,
+  `dt_alteracao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `es_pessoa_juridica_UNIQUE` (`es_pessoa_juridica`),
+  KEY `fk_pessoa_juridica_idx` (`es_pessoa_juridica`),
+  CONSTRAINT `fk_pessoa_juridica` FOREIGN KEY (`es_pessoa_juridica`) REFERENCES `pessoa_juridica` (`es_pessoa_fisica`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `publicacao_foto` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `es_publicacao` int(11) NOT NULL,
+  `foto` varchar(50) NOT NULL,
+  `dt_inclusao` datetime NOT NULL,
+  `dt_alteracao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_publicacao_idx` (`es_publicacao`),
+  CONSTRAINT `fk_publicacao` FOREIGN KEY (`es_publicacao`) REFERENCES `publicacao` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `dt_inclusao` datetime NOT NULL,
+  `dt_alteracao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=239 DEFAULT CHARSET=utf8;
