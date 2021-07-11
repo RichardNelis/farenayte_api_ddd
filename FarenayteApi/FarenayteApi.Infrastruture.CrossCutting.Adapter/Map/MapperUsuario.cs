@@ -21,7 +21,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             Usuario obj = new Usuario
             {
                 Id = dto.Id,
-                Email = dto.Email,
+                Email = dto.Email.ToLower(),
                 Password = dto.Password,
                 PessoaFisica = _mapperPessoaFisica.MapperToEntity(dto.PessoaFisica)
             };
@@ -36,7 +36,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
                 UsuarioDTO usuarioDTO = new UsuarioDTO
                 {
                     Id = obj.Id,
-                    Email = obj.Email,
+                    Email = obj.Email.ToLower(),
                     Password = obj.Password,
                     PessoaFisica = _mapperPessoaFisica.MapperToDTO(obj.PessoaFisica),
                 };
@@ -52,7 +52,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
             UsuarioDTO dto = new UsuarioDTO
             {
                 Id = obj.Id,
-                Email = obj.Email,
+                Email = obj.Email.ToLower(),
                 Password = obj.Password,
                 PessoaFisica = _mapperPessoaFisica.MapperToDTO(obj.PessoaFisica),
             };
@@ -64,7 +64,7 @@ namespace FarenayteApi.Infrastruture.CrossCutting.Adapter.Map
         {
             UsuarioResponseDTO dto = new UsuarioResponseDTO
             {
-                Email = obj.Email,
+                Email = obj.Email.ToLower(),
                 PessoaFisica = _mapperPessoaFisica.MapperToDTOResponse(obj.PessoaFisica),
             };
 
