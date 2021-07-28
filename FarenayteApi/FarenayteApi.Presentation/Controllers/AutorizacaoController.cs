@@ -19,6 +19,12 @@ namespace FarenayteApi.Presentation.Controllers
             _applicationService = ApplicationService;
         }
 
+        [AllowAnonymous]
+        public IActionResult Get()
+        {
+            return Ok("Teste OK!");
+        }
+
         [HttpPost("autenticar")]
         public async Task<IActionResult> Post([FromBody] LoginDTO dto)
         {

@@ -114,11 +114,11 @@ namespace FarenayteApi.Presentation.Controllers
 
         [AllowAnonymous]
         [HttpPost("recuperarsenha")]
-        public async Task<IActionResult> RecuperarSenhaAsync(String email)
+        public async Task<IActionResult> RecuperarSenhaAsync()
         {
             try
             {                
-                await _applicationService.RecuperarSenhaAsync(email);
+                await _applicationService.RecuperarSenhaAsync("");
 
                 MessageDTO message = new MessageDTO()
                 {
