@@ -1,5 +1,4 @@
 ﻿using FarenayteApi.Domain.Models;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Domain.Core.Interfaces.Services
@@ -8,6 +7,6 @@ namespace FarenayteApi.Domain.Core.Interfaces.Services
     {
         Task UpdateAlterarSenhaAsync(int id, string password);
 
-        Task<ICollection<Usuario>> GetByEmailAsync(string email);
+        Task<Usuario> GetByEmailAsync(string email);
     }
 }

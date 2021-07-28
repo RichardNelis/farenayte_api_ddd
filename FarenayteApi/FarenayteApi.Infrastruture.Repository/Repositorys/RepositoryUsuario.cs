@@ -18,7 +18,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public async Task<ICollection<Usuario>> GetByEmailAsync(string email) => await _context.Usuarios.Where(x => x.Email == email).ToListAsync();
+        public async Task<Usuario> GetByEmailAsync(string email) => await _context.Usuarios.Where(x => x.Email == email).FirstOrDefaultAsync();
 
         public async Task<Usuario> GetByIdAsync(int id) => await _context.Usuarios.Include(x => x.PessoaFisica).FirstOrDefaultAsync(x => x.Id == id);
 

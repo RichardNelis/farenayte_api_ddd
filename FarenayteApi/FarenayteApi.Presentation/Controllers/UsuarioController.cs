@@ -111,5 +111,26 @@ namespace FarenayteApi.Presentation.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [AllowAnonymous]
+        [HttpPost("RecuperarSenha")]
+        public async Task<IActionResult> RecuperarSenhaAsync(String email)
+        {
+            try
+            {                
+                await _applicationService.RecuperarSenhaAsync(email);
+
+                MessageDTO message = new MessageDTO()
+                {
+                    Mensagem = "Senha atualizada com sucesso!"
+                };
+
+                return Ok(message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
