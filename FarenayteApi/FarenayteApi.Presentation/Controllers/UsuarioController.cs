@@ -113,7 +113,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("RecuperarSenha")]
+        [HttpPost("recuperarsenha")]
         public async Task<IActionResult> RecuperarSenhaAsync(String email)
         {
             try
