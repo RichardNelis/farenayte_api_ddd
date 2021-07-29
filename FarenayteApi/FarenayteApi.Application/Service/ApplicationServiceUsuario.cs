@@ -3,7 +3,6 @@ using FarenayteApi.Application.Interfaces;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
@@ -15,13 +14,11 @@ namespace FarenayteApi.Application.Service
     {
         private readonly IMapperUsuario _mapper;
         private readonly IServiceUsuario _service;
-        private readonly IServicePessoaFisica _servicePessoaFisica;
-
-        public ApplicationServiceUsuario(IServicePessoaFisica ServicePessoaFisica, IServiceUsuario Service, IMapperUsuario Mapper)
+        
+        public ApplicationServiceUsuario(IServiceUsuario Service, IMapperUsuario Mapper)
         {
             _mapper = Mapper;
-            _service = Service;
-            _servicePessoaFisica = ServicePessoaFisica;
+            _service = Service;            
         }
 
         public async Task<UsuarioResponseDTO> AddAsync(UsuarioDTO dto)
@@ -66,7 +63,7 @@ namespace FarenayteApi.Application.Service
         {
             var obj = await _service.GetByEmailAsync(email);
 
-            if (obj.Id > 0)
+            if (obj != null && obj.Id > 0)
             {
                 throw new Exception("O e-mail já esta sendo utilizado.\nInforme um novo e-mail ou tente recuperar a senha.");
             }
@@ -100,7 +97,7 @@ namespace FarenayteApi.Application.Service
                 StringBuilder body = new StringBuilder();
                 body.AppendLine("<h2>Geramos uma nova senha para seu acesso.</h2>")
                     .AppendLine("<p>")
-                    .AppendLine("<strong>Email:</strong> teste@teste.com<br/>")
+                    .AppendLine($"<strong>Email:</strong> {email}<br/>")
                     .AppendLine($"<strong>Nova Senha:</strong> {newPassword}")
                     .AppendLine("</p>");
 

@@ -3,11 +3,6 @@ using FarenayteApi.Application.Interfaces;
 using FarenayteApi.Domain.Core.Interfaces.Services;
 using FarenayteApi.Infrastruture.CrossCutting.Adapter.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Mail;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace FarenayteApi.Application.Service
@@ -27,14 +22,26 @@ namespace FarenayteApi.Application.Service
 
         public async Task<LoginResponseDTO> ValidarAcessoAsync(LoginDTO dto)
         {
-            var obj = await _serviceUsuario.GetByEmailAsync(dto.Email);
+            try
+            {
+                var obj = await _serviceUsuario.GetByEmailAsync(dto.Email);
 
-            string hmacSHA256 = GenerateHmac.HmacSHA256(dto.Password);
+                if (obj.Id == 0)
+                {
+                    throw new Exception("Cadastro não encontrado!");
+                }
 
-            var objUsuario = GetByPassword(obj, hmacSHA256);
-            var objPessoaFisica = await _servicePessoaFisica.GetByIdAsync(objUsuario.Id);
+                string hmacSHA256 = GenerateHmac.HmacSHA256(dto.Password);
 
-            return _mapper.MapperToDTO(objPessoaFisica);
+                var objUsuario = GetByPassword(obj, hmacSHA256);
+                var objPessoaFisica = await _servicePessoaFisica.GetByIdAsync(objUsuario.Id);
+
+                return _mapper.MapperToDTO(objPessoaFisica);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<LoginResponseDTO> GetByIdAsync(int id)

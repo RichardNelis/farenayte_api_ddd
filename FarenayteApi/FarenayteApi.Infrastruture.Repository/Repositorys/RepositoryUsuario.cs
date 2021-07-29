@@ -3,7 +3,6 @@ using FarenayteApi.Domain.Models;
 using FarenayteApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,7 +17,7 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             _context = Context;
         }
 
-        public async Task<Usuario> GetByEmailAsync(string email) => await _context.Usuarios.Where(x => x.Email == email).FirstOrDefaultAsync();
+        public async Task<Usuario> GetByEmailAsync(string email) => await _context.Usuarios.FirstOrDefaultAsync(x => x.Email == email);
 
         public async Task<Usuario> GetByIdAsync(int id) => await _context.Usuarios.Include(x => x.PessoaFisica).FirstOrDefaultAsync(x => x.Id == id);
 

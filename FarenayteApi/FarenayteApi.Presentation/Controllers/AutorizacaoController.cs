@@ -20,6 +20,7 @@ namespace FarenayteApi.Presentation.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet]
         public IActionResult Get()
         {
             return Ok("Teste OK!");
