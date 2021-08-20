@@ -26,7 +26,7 @@ namespace FarenayteApi.Application.Service
             {
                 var obj = await _serviceUsuario.GetByEmailAsync(dto.Email);
 
-                if (obj.Id == 0)
+                if (obj == null || obj.Id == 0)
                 {
                     throw new Exception("Cadastro não encontrado!");
                 }
