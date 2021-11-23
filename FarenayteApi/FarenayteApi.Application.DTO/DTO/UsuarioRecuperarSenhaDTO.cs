@@ -5,6 +5,6 @@ namespace FarenayteApi.Application.DTO.DTO
     public class UsuarioRecuperarSenhaDTO
     {
         [JsonProperty(PropertyName = "email")]
-        public string Email { get; set; }      
+        public string Email { get; set; }
     }
 }

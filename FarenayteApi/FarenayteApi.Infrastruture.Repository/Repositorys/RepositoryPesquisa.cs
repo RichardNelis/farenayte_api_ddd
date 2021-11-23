@@ -2,7 +2,6 @@
 using FarenayteApi.Domain.Models;
 using FarenayteApi.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,13 +23,15 @@ namespace FarenayteApi.Infrastruture.Repository.Repositorys
             double longitude = obj.Longitude;
             double distancia = obj.Distancia;
 
-            ICollection<PessoaJuridica> list = (ICollection<PessoaJuridica>)await _context.PessoaJuridicas
+            ICollection<PessoaJuridica> list = await _context.PessoaJuridicas
                 .Include(x => x.Publicacao)
-                .ThenInclude(x => x.Comentarios)
+                    .ThenInclude(x => x.Comentarios)
                 /*.Where(x => (12742 * Math.Asin(Math.Sqrt(Math.Sin(((Math.PI / 180) * (x.Latitude - latitude)) / 2) * Math.Sin(((Math.PI / 180) * (x.Latitude - latitude)) / 2) +
                                      Math.Cos((Math.PI / 180) * latitude) * Math.Cos((Math.PI / 180) * (x.Latitude)) *
                                      Math.Sin(((Math.PI / 180) * (x.Longitude - longitude)) / 2) * Math.Sin(((Math.PI / 180) * (x.Longitude - longitude)) / 2)))) <= distancia)*/
-                .OrderByDescending(x => x.Publicacao.Comentarios.Average<Comentario>(y => y.Rating))
+                .OrderBy(x => x.Publicacao.PessoaJuridica.NomeFantasia)
+                    .ThenBy(x => x.Publicacao.Comentarios.ToList().Count)
+                    .ThenByDescending(x => x.Publicacao.Comentarios.Average(y => y.Rating))
                 .ToListAsync();
 
             return list;

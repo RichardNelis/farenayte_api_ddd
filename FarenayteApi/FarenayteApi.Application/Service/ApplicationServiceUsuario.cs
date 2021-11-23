@@ -14,11 +14,11 @@ namespace FarenayteApi.Application.Service
     {
         private readonly IMapperUsuario _mapper;
         private readonly IServiceUsuario _service;
-        
+
         public ApplicationServiceUsuario(IServiceUsuario Service, IMapperUsuario Mapper)
         {
             _mapper = Mapper;
-            _service = Service;            
+            _service = Service;
         }
 
         public async Task<UsuarioResponseDTO> AddAsync(UsuarioDTO dto)
@@ -57,6 +57,10 @@ namespace FarenayteApi.Application.Service
                 string hmacSHA256Nova = GenerateHmac.HmacSHA256(dto.PasswordNova);
                 await _service.UpdateAlterarSenhaAsync(dto.Id, hmacSHA256Nova);
             }
+            else
+            {
+                throw new Exception("A senha atual não confere.");
+            }
         }
 
         private async Task ExisteEmail(string email)
@@ -73,7 +77,7 @@ namespace FarenayteApi.Application.Service
         {
             var obj = await _service.GetByEmailAsync(email);
 
-            if (obj.Id == 0)
+            if (obj == null || obj.Id == 0)
             {
                 throw new ArgumentException("Cadastro não encontrado!");
             }
@@ -105,7 +109,7 @@ namespace FarenayteApi.Application.Service
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -154,7 +158,7 @@ namespace FarenayteApi.Application.Service
                     smtp.Send(message);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw new Exception("Erro ao tentar enviar o e-mail.\nTente novamente mais tarde!");
             }

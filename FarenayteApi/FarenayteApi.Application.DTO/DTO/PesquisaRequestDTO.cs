@@ -18,6 +18,6 @@
 
         public decimal? Preco { get; set; }
 
-        public double Distancia { get; set; }        
+        public double Distancia { get; set; }
     }
 }

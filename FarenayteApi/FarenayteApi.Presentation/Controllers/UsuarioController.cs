@@ -13,9 +13,8 @@ namespace FarenayteApi.Presentation.Controllers
     [ApiController, Route("[controller]"), Authorize]
     public class UsuarioController : BaseController
     {
-        private readonly IApplicationServiceUsuario _applicationService;
-
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IApplicationServiceUsuario _applicationService;
 
         public UsuarioController(IApplicationServiceUsuario ApplicationService, IWebHostEnvironment hostEnvironment)
         {
@@ -29,8 +28,7 @@ namespace FarenayteApi.Presentation.Controllers
             return Ok(await _applicationService.GetByIdAsync(AuthUser().Id));
         }
 
-        [HttpPost]
-        [AllowAnonymous]
+        [HttpPost, AllowAnonymous]
         public async Task<IActionResult> PostAsync([FromForm] string usuario, [FromForm] IFormFile file)
         {
             try
@@ -112,8 +110,7 @@ namespace FarenayteApi.Presentation.Controllers
             }
         }
 
-        [AllowAnonymous]
-        [HttpPost("recuperarsenha")]
+        [HttpPost("recuperarsenha"), AllowAnonymous]
         public async Task<IActionResult> RecuperarSenhaAsync([FromBody] UsuarioRecuperarSenhaDTO dto)
         {
             try

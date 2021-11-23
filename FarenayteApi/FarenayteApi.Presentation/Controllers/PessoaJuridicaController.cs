@@ -14,9 +14,8 @@ namespace FarenayteApi.Presentation.Controllers
     [ApiController, Route("[controller]"), Authorize]
     public class PessoaJuridicaController : BaseController
     {
-        private readonly IApplicationServicePessoaJuridica _applicationService;
-
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IApplicationServicePessoaJuridica _applicationService;
 
         public PessoaJuridicaController(IApplicationServicePessoaJuridica ApplicationService, IWebHostEnvironment hostEnvironment)
         {

@@ -19,8 +19,7 @@ namespace FarenayteApi.Presentation.Controllers
             _applicationService = ApplicationService;
         }
 
-        [AllowAnonymous]
-        [HttpGet]
+        [HttpGet, AllowAnonymous]
         public IActionResult Get()
         {
             return Ok("Teste OK!");
@@ -54,8 +53,7 @@ namespace FarenayteApi.Presentation.Controllers
             }
         }
 
-        [Authorize()]
-        [HttpPost("validaracesso")]
+        [Authorize, HttpPost("validaracesso")]
         public async Task<IActionResult> Post()
         {
             try
