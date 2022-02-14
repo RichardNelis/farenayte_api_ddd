@@ -41,16 +41,18 @@ namespace FarenayteApi.Presentation.Controllers
         {
             if (file != null)
             {
-                String fileName = _pathRoot + file.FileName;
+                String pathFileName = _pathRoot + file.FileName;
 
-                using (FileStream filestream = System.IO.File.Create(fileName))
+                using (FileStream filestream = System.IO.File.Create(pathFileName))
                 {
                     await file.CopyToAsync(filestream);
                     filestream.Flush();
                 }
+                
+                return file.FileName;
             }
 
-            return file.FileName;
+            return null;
         }
     }
 }
