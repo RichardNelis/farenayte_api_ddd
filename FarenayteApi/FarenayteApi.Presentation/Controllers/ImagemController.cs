@@ -26,7 +26,9 @@ namespace FarenayteApi.Presentation.Controllers
         {
             try
             {
-                Byte[] b = System.IO.File.ReadAllBytes(_pathRoot + name);
+                String path = _pathRoot + name;
+
+                Byte[] b = System.IO.File.ReadAllBytes(path);
                 return File(b, "image/" + name.Split(".").Last());
             }
             catch (Exception)
