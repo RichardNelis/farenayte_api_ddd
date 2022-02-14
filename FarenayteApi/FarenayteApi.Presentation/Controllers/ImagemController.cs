@@ -52,7 +52,7 @@ namespace FarenayteApi.Presentation.Controllers
                 return file.FileName;
             }
 
-            return null;
+            return String.Empty;
         }
     }
 }
