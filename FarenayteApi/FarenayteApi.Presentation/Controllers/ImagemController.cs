@@ -12,7 +12,7 @@ namespace FarenayteApi.Presentation.Controllers
     [ApiController, Route("[controller]"), Authorize]
     public class ImagemController : BaseController
     {
-        private string _pathRoot;
+        private readonly string _pathRoot;
         private readonly IWebHostEnvironment webHostEnvironment;
 
         public ImagemController(IWebHostEnvironment hostEnvironment)
