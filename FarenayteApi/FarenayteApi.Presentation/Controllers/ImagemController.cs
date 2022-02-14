@@ -27,10 +27,18 @@ namespace FarenayteApi.Presentation.Controllers
         {
             try
             {
-                String path = _pathRoot + name;
+                string destFileName = Path.GetFullPath(Path.Combine(_pathRoot, name));
+                string fullDestDirPath = Path.GetFullPath(_pathRoot + Path.DirectorySeparatorChar);
 
-                Byte[] b = importFile.File.ReadAllBytes(path);
-                return File(b, "image/" + name.Split(".").Last());
+                if (!destFileName.StartsWith(fullDestDirPath, StringComparison.Ordinal))
+                {
+                    Byte[] b = importFile.File.ReadAllBytes(destFileName);
+                    return File(b, "image/" + name.Split(".").Last());
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
             catch (Exception)
             {
@@ -42,14 +50,14 @@ namespace FarenayteApi.Presentation.Controllers
         {
             if (file != null)
             {
-                String pathFileName = _pathRoot + file.FileName;
+                string destFileName = Path.GetFullPath(Path.Combine(_pathRoot, file.FileName));
 
-                using (FileStream filestream = importFile.File.Create(pathFileName))
+                using (FileStream filestream = importFile.File.Create(destFileName))
                 {
                     await file.CopyToAsync(filestream);
                     filestream.Flush();
                 }
-                
+
                 return file.FileName;
             }
 
