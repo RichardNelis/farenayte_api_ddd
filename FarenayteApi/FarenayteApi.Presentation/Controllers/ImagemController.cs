@@ -39,7 +39,9 @@ namespace FarenayteApi.Presentation.Controllers
         {
             if (file != null)
             {
-                using (FileStream filestream = System.IO.File.Create(_pathRoot + file.FileName))
+                String fileName = _pathRoot + file.FileName;
+
+                using (FileStream filestream = System.IO.File.Create(fileName))
                 {
                     await file.CopyToAsync(filestream);
                     filestream.Flush();
