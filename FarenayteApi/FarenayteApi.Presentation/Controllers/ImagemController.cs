@@ -22,7 +22,7 @@ namespace FarenayteApi.Presentation.Controllers
             _pathRoot = Path.Combine(webHostEnvironment.ContentRootPath, "imagens/");
         }
 
-        [HttpGet("{name}"), AllowAnonymous]
+        [HttpGet("{name}")]
         public IActionResult Get(string name)
         {
             try
