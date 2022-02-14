@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using importFile = System.IO;
 
 namespace FarenayteApi.Presentation.Controllers
 {
@@ -28,7 +29,7 @@ namespace FarenayteApi.Presentation.Controllers
             {
                 String path = _pathRoot + name;
 
-                Byte[] b = System.IO.File.ReadAllBytes(path);
+                Byte[] b = importFile.File.ReadAllBytes(path);
                 return File(b, "image/" + name.Split(".").Last());
             }
             catch (Exception)
@@ -43,7 +44,7 @@ namespace FarenayteApi.Presentation.Controllers
             {
                 String pathFileName = _pathRoot + file.FileName;
 
-                using (FileStream filestream = System.IO.File.Create(pathFileName))
+                using (FileStream filestream = importFile.File.Create(pathFileName))
                 {
                     await file.CopyToAsync(filestream);
                     filestream.Flush();
